@@ -1,0 +1,11 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.nav-button-pressed {
+    @apply bg-[#0066FF] text-white;
+}
+
+.nav-button-unpressed {
+    @apply bg-neutral-100 text-neutral-900;
+}

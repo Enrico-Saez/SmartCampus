@@ -1,0 +1,18 @@
+<script lang="ts">
+</script>
+
+<svelte:head>
+	<title>SmartCampus Mauá</title>
+</svelte:head>
+
+<div class="flex h-screen items-center justify-center bg-[#0066FF]">
+	<div>
+		<h1 class="text-6xl font-bold text-white">SmartCampus</h1>
+		<div class="mt-20 flex justify-center">
+			<a href="/reservatorios" class="mx-auto rounded-full bg-black/30 px-14 py-4">
+				<p class="text-center text-sm uppercase tracking-wider text-white">ENTRAR COM</p>
+				<img class="mt-2 h-5" src="/images/Microsoft_365.svg" alt="" /></a
+			>
+		</div>
+	</div>
+</div>
