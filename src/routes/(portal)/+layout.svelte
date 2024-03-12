@@ -2,8 +2,8 @@
 	import { page } from '$app/stores';
 </script>
 
-<nav class="sticky top-0 bg-white">
-	<div class="mx-auto flex h-12 max-w-7xl items-center justify-between px-4">
+<nav class="fixed top-0 w-full bg-white">
+	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-4">
 		<p>Logo Smart Campus</p>
 		<div class="flex items-center space-x-2">
 			<p class="font-medium">Nuncio</p>
@@ -16,31 +16,32 @@
 		</div>
 	</div>
 </nav>
-<div class="flex h-screen divide-neutral-200">
-	<nav class="bg-neutral-100 py-8 pl-8 pr-4">
+<div class="flex h-screen divide-x divide-neutral-300">
+	<nav class="fixed top-14 h-full w-56 bg-neutral-100 px-6 py-8">
 		<div class="flex flex-col space-y-3">
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
 				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios">RESERVATÓRIOS</a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
 				class:nav-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 				href="/saidas-de-agua">SAÍDAS DE ÁGUA</a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
 				class:nav-button-pressed={$page.route.id?.match(/poco/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/poco/g)}
 				href="/poco">POÇO</a
 			>
 		</div>
 	</nav>
-	<div class="w-full bg-red-500">
-		<h1>ÁREA DA TELA</h1>
-		<slot />
+	<div class="ml-56 w-full overflow-y-auto bg-neutral-100 p-8 py-[5.5rem]">
+		<div class="h-full">
+			<slot />
+		</div>
 	</div>
 </div>
