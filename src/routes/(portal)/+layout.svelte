@@ -12,18 +12,20 @@
 	}
 </script>
 
-<nav class="fixed top-0 z-10 w-full bg-white dark:bg-neutral-800">
+<nav
+	class="fixed top-0 z-10 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-800"
+>
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
 		<p class="text-neutral-900 dark:text-neutral-100">Logo Smart Campus</p>
 
 		<div class="flex space-x-12">
 			<div class="flex space-x-3">
 				<button
-					class="cursor-default rounded-full p-1 transition dark:hover:cursor-pointer dark:hover:bg-neutral-600"
+					class="cursor-default rounded-full p-1 transition dark:hover:cursor-pointer dark:hover:bg-neutral-700"
 					on:click={toggleLightMode}
 				>
 					<svg
-						class="text-orange-400 dark:text-neutral-700"
+						class="text-orange-400 dark:text-neutral-600"
 						xmlns="http://www.w3.org/2000/svg"
 						width="28"
 						height="28"
@@ -72,7 +74,7 @@
 	<nav class="fixed top-14 h-full w-56 bg-neutral-100 px-6 py-8 dark:bg-[#121212]">
 		<div class="flex flex-col space-y-3">
 			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios"
@@ -85,7 +87,7 @@
 				><span>RESERVATÓRIOS</span></a
 			>
 			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 				href="/saidas-de-agua"
@@ -98,7 +100,7 @@
 				><span>SAÍDAS DE ÁGUA</span></a
 			>
 			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/poco/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/poco/g)}
 				href="/poco"
