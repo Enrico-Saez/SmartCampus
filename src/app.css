@@ -7,5 +7,5 @@
 }
 
 .nav-button-unpressed {
-    @apply bg-neutral-100 text-neutral-900 dark:bg-[#121212] dark:text-neutral-100;
+    @apply bg-neutral-100 text-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-700 ease-in duration-150 dark:bg-[#121212] dark:text-neutral-100;
 }

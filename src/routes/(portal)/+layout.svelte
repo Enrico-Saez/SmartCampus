@@ -72,19 +72,19 @@
 	<nav class="fixed top-14 h-full w-56 bg-neutral-100 px-6 py-8 dark:bg-[#121212]">
 		<div class="flex flex-col space-y-3">
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios">RESERVATÓRIOS</a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 				href="/saidas-de-agua">SAÍDAS DE ÁGUA</a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] transition"
+				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/poco/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/poco/g)}
 				href="/poco">POÇO</a
@@ -92,7 +92,7 @@
 		</div>
 	</nav>
 	<div class="ml-56 w-full overflow-y-auto bg-neutral-100 p-8 py-[5.5rem] dark:bg-[#121212]">
-		<div class="h-full">
+		<div class="h-full pb-[5.5rem]">
 			<slot />
 		</div>
 	</div>

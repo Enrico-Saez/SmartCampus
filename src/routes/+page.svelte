@@ -9,9 +9,12 @@
 	<div>
 		<h1 class="text-6xl font-bold text-white">SmartCampus</h1>
 		<div class="mt-20 flex justify-center">
-			<a href="/reservatorios" class="mx-auto rounded-full bg-black/30 px-14 py-4">
+			<a
+				href="/reservatorios"
+				class="mx-auto flex items-center space-x-5 rounded-full bg-black/30 px-7 py-4"
+			>
 				<p class="text-center text-sm uppercase tracking-wider text-white">ENTRAR COM</p>
-				<img class="mt-2 h-5" src="/images/Microsoft_365.svg" alt="" /></a
+				<img class="h-[1.3rem]" src="/images/Microsoft_365.svg" alt="" /></a
 			>
 		</div>
 	</div>
