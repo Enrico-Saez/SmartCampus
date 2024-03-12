@@ -72,28 +72,51 @@
 	<nav class="fixed top-14 h-full w-56 bg-neutral-100 px-6 py-8 dark:bg-[#121212]">
 		<div class="flex flex-col space-y-3">
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
-				href="/reservatorios">RESERVATÓRIOS</a
+				href="/reservatorios"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M7 20q-.825 0-1.412-.587T5 18v-7.15L3 12.4q-.325.25-.737.2t-.663-.4q-.25-.325-.187-.725t.387-.65l8.975-6.9Q11.325 3.5 12 3.5t1.225.425L22.2 10.8q.325.25.388.65t-.188.75q-.25.35-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20zm5-4q.825 0 1.413-.587T14 14q0-.675-.375-1.437T12 10q-1.25 1.8-1.625 2.563T10 14q0 .825.588 1.413T12 16"
+					/></svg
+				><span>RESERVATÓRIOS</span></a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
-				href="/saidas-de-agua">SAÍDAS DE ÁGUA</a
+				href="/saidas-de-agua"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M3 13h4v-1H5q-.425 0-.712-.288T4 11q0-.425.288-.712T5 10h2q.825 0 1.413.588T9 12v1h2V6.1q0-1.725 1.2-2.912T15.125 2q1.15 0 2.125.6t1.5 1.65l.7 1.4q.2.375.063.763T19 7q-.375.2-.763.063t-.587-.513l-.7-1.4q-.275-.525-.775-.837T15.1 4q-.875 0-1.487.613T13 6.1V13h2v-1q0-.825.588-1.412T17 10h2q.425 0 .713.288T20 11q0 .425-.288.713T19 12h-2v1h4q.425 0 .713.288T22 14q0 .425-.288.713T21 15H3q-.425 0-.712-.288T2 14q0-.425.288-.712T3 13m3 8q-.825 0-1.412-.587T4 19v-3h16v3q0 .825-.587 1.413T18 21z"
+					/></svg
+				><span>SAÍDAS DE ÁGUA</span></a
 			>
 			<a
-				class="block text-nowrap rounded-full px-5 py-2 text-[15px] tracking-wide transition"
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2 text-[15px] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/poco/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/poco/g)}
-				href="/poco">POÇO</a
+				href="/poco"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M22 16H2v2h2v4h16v-4h2zm-11.56-1c-.25 0-.44-.19-.49-.44l-.38-3v-.06c0-.28.22-.5.5-.5H14c.27.04.46.29.43.56l-.38 3c-.05.25-.24.44-.49.44zM19 2l2.56 4.68c.04.1.05.21.05.32c0 .56-.45 1-1 1H19v7h-2V8h-4v2h-2V8H7v7H5V8H3.62a.998.998 0 0 1-.9-1.45L5 2z"
+					/></svg
+				>
+				<span>POÇO</span></a
 			>
 		</div>
 	</nav>
-	<div class="ml-56 w-full overflow-y-auto bg-neutral-100 p-8 py-[5.5rem] dark:bg-[#121212]">
-		<div class="h-full pb-[5.5rem]">
+	<div class="ml-56 w-full overflow-y-auto bg-neutral-100 p-8 pt-[5.5rem] dark:bg-[#121212]">
+		<div class="h-full">
 			<slot />
+			<div class="h-8"></div>
 		</div>
 	</div>
 </div>
