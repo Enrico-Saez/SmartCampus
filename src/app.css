@@ -3,9 +3,9 @@
 @tailwind utilities;
 
 .nav-button-pressed {
-    @apply bg-[#0066FF] text-white;
+    @apply bg-[#0066FF] text-white dark:bg-[#66A2FF] dark:text-black;
 }
 
 .nav-button-unpressed {
-    @apply bg-neutral-100 text-neutral-900;
+    @apply bg-neutral-100 text-neutral-900 dark:bg-[#121212] dark:text-neutral-100;
 }
