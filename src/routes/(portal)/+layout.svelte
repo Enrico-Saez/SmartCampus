@@ -13,7 +13,7 @@
 </script>
 
 <nav
-	class="fixed top-0 z-10 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-800"
+	class="fixed top-0 z-50 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-800"
 >
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
 		<p class="font-medium text-neutral-900 dark:text-neutral-100">SmartCampus Mauá</p>

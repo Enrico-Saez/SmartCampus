@@ -3,15 +3,44 @@
 
 <div class="grid grid-cols-4 justify-items-center gap-y-10">
 	<div
-		class="animate-fade-in relative flex h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800"
-		style="box-shadow: 8px 8px 34px rgba(0,0,0,.2)"
+		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
-		<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"
-			><path
-				fill="currentColor"
-				d="M192 96v12L96 96c-17.7 0-32 14.3-32 32s14.3 32 32 32l96-12l31-3.9l1-.1l1 .1l31 3.9l96 12c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 12V96c0-17.7-14.3-32-32-32s-32 14.3-32 32M32 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h100.1c20.2 29 53.9 48 91.9 48s71.7-19 91.9-48H352c17.7 0 32 14.3 32 32s14.3 32 32 32h64c17.7 0 32-14.3 32-32c0-88.4-71.6-160-160-160h-32l-22.6-22.6c-6-6-14.1-9.4-22.6-9.4H256v-43.8l-32-4l-32 4V224h-18.7c-8.5 0-16.6 3.4-22.6 9.4L128 256z"
-			/></svg
-		>
+		<div class="relative">
+			<div class="absolute left-[4.45rem] top-12 z-10">
+				<div
+					class="animate-current relative w-[0.7rem] bg-cyan-300 dark:bg-cyan-400"
+					style="animation-fill-mode: forwards;"
+				>
+					<div
+						class="animate-current-particle-1 absolute left-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-current-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-current-particle-3 absolute right-1 top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
+					></div>
+				</div>
+			</div>
+			<svg
+				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
+				xmlns="http://www.w3.org/2000/svg"
+				width="60"
+				height="60"
+				viewBox="0 0 512 512"
+				><path
+					fill="currentColor"
+					d="M192 96v12L96 96c-17.7 0-32 14.3-32 32s14.3 32 32 32l96-12l31-3.9l1-.1l1 .1l31 3.9l96 12c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 12V96c0-17.7-14.3-32-32-32s-32 14.3-32 32M32 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h100.1c20.2 29 53.9 48 91.9 48s71.7-19 91.9-48H352c17.7 0 32 14.3 32 32s14.3 32 32 32h64c17.7 0 32-14.3 32-32c0-88.4-71.6-160-160-160h-32l-22.6-22.6c-6-6-14.1-9.4-22.6-9.4H256v-43.8l-32-4l-32 4V224h-18.7c-8.5 0-16.6 3.4-22.6 9.4L128 256z"
+				/></svg
+			>
+		</div>
+		<div class="absolute bottom-2 right-3 z-20 text-right text-cyan-950 dark:text-cyan-100">
+			<h1 class="text-3xl font-semibold">
+				100<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
+			</h1>
+			<p class="text-sm font-medium">Saída de água 1</p>
+		</div>
 	</div>
 	{#each Array(9) as _, i}
 		<div
@@ -21,15 +50,15 @@
 			<div class="relative">
 				<div class="absolute left-[4.5rem] top-16 z-10">
 					<div
-						class="animate-drip relative top-[-15px] mx-auto h-2.5 w-2.5 rounded-full bg-cyan-300"
+						class="animate-drip relative top-[-15px] mx-auto h-2.5 w-2.5 rounded-full bg-cyan-300 dark:bg-cyan-400"
 					>
 						<div
-							class="absolute top-[-11px] h-0 w-0 border-x-[5px] border-b-[15px] border-x-transparent border-b-cyan-300"
+							class="absolute top-[-11px] h-0 w-0 border-x-[5px] border-b-[15px] border-x-transparent border-b-cyan-300 dark:border-b-cyan-400"
 						></div>
 					</div>
 				</div>
 				<svg
-					class="relative z-20 ml-6 mt-4 text-neutral-900"
+					class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
 					xmlns="http://www.w3.org/2000/svg"
 					width="60"
 					height="60"
@@ -40,6 +69,12 @@
 					/></svg
 				>
 			</div>
+			<div class="absolute bottom-2 right-3 z-20 text-right text-cyan-950 dark:text-cyan-100">
+				<h1 class="text-3xl font-semibold">
+					50<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
+				</h1>
+				<p class="text-sm font-medium">Saída de água {i + 2}</p>
+			</div>
 		</div>
 	{/each}
 </div>
@@ -48,6 +83,27 @@
 	@keyframes drip {
 		to {
 			top: 11.875rem;
+		}
+	}
+
+	@keyframes water-current {
+		0% {
+			height: 0;
+		}
+		100% {
+			height: 200px;
+		}
+	}
+
+	@keyframes water-current-particle {
+		to {
+			top: 9rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
 		}
 	}
 
@@ -68,5 +124,19 @@
 
 	.animate-drip {
 		animation: drip 2s cubic-bezier(1, 0, 0.91, 0.19) infinite;
+	}
+
+	.animate-current {
+		animation: water-current 1.8s 0.6s;
+	}
+
+	.animate-current-particle-1 {
+		animation: water-current-particle 1.3s 2s infinite;
+	}
+	.animate-current-particle-2 {
+		animation: water-current-particle 1.3s 2.5s infinite;
+	}
+	.animate-current-particle-3 {
+		animation: water-current-particle 1.3s 3s infinite;
 	}
 </style>
