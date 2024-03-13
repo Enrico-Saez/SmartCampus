@@ -21,7 +21,7 @@
 		<div class="absolute bottom-2 right-3 text-right text-red-950 dark:text-red-100">
 			<div class="flex items-end justify-end space-x-0.5">
 				<svg
-					class="mb-0.5 animate-pulse"
+					class="mb-1 animate-pulse"
 					xmlns="http://www.w3.org/2000/svg"
 					width="28"
 					height="28"
@@ -33,7 +33,7 @@
 				>
 				<h1 class="text-3xl font-semibold">30L</h1>
 			</div>
-			<p class="font-medium">Reservatório 1</p>
+			<p class="text-sm font-medium">Reservatório 1</p>
 		</div>
 	</div>
 	{#each Array(11) as _, i}
@@ -54,8 +54,8 @@
 				class="absolute bottom-1 right-0 hidden h-16 w-40 rounded-l-full bg-black/60 dark:block"
 			></div>
 			<div class="absolute bottom-2 right-3 text-right text-cyan-950 dark:text-cyan-100">
-				<h1 class="text-3xl font-semibold">500L</h1>
-				<p class="font-medium">Reservatório {i + 2}</p>
+				<h1 class="text-3xl font-semibold">500/900L</h1>
+				<p class="text-sm font-medium">Reservatório {i + 2}</p>
 			</div>
 		</div>
 	{/each}
