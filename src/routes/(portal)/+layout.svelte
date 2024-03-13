@@ -21,7 +21,7 @@
 		<div class="flex space-x-12">
 			<div class="flex space-x-3">
 				<button
-					class="cursor-default rounded-full p-1 transition dark:hover:cursor-pointer dark:hover:bg-neutral-700"
+					class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-700"
 					on:click={toggleLightMode}
 				>
 					<svg
@@ -37,7 +37,7 @@
 					>
 				</button>
 				<button
-					class="rounded-full p-1 transition hover:bg-neutral-200 dark:cursor-default dark:hover:cursor-default dark:hover:bg-transparent"
+					class="rounded-full p-1 transition duration-150 ease-in hover:bg-neutral-200 dark:cursor-default dark:hover:cursor-default dark:hover:bg-transparent"
 					on:click={toggleDarkMode}
 				>
 					<svg
@@ -71,10 +71,10 @@
 	</div>
 </nav>
 <div class="flex h-screen divide-x divide-neutral-300 dark:divide-neutral-700">
-	<nav class="fixed top-14 h-full w-56 bg-neutral-100 px-6 py-8 dark:bg-[#121212]">
+	<nav class="fixed top-14 h-full w-60 bg-neutral-100 px-5 py-8 dark:bg-[#121212]">
 		<div class="flex flex-col space-y-3">
 			<a
-				class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 tracking-wide transition"
+				class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
 				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
 				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios"
@@ -84,7 +84,18 @@
 						fill="currentColor"
 						d="M7 20q-.825 0-1.412-.587T5 18v-7.15L3 12.4q-.325.25-.737.2t-.663-.4q-.25-.325-.187-.725t.387-.65l8.975-6.9Q11.325 3.5 12 3.5t1.225.425L22.2 10.8q.325.25.388.65t-.188.75q-.25.35-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20zm5-4q.825 0 1.413-.587T14 14q0-.675-.375-1.437T12 10q-1.25 1.8-1.625 2.563T10 14q0 .825.588 1.413T12 16"
 					/></svg
-				><span>RESERVATÓRIOS</span></a
+				><span>RESERVATÓRIOS</span>
+				<svg
+					class="animate-pulse"
+					xmlns="http://www.w3.org/2000/svg"
+					width="20"
+					height="20"
+					viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15"
+					/></svg
+				></a
 			>
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
@@ -115,7 +126,7 @@
 			>
 		</div>
 	</nav>
-	<div class="ml-56 w-full overflow-y-auto bg-neutral-100 p-8 pt-[5.5rem] dark:bg-[#121212]">
+	<div class="ml-60 w-full overflow-y-auto bg-neutral-100 p-8 pt-[5.5rem] dark:bg-[#121212]">
 		<div class="h-full">
 			<slot />
 			<div class="h-8"></div>

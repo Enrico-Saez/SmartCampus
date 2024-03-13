@@ -31,7 +31,9 @@
 						d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15"
 					/></svg
 				>
-				<h1 class="text-3xl font-semibold">30L</h1>
+				<h1 class="text-3xl font-semibold">
+					30<span class="text-xl text-red-700 dark:text-red-300">/900L</span>
+				</h1>
 			</div>
 			<p class="text-sm font-medium">Reservatório 1</p>
 		</div>
@@ -54,7 +56,9 @@
 				class="absolute bottom-1 right-0 hidden h-16 w-40 rounded-l-full bg-black/60 dark:block"
 			></div>
 			<div class="absolute bottom-2 right-3 text-right text-cyan-950 dark:text-cyan-100">
-				<h1 class="text-3xl font-semibold">500/900L</h1>
+				<h1 class="text-3xl font-semibold">
+					500<span class="text-xl text-cyan-700 dark:text-cyan-300">/900L</span>
+				</h1>
 				<p class="text-sm font-medium">Reservatório {i + 2}</p>
 			</div>
 		</div>
