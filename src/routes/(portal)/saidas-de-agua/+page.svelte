@@ -131,12 +131,12 @@
 	}
 
 	.animate-current-particle-1 {
-		animation: water-current-particle 1.3s 2s infinite;
+		animation: water-current-particle 1.3s 1s infinite;
 	}
 	.animate-current-particle-2 {
-		animation: water-current-particle 1.3s 2.5s infinite;
+		animation: water-current-particle 1.3s 1.5s infinite;
 	}
 	.animate-current-particle-3 {
-		animation: water-current-particle 1.3s 3s infinite;
+		animation: water-current-particle 1.3s 2s infinite;
 	}
 </style>
