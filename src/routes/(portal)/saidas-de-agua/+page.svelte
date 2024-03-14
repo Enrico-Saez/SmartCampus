@@ -4,12 +4,14 @@
 	let height = 0;
 
 	function frame() {
-		if (height == 150) {
+		if (height == 150 && width == 15) {
 			clearInterval(animation);
 			return;
 		}
-		width += 0.75;
-		height += 7.5;
+		width += 0.375;
+		if (height < 150) {
+			height += 7.5;
+		}
 	}
 
 	setTimeout(() => {
@@ -74,7 +76,7 @@
 					/>
 				</svg>
 			</div>
-			<div class="absolute left-[4.75rem] top-12 z-40 bg-amber-500">
+			<div class="absolute left-[4.75rem] top-12 bg-amber-500">
 				<div class="relative bg-amber-500">
 					<div
 						class="animate-waterfall-particle-1 absolute right-1 top-1 h-5 w-0.5 rotate-[11deg] rounded-full bg-white opacity-0"
