@@ -65,19 +65,33 @@
 		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
-		<div class="relative bg-violet-400">
+		<div class="relative">
 			<div class="absolute left-[1.35rem] top-12">
 				<svg>
 					<polygon
 						class="fill-red-300 dark:fill-red-400"
-						points="50,0 60,0 {65 + width},{height} {40 - width},{height}"
+						points="50,0 60,0 {75 + width},{height} {40 - width},{height}"
 					/>
 				</svg>
 			</div>
 			<div class="absolute left-[4.75rem] top-12 z-40 bg-amber-500">
-				<div class=" absolute left-0.5 top-1 h-5 w-0.5 rotate-6 rounded-full bg-green-500"></div>
-				<div class=" absolute right-0.5 top-1 h-5 w-0.5 rotate-45 rounded-full bg-green-500"></div>
-				<div class=" absolute right-1 top-1 h-5 w-0.5 rotate-12 rounded-full bg-green-500"></div>
+				<div class="relative bg-amber-500">
+					<div
+						class="animate-waterfall-particle-1 absolute right-1 top-1 h-5 w-0.5 rotate-[11deg] rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-waterfall-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rotate-[5deg] rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-waterfall-particle-3 absolute top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-waterfall-particle-4 absolute left-0.5 top-1 h-5 w-0.5 rotate-[-5deg] rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-waterfall-particle-5 absolute left-1 top-1 h-5 w-0.5 rotate-[-11deg] rounded-full bg-white opacity-0"
+					></div>
+				</div>
 			</div>
 			<svg
 				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
@@ -169,6 +183,70 @@
 		}
 	}
 
+	@keyframes waterfall-particle-1 {
+		to {
+			top: 9rem;
+			right: 1.6rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes waterfall-particle-2 {
+		to {
+			top: 9rem;
+			right: 1rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes waterfall-particle-3 {
+		to {
+			top: 9rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes waterfall-particle-4 {
+		to {
+			top: 9rem;
+			left: 1rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
+	@keyframes waterfall-particle-5 {
+		to {
+			top: 9rem;
+			left: 1.6rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
 	@keyframes fade-in {
 		0% {
 			opacity: 0;
@@ -200,5 +278,21 @@
 	}
 	.animate-current-particle-3 {
 		animation: water-current-particle 1.3s 2s infinite;
+	}
+
+	.animate-waterfall-particle-1 {
+		animation: waterfall-particle-1 0.8s 1s infinite;
+	}
+	.animate-waterfall-particle-2 {
+		animation: waterfall-particle-2 0.8s 1.4s infinite;
+	}
+	.animate-waterfall-particle-3 {
+		animation: waterfall-particle-3 0.8s 1s infinite;
+	}
+	.animate-waterfall-particle-4 {
+		animation: waterfall-particle-4 0.8s 1.4s infinite;
+	}
+	.animate-waterfall-particle-5 {
+		animation: waterfall-particle-5 0.8s 1s infinite;
 	}
 </style>
