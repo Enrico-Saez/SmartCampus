@@ -70,7 +70,7 @@
 				<svg>
 					<polygon
 						class="fill-red-300 dark:fill-red-400"
-						points="50,0 60,0 {75 + width},{height} {40 - width},{height}"
+						points="50,0 60,0 {70 + width},{height} {40 - width},{height}"
 					/>
 				</svg>
 			</div>
@@ -281,18 +281,18 @@
 	}
 
 	.animate-waterfall-particle-1 {
-		animation: waterfall-particle-1 0.8s 1s infinite;
+		animation: waterfall-particle-1 0.7s 1s infinite;
 	}
 	.animate-waterfall-particle-2 {
-		animation: waterfall-particle-2 0.8s 1.4s infinite;
+		animation: waterfall-particle-2 0.7s 1.2s infinite;
 	}
 	.animate-waterfall-particle-3 {
-		animation: waterfall-particle-3 0.8s 1s infinite;
+		animation: waterfall-particle-3 0.7s 1s infinite;
 	}
 	.animate-waterfall-particle-4 {
-		animation: waterfall-particle-4 0.8s 1.4s infinite;
+		animation: waterfall-particle-4 0.7s 1.2s infinite;
 	}
 	.animate-waterfall-particle-5 {
-		animation: waterfall-particle-5 0.8s 1s infinite;
+		animation: waterfall-particle-5 0.7s 1s infinite;
 	}
 </style>
