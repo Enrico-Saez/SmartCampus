@@ -1,4 +1,20 @@
 <script lang="ts">
+	let animation: number;
+	let width = 0;
+	let height = 0;
+
+	function frame() {
+		if (height == 150) {
+			clearInterval(animation);
+			return;
+		}
+		width += 0.3;
+		height += 3;
+	}
+
+	setTimeout(() => {
+		animation = setInterval(frame, 5);
+	}, 600);
 </script>
 
 <div class="grid grid-cols-4 justify-items-center gap-y-10">
@@ -40,7 +56,7 @@
 		></div>
 		<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
 			<h1 class="text-3xl font-semibold">
-				100<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
+				100<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">ml/min</span>
 			</h1>
 			<p class="text-sm font-medium">Saída de água 1</p>
 		</div>
@@ -49,24 +65,20 @@
 		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
-		<div class="relative bg-amber-500">
-			<div class="absolute left-[2.3rem] top-12 bg-green-500">
-				<div
-					class="animate-waterfall relative w-[0.7rem] bg-red-300 dark:bg-red-400"
-					style="animation-fill-mode: forwards;"
-				>
-					<div
-						class="animate-current-particle-1 absolute left-0.5 top-1 h-5 w-0.5 -rotate-12 rounded-full bg-white opacity-0"
-					></div>
-					<div
-						class="animate-current-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
-					></div>
-					<div
-						class="animate-current-particle-3 absolute right-1 top-1 h-5 w-0.5 rotate-12 rounded-full bg-white opacity-0"
-					></div>
-				</div>
+		<div class="relative bg-violet-400">
+			<div class="absolute left-[1.35rem] top-12">
+				<svg>
+					<polygon
+						class="fill-red-300 dark:fill-red-400"
+						points="50,0 60,0 {65 + width},{height} {40 - width},{height}"
+					/>
+				</svg>
 			</div>
-
+			<div class="absolute left-[4.75rem] top-12 z-40 bg-amber-500">
+				<div class=" absolute left-0.5 top-1 h-5 w-0.5 rotate-6 rounded-full bg-green-500"></div>
+				<div class=" absolute right-0.5 top-1 h-5 w-0.5 rotate-45 rounded-full bg-green-500"></div>
+				<div class=" absolute right-1 top-1 h-5 w-0.5 rotate-12 rounded-full bg-green-500"></div>
+			</div>
 			<svg
 				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
 				xmlns="http://www.w3.org/2000/svg"
@@ -84,7 +96,7 @@
 		></div>
 		<div class="absolute bottom-2 right-3 z-30 text-right text-red-950 dark:text-red-100">
 			<h1 class="text-3xl font-semibold">
-				800<span class="text-xl text-red-700 dark:text-red-300">ml/min</span>
+				800<span class="text-base font-medium text-red-950/70 dark:text-red-300">ml/min</span>
 			</h1>
 			<p class="text-sm font-medium">Saída de água 2</p>
 		</div>
@@ -97,7 +109,7 @@
 			<div class="relative">
 				<div class="absolute left-[4.5rem] top-16 z-10">
 					<div
-						class="animate-drip relative top-[-15px] mx-auto h-2.5 w-2.5 rounded-full bg-cyan-300 dark:bg-cyan-400"
+						class="animate-drip relative top-[-20px] mx-auto h-2.5 w-2.5 rounded-full bg-cyan-300 dark:bg-cyan-400"
 					>
 						<div
 							class="absolute top-[-11px] h-0 w-0 border-x-[5px] border-b-[15px] border-x-transparent border-b-cyan-300 dark:border-b-cyan-400"
@@ -121,7 +133,7 @@
 			></div>
 			<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
 				<h1 class="text-3xl font-semibold">
-					50<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
+					50<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">ml/min</span>
 				</h1>
 				<p class="text-sm font-medium">Saída de água {i + 3}</p>
 			</div>
@@ -157,18 +169,6 @@
 		}
 	}
 
-	@keyframes waterfall {
-		0% {
-			height: 0;
-			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
-		}
-		100% {
-			height: 130px;
-			width: 40px;
-			clip-path: polygon(35% 0, 65% 0, 100% 100%, 0% 100%);
-		}
-	}
-
 	@keyframes fade-in {
 		0% {
 			opacity: 0;
@@ -200,9 +200,5 @@
 	}
 	.animate-current-particle-3 {
 		animation: water-current-particle 1.3s 2s infinite;
-	}
-
-	.animate-waterfall {
-		animation: waterfall 1.3s 0.6s;
 	}
 </style>

@@ -30,7 +30,7 @@
 					/></svg
 				>
 				<h1 class="text-3xl font-semibold">
-					30<span class="text-xl text-red-700 dark:text-red-300">/900L</span>
+					30<span class="text-base font-medium text-red-950/70 dark:text-red-300">/900L</span>
 				</h1>
 			</div>
 			<p class="text-sm font-medium">Reservatório 1</p>
@@ -49,11 +49,11 @@
 					/>
 				</g>
 			</svg>
-			<div class="h-20 w-full bg-cyan-300 dark:bg-cyan-400"></div>
+			<div class="h-28 w-full bg-cyan-300 dark:bg-cyan-400"></div>
 			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div class="absolute bottom-2 right-3 text-right text-cyan-950 dark:text-cyan-100">
 				<h1 class="text-3xl font-semibold">
-					500<span class="text-xl text-cyan-700 dark:text-cyan-300">/900L</span>
+					500<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">/900L</span>
 				</h1>
 				<p class="text-sm font-medium">Reservatório {i + 2}</p>
 			</div>
