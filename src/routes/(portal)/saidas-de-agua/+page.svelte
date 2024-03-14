@@ -191,7 +191,7 @@
 		0% {
 			opacity: 0;
 		}
-		30% {
+		20% {
 			opacity: 1;
 		}
 	}
@@ -204,7 +204,7 @@
 		0% {
 			opacity: 0;
 		}
-		30% {
+		20% {
 			opacity: 1;
 		}
 	}
@@ -216,7 +216,7 @@
 		0% {
 			opacity: 0;
 		}
-		30% {
+		20% {
 			opacity: 1;
 		}
 	}
@@ -229,7 +229,7 @@
 		0% {
 			opacity: 0;
 		}
-		30% {
+		20% {
 			opacity: 1;
 		}
 	}
@@ -242,7 +242,7 @@
 		0% {
 			opacity: 0;
 		}
-		30% {
+		20% {
 			opacity: 1;
 		}
 	}
@@ -281,18 +281,18 @@
 	}
 
 	.animate-waterfall-particle-1 {
-		animation: waterfall-particle-1 0.7s 1s infinite;
+		animation: waterfall-particle-1 0.5s 1s infinite linear;
 	}
 	.animate-waterfall-particle-2 {
-		animation: waterfall-particle-2 0.7s 1.2s infinite;
+		animation: waterfall-particle-2 0.5s 1.2s infinite linear;
 	}
 	.animate-waterfall-particle-3 {
-		animation: waterfall-particle-3 0.7s 1s infinite;
+		animation: waterfall-particle-3 0.5s 1s infinite linear;
 	}
 	.animate-waterfall-particle-4 {
-		animation: waterfall-particle-4 0.7s 1.2s infinite;
+		animation: waterfall-particle-4 0.5s 1.2s infinite linear;
 	}
 	.animate-waterfall-particle-5 {
-		animation: waterfall-particle-5 0.7s 1s infinite;
+		animation: waterfall-particle-5 0.5s 1s infinite linear;
 	}
 </style>
