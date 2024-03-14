@@ -15,9 +15,7 @@
 			</g>
 		</svg>
 		<div class="h-0 w-full bg-red-300 dark:bg-red-400"></div>
-		<div
-			class="absolute bottom-1 right-0 hidden h-16 w-40 rounded-l-full bg-black/60 dark:block"
-		></div>
+		<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 		<div class="absolute bottom-2 right-3 text-right text-red-950 dark:text-red-100">
 			<div class="flex items-end justify-end space-x-0.5">
 				<svg
@@ -52,9 +50,7 @@
 				</g>
 			</svg>
 			<div class="h-20 w-full bg-cyan-300 dark:bg-cyan-400"></div>
-			<div
-				class="absolute bottom-1 right-0 hidden h-16 w-40 rounded-l-full bg-black/60 dark:block"
-			></div>
+			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div class="absolute bottom-2 right-3 text-right text-cyan-950 dark:text-cyan-100">
 				<h1 class="text-3xl font-semibold">
 					500<span class="text-xl text-cyan-700 dark:text-cyan-300">/900L</span>

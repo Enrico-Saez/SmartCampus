@@ -35,11 +35,58 @@
 				/></svg
 			>
 		</div>
-		<div class="absolute bottom-2 right-3 z-20 text-right text-cyan-950 dark:text-cyan-100">
+		<div
+			class="absolute bottom-0 right-0 z-20 hidden h-[4.15rem] w-full bg-black/60 dark:block"
+		></div>
+		<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
 			<h1 class="text-3xl font-semibold">
 				100<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
 			</h1>
 			<p class="text-sm font-medium">Saída de água 1</p>
+		</div>
+	</div>
+	<div
+		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
+	>
+		<div class="relative bg-amber-500">
+			<div class="absolute left-[2.3rem] top-12 bg-green-500">
+				<div
+					class="animate-waterfall relative w-[0.7rem] bg-red-300 dark:bg-red-400"
+					style="animation-fill-mode: forwards;"
+				>
+					<div
+						class="animate-current-particle-1 absolute left-0.5 top-1 h-5 w-0.5 -rotate-12 rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-current-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
+					></div>
+					<div
+						class="animate-current-particle-3 absolute right-1 top-1 h-5 w-0.5 rotate-12 rounded-full bg-white opacity-0"
+					></div>
+				</div>
+			</div>
+
+			<svg
+				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
+				xmlns="http://www.w3.org/2000/svg"
+				width="60"
+				height="60"
+				viewBox="0 0 512 512"
+				><path
+					fill="currentColor"
+					d="M192 96v12L96 96c-17.7 0-32 14.3-32 32s14.3 32 32 32l96-12l31-3.9l1-.1l1 .1l31 3.9l96 12c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 12V96c0-17.7-14.3-32-32-32s-32 14.3-32 32M32 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h100.1c20.2 29 53.9 48 91.9 48s71.7-19 91.9-48H352c17.7 0 32 14.3 32 32s14.3 32 32 32h64c17.7 0 32-14.3 32-32c0-88.4-71.6-160-160-160h-32l-22.6-22.6c-6-6-14.1-9.4-22.6-9.4H256v-43.8l-32-4l-32 4V224h-18.7c-8.5 0-16.6 3.4-22.6 9.4L128 256z"
+				/></svg
+			>
+		</div>
+		<div
+			class="absolute bottom-0 right-0 z-20 hidden h-[4.15rem] w-full bg-black/60 dark:block"
+		></div>
+		<div class="absolute bottom-2 right-3 z-30 text-right text-red-950 dark:text-red-100">
+			<h1 class="text-3xl font-semibold">
+				800<span class="text-xl text-red-700 dark:text-red-300">ml/min</span>
+			</h1>
+			<p class="text-sm font-medium">Saída de água 2</p>
 		</div>
 	</div>
 	{#each Array(9) as _, i}
@@ -69,11 +116,14 @@
 					/></svg
 				>
 			</div>
-			<div class="absolute bottom-2 right-3 z-20 text-right text-cyan-950 dark:text-cyan-100">
+			<div
+				class="absolute bottom-0 right-0 z-20 hidden h-[4.15rem] w-full bg-black/60 dark:block"
+			></div>
+			<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
 				<h1 class="text-3xl font-semibold">
 					50<span class="text-xl text-cyan-700 dark:text-cyan-300">ml/min</span>
 				</h1>
-				<p class="text-sm font-medium">Saída de água {i + 2}</p>
+				<p class="text-sm font-medium">Saída de água {i + 3}</p>
 			</div>
 		</div>
 	{/each}
@@ -107,6 +157,18 @@
 		}
 	}
 
+	@keyframes waterfall {
+		0% {
+			height: 0;
+			clip-path: polygon(0 0, 100% 0, 100% 100%, 0% 100%);
+		}
+		100% {
+			height: 130px;
+			width: 40px;
+			clip-path: polygon(35% 0, 65% 0, 100% 100%, 0% 100%);
+		}
+	}
+
 	@keyframes fade-in {
 		0% {
 			opacity: 0;
@@ -127,7 +189,7 @@
 	}
 
 	.animate-current {
-		animation: water-current 1.8s 0.6s;
+		animation: water-current 1.3s 0.6s;
 	}
 
 	.animate-current-particle-1 {
@@ -138,5 +200,9 @@
 	}
 	.animate-current-particle-3 {
 		animation: water-current-particle 1.3s 2s infinite;
+	}
+
+	.animate-waterfall {
+		animation: waterfall 1.3s 0.6s;
 	}
 </style>
