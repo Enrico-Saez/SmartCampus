@@ -8,12 +8,12 @@
 			clearInterval(animation);
 			return;
 		}
-		width += 0.3;
-		height += 3;
+		width += 0.75;
+		height += 7.5;
 	}
 
 	setTimeout(() => {
-		animation = setInterval(frame, 5);
+		animation = setInterval(frame, 10);
 	}, 600);
 </script>
 
