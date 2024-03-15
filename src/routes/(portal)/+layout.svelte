@@ -75,8 +75,8 @@
 		<div class="flex flex-col space-y-3">
 			<a
 				class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:nav-button-pressed={$page.route.id?.match(/reservatorios/g)}
-				class:nav-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
+				class:button-pressed={$page.route.id?.match(/reservatorios/g)}
+				class:button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -99,8 +99,8 @@
 			>
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:nav-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
-				class:nav-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
+				class:button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
+				class:button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 				href="/saidas-de-agua"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -112,8 +112,8 @@
 			>
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:nav-button-pressed={$page.route.id?.match(/poco/g)}
-				class:nav-button-unpressed={!$page.route.id?.match(/poco/g)}
+				class:button-pressed={$page.route.id?.match(/poco/g)}
+				class:button-unpressed={!$page.route.id?.match(/poco/g)}
 				href="/poco"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"

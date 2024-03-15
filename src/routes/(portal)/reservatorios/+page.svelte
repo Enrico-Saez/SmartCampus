@@ -1,7 +1,39 @@
 <script lang="ts">
+	let measureUnit = 'L';
+
+	let measurementInLiters = 5000;
+	let maximumCapacityInLiters = 9000;
+
+	let measurement: number;
+	let maximumCapacity: number;
+
+	$: {
+		if (measureUnit === 'L') {
+			measurement = measurementInLiters;
+			maximumCapacity = maximumCapacityInLiters;
+		}
+		if (measureUnit === 'm³') {
+			measurement = measurementInLiters / 1000;
+			maximumCapacity = maximumCapacityInLiters / 1000;
+		}
+	}
 </script>
 
-<div class="grid grid-cols-4 justify-items-center gap-y-10">
+<div class="flex justify-end space-x-2">
+	<button
+		class="w-12 py-0.5 text-sm font-medium"
+		on:click={() => (measureUnit = 'L')}
+		class:button-pressed={measureUnit === 'L'}
+		class:button-unpressed={measureUnit === 'm³'}>L</button
+	>
+	<button
+		class="w-12 py-0.5 text-sm font-medium"
+		on:click={() => (measureUnit = 'm³')}
+		class:button-pressed={measureUnit === 'm³'}
+		class:button-unpressed={measureUnit === 'L'}>m³</button
+	>
+</div>
+<div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
 	<div
 		class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-800"
 		style="box-shadow: 8px 8px 34px rgba(0,0,0,.2)"
@@ -53,7 +85,9 @@
 			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div class="absolute bottom-2 right-3 text-right text-cyan-950 dark:text-cyan-100">
 				<h1 class="text-3xl font-semibold">
-					500<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">/900L</span>
+					{measurement}<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300"
+						>/{maximumCapacity}{measureUnit}</span
+					>
 				</h1>
 				<p class="text-sm font-medium">Reservatório {i + 2}</p>
 			</div>

@@ -2,10 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-.nav-button-pressed {
-    @apply bg-[#0066FF] text-white dark:bg-[#66A2FF] dark:text-black;
+.button-pressed {
+	@apply rounded-full bg-[#0066FF] text-white hover:cursor-default dark:bg-[#66A2FF] dark:text-black;
 }
 
-.nav-button-unpressed {
-    @apply bg-neutral-100 text-neutral-900 hover:bg-neutral-200 dark:hover:bg-neutral-700 ease-in duration-150 dark:bg-[#121212] dark:text-neutral-100;
+.button-unpressed {
+	@apply rounded-full bg-neutral-100 text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
 }
