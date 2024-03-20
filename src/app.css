@@ -9,3 +9,26 @@
 .button-unpressed {
 	@apply rounded-full bg-neutral-100 text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
 }
+
+.fill-red {
+	@apply fill-red-300 dark:fill-red-400;
+}
+
+.fill-cyan {
+	@apply fill-cyan-300 dark:fill-cyan-400;
+}
+
+.bg-red {
+	@apply bg-red-300 dark:bg-red-400;
+}
+
+.bg-cyan {
+	@apply bg-cyan-300 dark:bg-cyan-400;
+}
+
+.text-red {
+	@apply text-red-950 dark:text-red-100;
+}
+.text-cyan {
+	@apply text-cyan-950 dark:text-cyan-100;
+}
