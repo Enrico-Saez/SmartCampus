@@ -75,7 +75,7 @@
 		}
 	};
 
-	let dangerValue = 30;
+	let dangerValue = 300;
 </script>
 
 <div class="flex justify-between">
