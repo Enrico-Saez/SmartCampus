@@ -82,16 +82,16 @@
 	let dangerValue = 300;
 </script>
 
-<div class="flex w-fit items-center space-x-14">
+<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-100 dark:bg-[#121212]">
 	<div>
 		<div class="flex items-center space-x-1">
 			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-				ZONA DE RISCO
+				NÍVEL DE RISCO
 			</p>
 			<div class="group relative">
 				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
 				<div
-					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md bg-white px-2 py-1 group-hover:block dark:bg-neutral-800"
+					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 				>
 					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
 						Defina o nível de risco de volume dos reservatórios.
@@ -134,23 +134,21 @@
 			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 		>
-			{#if Math.floor((12 * data.measurement) / data.maxCapacity) < 12}
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
-					<g class="transition-transform duration-500">
-						<path
-							class:fill-red={data.measurement <= dangerValue}
-							class:fill-cyan={data.measurement > dangerValue}
-							class="water"
-							d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
-						/>
-					</g>
-				</svg>
-			{/if}
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
+				<g class="transition-transform duration-500">
+					<path
+						class:fill-red={data.measurement <= dangerValue}
+						class:fill-cyan={data.measurement > dangerValue}
+						class="water"
+						d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
+					/>
+				</g>
+			</svg>
 			<div
 				class:bg-red={data.measurement <= dangerValue}
 				class:bg-cyan={data.measurement > dangerValue}
 				class="w-full"
-				style="height: {Math.floor((12 * data.measurement) / data.maxCapacity)}rem"
+				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
 			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div
@@ -180,6 +178,21 @@
 					>
 				</div>
 			{/if}
+			<div class="absolute bottom-0 left-0 flex h-[11rem] flex-col justify-between">
+				<div class="relative w-3 border border-cyan-950">
+					<div class="text-cyan absolute -top-2 left-3.5 text-xs font-medium">Máx</div>
+				</div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-3 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-2 border border-cyan-950"></div>
+				<div class="w-0 border border-cyan-950"></div>
+			</div>
 		</div>
 	{/each}
 </div>
