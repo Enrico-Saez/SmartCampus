@@ -82,25 +82,38 @@
 	let dangerValue = 30;
 </script>
 
-<div class="flex justify-between">
-	<div class="flex space-x-1">
-		<p>Zona de risco:</p>
-		<input bind:value={dangerValue} class="w-24 rounded-full px-2.5" type="text" />
-		<p>{measureUnit}</p>
+<div class="flex w-fit items-center space-x-14">
+	<div>
+		<p class=" text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+			ZONA DE RISCO
+		</p>
+		<div class="mt-1 flex justify-center space-x-1">
+			<input
+				bind:value={dangerValue}
+				class="w-[4.5rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 dark:border-neutral-600 dark:text-neutral-100"
+				type="text"
+			/>
+			<p class="font-medium text-neutral-900 dark:text-neutral-100">{measureUnit}</p>
+		</div>
 	</div>
-	<div class="flex space-x-2">
-		<button
-			class="w-12 py-0.5 text-sm font-medium"
-			on:click={convertToLiters}
-			class:button-pressed={measureUnit === 'L'}
-			class:button-unpressed={measureUnit === 'm³'}>L</button
-		>
-		<button
-			class="w-12 py-0.5 text-sm font-medium"
-			on:click={convertToCubicMeters}
-			class:button-pressed={measureUnit === 'm³'}
-			class:button-unpressed={measureUnit === 'L'}>m³</button
-		>
+	<div>
+		<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+			UNIDADE DE MEDIDA
+		</p>
+		<div class="mt-1 flex justify-center space-x-2">
+			<button
+				class="w-12 py-0.5 text-sm font-medium"
+				on:click={convertToLiters}
+				class:button-pressed={measureUnit === 'L'}
+				class:button-unpressed={measureUnit === 'm³'}>L</button
+			>
+			<button
+				class="w-12 py-0.5 text-sm font-medium"
+				on:click={convertToCubicMeters}
+				class:button-pressed={measureUnit === 'm³'}
+				class:button-unpressed={measureUnit === 'L'}>m³</button
+			>
+		</div>
 	</div>
 </div>
 <div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
