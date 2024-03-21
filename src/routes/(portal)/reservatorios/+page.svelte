@@ -5,20 +5,24 @@
 	let maximumCapacity: number;
 
 	function convertToLiters() {
-		measureUnit = 'L';
-		dangerValue *= 1000;
-		for (const reservatory in reservatories) {
-			reservatories[reservatory].maxCapacity *= 1000;
-			reservatories[reservatory].measurement *= 1000;
+		if (measureUnit === 'm³') {
+			measureUnit = 'L';
+			dangerValue *= 1000;
+			for (const reservatory in reservatories) {
+				reservatories[reservatory].maxCapacity *= 1000;
+				reservatories[reservatory].measurement *= 1000;
+			}
 		}
 	}
 
 	function convertToCubicMeters() {
-		measureUnit = 'm³';
-		dangerValue /= 1000;
-		for (const reservatory in reservatories) {
-			reservatories[reservatory].maxCapacity /= 1000;
-			reservatories[reservatory].measurement /= 1000;
+		if (measureUnit === 'L') {
+			measureUnit = 'm³';
+			dangerValue /= 1000;
+			for (const reservatory in reservatories) {
+				reservatories[reservatory].maxCapacity /= 1000;
+				reservatories[reservatory].measurement /= 1000;
+			}
 		}
 	}
 
@@ -80,8 +84,8 @@
 
 <div class="flex justify-between">
 	<div class="flex space-x-1">
-		<p></p>
-		<input bind:value={dangerValue} class="w-24 rounded-full px-2.5" type="number" />
+		<p>Zona de risco:</p>
+		<input bind:value={dangerValue} class="w-24 rounded-full px-2.5" type="text" />
 		<p>{measureUnit}</p>
 	</div>
 	<div class="flex space-x-2">
