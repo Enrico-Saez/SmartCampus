@@ -79,14 +79,26 @@
 		}
 	};
 
-	let dangerValue = 30;
+	let dangerValue = 300;
 </script>
 
 <div class="flex w-fit items-center space-x-14">
 	<div>
-		<p class=" text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-			ZONA DE RISCO
-		</p>
+		<div class="flex items-center space-x-1">
+			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+				ZONA DE RISCO
+			</p>
+			<div class="group relative">
+				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+				<div
+					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md bg-white px-2 py-1 group-hover:block dark:bg-neutral-800"
+				>
+					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+						Defina o nível de risco de volume dos reservatórios.
+					</p>
+				</div>
+			</div>
+		</div>
 		<div class="mt-1 flex justify-center space-x-1">
 			<input
 				bind:value={dangerValue}
