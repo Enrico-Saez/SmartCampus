@@ -5,20 +5,24 @@
 	let maximumCapacity: number;
 
 	function convertToLiters() {
-		measureUnit = 'L';
-		dangerValue *= 1000;
-		for (const reservatory in reservatories) {
-			reservatories[reservatory].maxCapacity *= 1000;
-			reservatories[reservatory].measurement *= 1000;
+		if (measureUnit === 'm³') {
+			measureUnit = 'L';
+			dangerValue *= 1000;
+			for (const reservatory in reservatories) {
+				reservatories[reservatory].maxCapacity *= 1000;
+				reservatories[reservatory].measurement *= 1000;
+			}
 		}
 	}
 
 	function convertToCubicMeters() {
-		measureUnit = 'm³';
-		dangerValue /= 1000;
-		for (const reservatory in reservatories) {
-			reservatories[reservatory].maxCapacity /= 1000;
-			reservatories[reservatory].measurement /= 1000;
+		if (measureUnit === 'L') {
+			measureUnit = 'm³';
+			dangerValue /= 1000;
+			for (const reservatory in reservatories) {
+				reservatories[reservatory].maxCapacity /= 1000;
+				reservatories[reservatory].measurement /= 1000;
+			}
 		}
 	}
 
@@ -78,25 +82,50 @@
 	let dangerValue = 300;
 </script>
 
-<div class="flex justify-between">
-	<div class="flex space-x-1">
-		<p></p>
-		<input bind:value={dangerValue} class="w-24 rounded-full px-2.5" type="number" />
-		<p>{measureUnit}</p>
+<div class="flex w-fit items-center space-x-14">
+	<div>
+		<div class="flex items-center space-x-1">
+			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+				ZONA DE RISCO
+			</p>
+			<div class="group relative">
+				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+				<div
+					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md bg-white px-2 py-1 group-hover:block dark:bg-neutral-800"
+				>
+					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+						Defina o nível de risco de volume dos reservatórios.
+					</p>
+				</div>
+			</div>
+		</div>
+		<div class="mt-1 flex justify-center space-x-1">
+			<input
+				bind:value={dangerValue}
+				class="w-[4.5rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 dark:border-neutral-600 dark:text-neutral-100"
+				type="text"
+			/>
+			<p class="font-medium text-neutral-900 dark:text-neutral-100">{measureUnit}</p>
+		</div>
 	</div>
-	<div class="flex space-x-2">
-		<button
-			class="w-12 py-0.5 text-sm font-medium"
-			on:click={convertToLiters}
-			class:button-pressed={measureUnit === 'L'}
-			class:button-unpressed={measureUnit === 'm³'}>L</button
-		>
-		<button
-			class="w-12 py-0.5 text-sm font-medium"
-			on:click={convertToCubicMeters}
-			class:button-pressed={measureUnit === 'm³'}
-			class:button-unpressed={measureUnit === 'L'}>m³</button
-		>
+	<div>
+		<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+			UNIDADE DE MEDIDA
+		</p>
+		<div class="mt-1 flex justify-center space-x-2">
+			<button
+				class="w-12 py-0.5 text-sm font-medium"
+				on:click={convertToLiters}
+				class:button-pressed={measureUnit === 'L'}
+				class:button-unpressed={measureUnit === 'm³'}>L</button
+			>
+			<button
+				class="w-12 py-0.5 text-sm font-medium"
+				on:click={convertToCubicMeters}
+				class:button-pressed={measureUnit === 'm³'}
+				class:button-unpressed={measureUnit === 'L'}>m³</button
+			>
+		</div>
 	</div>
 </div>
 <div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
