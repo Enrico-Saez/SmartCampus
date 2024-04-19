@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Reservatórios | SmartCampus Mauá</title>
+	<title>Reservatórios | EcoVision</title>
 </svelte:head>
 
 <slot />

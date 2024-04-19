@@ -82,16 +82,16 @@
 	let dangerValue = 300;
 </script>
 
-<div class="flex w-fit items-center space-x-14">
+<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-50 dark:bg-[#121212]">
 	<div>
 		<div class="flex items-center space-x-1">
 			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-				ZONA DE RISCO
+				NÍVEL DE RISCO
 			</p>
 			<div class="group relative">
 				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
 				<div
-					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md bg-white px-2 py-1 group-hover:block dark:bg-neutral-800"
+					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-lg border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 				>
 					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
 						Defina o nível de risco de volume dos reservatórios.
@@ -116,14 +116,14 @@
 			<button
 				class="w-12 py-0.5 text-sm font-medium"
 				on:click={convertToLiters}
-				class:button-pressed={measureUnit === 'L'}
-				class:button-unpressed={measureUnit === 'm³'}>L</button
+				class:water-button-pressed={measureUnit === 'L'}
+				class:water-button-unpressed={measureUnit === 'm³'}>L</button
 			>
 			<button
 				class="w-12 py-0.5 text-sm font-medium"
 				on:click={convertToCubicMeters}
-				class:button-pressed={measureUnit === 'm³'}
-				class:button-unpressed={measureUnit === 'L'}>m³</button
+				class:water-button-pressed={measureUnit === 'm³'}
+				class:water-button-unpressed={measureUnit === 'L'}>m³</button
 			>
 		</div>
 	</div>
@@ -131,35 +131,33 @@
 <div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
-			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 		>
-			{#if Math.floor((12 * data.measurement) / data.maxCapacity) < 12}
-				<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
-					<g class="transition-transform duration-500">
-						<path
-							class:fill-red={data.measurement <= dangerValue}
-							class:fill-cyan={data.measurement > dangerValue}
-							class="water"
-							d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
-						/>
-					</g>
-				</svg>
-			{/if}
+			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
+				<g class="transition-transform duration-500">
+					<path
+						class:fill-red={data.measurement <= dangerValue}
+						class:fill-cyan={data.measurement > dangerValue}
+						class="water"
+						d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
+					/>
+				</g>
+			</svg>
 			<div
 				class:bg-red={data.measurement <= dangerValue}
 				class:bg-cyan={data.measurement > dangerValue}
 				class="w-full"
-				style="height: {Math.floor((12 * data.measurement) / data.maxCapacity)}rem"
+				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
-			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
+			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60"></div>
 			<div
 				class:text-red={data.measurement <= dangerValue}
 				class:text-cyan={data.measurement > dangerValue}
-				class="absolute bottom-2 right-3 text-right"
+				class="text-cyan absolute bottom-2 right-3 text-right dark:shadow-black dark:drop-shadow-2xl"
 			>
 				<h1 class="text-3xl font-semibold">
-					{data.measurement}<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300"
+					{data.measurement}<span class="text-base font-medium opacity-75"
 						>/{data.maxCapacity}{measureUnit}</span
 					>
 				</h1>
@@ -180,6 +178,23 @@
 					>
 				</div>
 			{/if}
+			<div
+				class="absolute bottom-0 left-0 flex h-[11rem] flex-col justify-between *:border-black *:dark:border-white dark:*:border-white"
+			>
+				<div class="relative w-3 border">
+					<div class=" absolute -top-2 left-3.5 text-xs font-medium">Máx</div>
+				</div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-3 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-0 border"></div>
+			</div>
 		</div>
 	{/each}
 </div>

@@ -2,11 +2,19 @@
 @tailwind components;
 @tailwind utilities;
 
-.button-pressed {
-	@apply rounded-full bg-[#0066FF] text-white hover:cursor-default dark:bg-[#66A2FF] dark:text-black;
+.water-button-pressed {
+	@apply rounded-full bg-cyan-400 hover:cursor-default dark:bg-cyan-500 text-black;
 }
 
-.button-unpressed {
+.water-button-unpressed {
+	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
+}
+
+.light-button-pressed {
+	@apply rounded-full bg-yellow-200 hover:cursor-default dark:bg-yellow-300 text-black;
+}
+
+.light-button-unpressed {
 	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
 }
 
@@ -27,8 +35,15 @@
 }
 
 .text-red {
-	@apply text-red-950 dark:text-red-100;
+	@apply text-red-950 dark:text-red-50;
 }
 .text-cyan {
-	@apply text-cyan-950 dark:text-cyan-100;
+	@apply text-cyan-950 dark:text-cyan-50;
+}
+
+.border-red {
+	@apply border-red-950 dark:border-red-50;
+}
+.border-cyan {
+	@apply border-cyan-950 dark:border-cyan-50;
 }

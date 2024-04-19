@@ -3,7 +3,7 @@
 </script>
 
 <svelte:head>
-	<title>SmartCampus Mauá</title>
+	<title>EcoVision</title>
 </svelte:head>
 
 <slot />

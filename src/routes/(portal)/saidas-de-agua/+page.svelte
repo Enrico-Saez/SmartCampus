@@ -21,7 +21,7 @@
 
 <div class="grid grid-cols-4 justify-items-center gap-y-10">
 	<div
-		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
@@ -42,7 +42,7 @@
 				</div>
 			</div>
 			<svg
-				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
+				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-white"
 				xmlns="http://www.w3.org/2000/svg"
 				width="60"
 				height="60"
@@ -64,7 +64,7 @@
 		</div>
 	</div>
 	<div
-		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
@@ -96,7 +96,7 @@
 				</div>
 			</div>
 			<svg
-				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
+				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-white"
 				xmlns="http://www.w3.org/2000/svg"
 				width="60"
 				height="60"
@@ -119,7 +119,7 @@
 	</div>
 	{#each Array(9) as _, i}
 		<div
-			class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+			class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 		>
 			<div class="relative">
@@ -133,7 +133,7 @@
 					</div>
 				</div>
 				<svg
-					class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-neutral-100"
+					class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-white"
 					xmlns="http://www.w3.org/2000/svg"
 					width="60"
 					height="60"

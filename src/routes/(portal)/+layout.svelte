@@ -1,23 +1,27 @@
 <script lang="ts">
 	import { page } from '$app/stores';
-	import { darkMode } from '$lib/scripts/stores/darkMode';
 
 	function toggleLightMode() {
-		$darkMode = false;
 		document.body.classList.remove('dark');
 	}
 	function toggleDarkMode() {
-		$darkMode = true;
 		document.body.classList.add('dark');
 	}
 </script>
 
 <nav
-	class="fixed top-0 z-50 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-800"
+	class="fixed top-0 z-50 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
 >
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-		<p class="font-medium text-neutral-900 dark:text-neutral-100">SmartCampus Mauá</p>
-
+		<div class="flex items-center space-x-2">
+			<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
+			<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
+			<p class="font-outfit text-primary text-2xl font-medium">
+				Eco<span class="text-tertiary dark:text-white">Vision </span><span
+					class="font-outfit text-tertiary text-xl font-normal dark:text-white">| admin</span
+				>
+			</p>
+		</div>
 		<div class="flex space-x-12">
 			<div class="flex space-x-3">
 				<button
@@ -25,7 +29,7 @@
 					on:click={toggleLightMode}
 				>
 					<svg
-						class="text-orange-400 dark:text-neutral-600"
+						class="text-neutral-900 dark:text-neutral-600"
 						xmlns="http://www.w3.org/2000/svg"
 						width="28"
 						height="28"
@@ -41,7 +45,7 @@
 					on:click={toggleDarkMode}
 				>
 					<svg
-						class="text-neutral-400 dark:text-indigo-400"
+						class="text-neutral-400 dark:text-white"
 						xmlns="http://www.w3.org/2000/svg"
 						width="28"
 						height="28"
@@ -71,12 +75,13 @@
 	</div>
 </nav>
 <div class="flex h-screen divide-x divide-neutral-300 dark:divide-neutral-700">
-	<nav class="fixed top-14 h-full w-60 bg-neutral-100 px-5 py-8 dark:bg-[#121212]">
-		<div class="flex flex-col space-y-3">
+	<nav class="fixed top-14 h-full w-60 space-y-4 bg-neutral-50 px-5 py-8 dark:bg-[#121212]">
+		<p class="pl-3 dark:text-white">Água</p>
+		<div class="mt-4 flex flex-col space-y-3">
 			<a
 				class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:button-pressed={$page.route.id?.match(/reservatorios/g)}
-				class:button-unpressed={!$page.route.id?.match(/reservatorios/g)}
+				class:water-button-pressed={$page.route.id?.match(/reservatorios/g)}
+				class:water-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
 				href="/reservatorios"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -99,8 +104,8 @@
 			>
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
-				class:button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
+				class:water-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
+				class:water-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 				href="/saidas-de-agua"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -112,8 +117,8 @@
 			>
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:button-pressed={$page.route.id?.match(/poco/g)}
-				class:button-unpressed={!$page.route.id?.match(/poco/g)}
+				class:water-button-pressed={$page.route.id?.match(/poco/g)}
+				class:water-button-unpressed={!$page.route.id?.match(/poco/g)}
 				href="/poco"
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -125,8 +130,25 @@
 				<span>POÇO</span></a
 			>
 		</div>
+		<p class="pl-3 dark:text-white">Luz</p>
+		<div class="mt-4 flex flex-col space-y-3">
+			<a
+				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+				class:light-button-pressed={$page.route.id?.match(/lampadas/g)}
+				class:light-button-unpressed={!$page.route.id?.match(/lampadas/g)}
+				href="/lampadas"
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m-3-3h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1m3-17C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2"
+					/></svg
+				>
+				<span>LÂMPADAS</span></a
+			>
+		</div>
 	</nav>
-	<div class="ml-60 w-full overflow-y-auto bg-neutral-100 p-8 pt-[5.5rem] dark:bg-[#121212]">
+	<div class="ml-60 w-full overflow-y-auto bg-neutral-50 p-8 pt-[5.5rem] dark:bg-[#121212]">
 		<div class="h-full">
 			<slot />
 			<div class="h-8"></div>
