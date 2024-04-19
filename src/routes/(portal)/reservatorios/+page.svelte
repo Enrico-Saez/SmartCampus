@@ -82,7 +82,7 @@
 	let dangerValue = 300;
 </script>
 
-<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-100 dark:bg-[#121212]">
+<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-50 dark:bg-[#121212]">
 	<div>
 		<div class="flex items-center space-x-1">
 			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
@@ -91,7 +91,7 @@
 			<div class="group relative">
 				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
 				<div
-					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-md border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-lg border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 				>
 					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
 						Defina o nível de risco de volume dos reservatórios.
@@ -116,14 +116,14 @@
 			<button
 				class="w-12 py-0.5 text-sm font-medium"
 				on:click={convertToLiters}
-				class:button-pressed={measureUnit === 'L'}
-				class:button-unpressed={measureUnit === 'm³'}>L</button
+				class:water-button-pressed={measureUnit === 'L'}
+				class:water-button-unpressed={measureUnit === 'm³'}>L</button
 			>
 			<button
 				class="w-12 py-0.5 text-sm font-medium"
 				on:click={convertToCubicMeters}
-				class:button-pressed={measureUnit === 'm³'}
-				class:button-unpressed={measureUnit === 'L'}>m³</button
+				class:water-button-pressed={measureUnit === 'm³'}
+				class:water-button-unpressed={measureUnit === 'L'}>m³</button
 			>
 		</div>
 	</div>
@@ -131,7 +131,7 @@
 <div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
-			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-800 dark:shadow-black"
+			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
@@ -150,14 +150,14 @@
 				class="w-full"
 				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
-			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
+			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60"></div>
 			<div
 				class:text-red={data.measurement <= dangerValue}
 				class:text-cyan={data.measurement > dangerValue}
-				class="absolute bottom-2 right-3 text-right"
+				class="text-cyan absolute bottom-2 right-3 text-right dark:shadow-black dark:drop-shadow-2xl"
 			>
 				<h1 class="text-3xl font-semibold">
-					{data.measurement}<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300"
+					{data.measurement}<span class="text-base font-medium opacity-75"
 						>/{data.maxCapacity}{measureUnit}</span
 					>
 				</h1>
@@ -178,20 +178,22 @@
 					>
 				</div>
 			{/if}
-			<div class="absolute bottom-0 left-0 flex h-[11rem] flex-col justify-between">
-				<div class="relative w-3 border border-cyan-950">
-					<div class="text-cyan absolute -top-2 left-3.5 text-xs font-medium">Máx</div>
+			<div
+				class="absolute bottom-0 left-0 flex h-[11rem] flex-col justify-between *:border-black *:dark:border-white dark:*:border-white"
+			>
+				<div class="relative w-3 border">
+					<div class=" absolute -top-2 left-3.5 text-xs font-medium">Máx</div>
 				</div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-3 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-2 border border-cyan-950"></div>
-				<div class="w-0 border border-cyan-950"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-3 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-2 border"></div>
+				<div class="w-0 border"></div>
 			</div>
 		</div>
 	{/each}

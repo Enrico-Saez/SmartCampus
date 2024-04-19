@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Saídas de água | SmartCampus Mauá</title>
+	<title>Saídas de água | EcoVision</title>
 </svelte:head>
 
 <slot />
