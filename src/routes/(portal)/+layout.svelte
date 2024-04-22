@@ -59,17 +59,18 @@
 			</div>
 			<div class="flex items-center space-x-2">
 				<p class="font-medium text-neutral-900 dark:text-neutral-100">Nuncio</p>
-				<svg
-					class="text-neutral-900 dark:text-neutral-100"
-					xmlns="http://www.w3.org/2000/svg"
-					width="28"
-					height="28"
-					viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M5.85 17.1q1.275-.975 2.85-1.537T12 15q1.725 0 3.3.563t2.85 1.537q.875-1.025 1.363-2.325T20 12q0-3.325-2.337-5.663T12 4Q8.675 4 6.337 6.338T4 12q0 1.475.488 2.775T5.85 17.1M12 13q-1.475 0-2.488-1.012T8.5 9.5q0-1.475 1.013-2.488T12 6q1.475 0 2.488 1.013T15.5 9.5q0 1.475-1.012 2.488T12 13m0 9q-2.075 0-3.9-.788t-3.175-2.137q-1.35-1.35-2.137-3.175T2 12q0-2.075.788-3.9t2.137-3.175q1.35-1.35 3.175-2.137T12 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T22 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T12 22"
-					/></svg
-				>
+				<button class="bg-primary flex items-center space-x-1 rounded-full px-3 py-1 text-black">
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+						><path
+							fill="currentColor"
+							d="M5 5h6c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6c.55 0 1-.45 1-1s-.45-1-1-1H5z"
+						/><path
+							fill="currentColor"
+							d="m20.65 11.65l-2.79-2.79a.501.501 0 0 0-.86.35V11h-7c-.55 0-1 .45-1 1s.45 1 1 1h7v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.19.2-.51.01-.7"
+						/></svg
+					>
+					<span class="text-[0.825rem] font-semibold tracking-wide">Sair</span>
+				</button>
 			</div>
 		</div>
 	</div>
@@ -130,7 +131,7 @@
 				<span>POÇO</span></a
 			>
 		</div>
-		<p class="pl-3 dark:text-white">Luz</p>
+		<p class="pl-3 dark:text-white">Luz <span class="text-sm">(demonstração)</span></p>
 		<div class="mt-4 flex flex-col space-y-3">
 			<a
 				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
