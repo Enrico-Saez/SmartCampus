@@ -9,23 +9,30 @@
 	function toggleDarkMode() {
 		document.body.classList.add('dark');
 	}
-	
+
+	function titleCase(str: String) {
+		let splitStr = str.toLowerCase().split(' ');
+		for (let i = 0; i < splitStr.length; i++) {
+			splitStr[i] = splitStr[i].charAt(0).toUpperCase() + splitStr[i].substring(1);
+		}
+		return splitStr.join(' ');
+	}
 </script>
 
 <nav
 	class="fixed top-0 z-50 w-full border-b border-neutral-300 bg-white dark:border-neutral-700 dark:bg-neutral-900"
 >
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
-		<div class="flex items-center space-x-2">
-			<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
-			<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
-			<p class="font-outfit text-primary text-2xl font-medium">
-				Eco<span class="text-tertiary dark:text-white">Vision </span><span
-					class="font-outfit text-tertiary text-xl font-normal dark:text-white">| admin</span
-				>
-			</p>
-		</div>
-		<div class="flex space-x-12">
+		<div class="flex space-x-8">
+			<div class="flex w-60 items-center space-x-2">
+				<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
+				<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
+				<p class="font-outfit text-2xl font-medium text-primary">
+					Eco<span class="text-tertiary dark:text-white">Vision </span><span
+						class="font-outfit text-xl font-normal text-tertiary dark:text-white">| admin</span
+					>
+				</p>
+			</div>
 			<div class="flex space-x-3">
 				<button
 					class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-700"
@@ -60,21 +67,24 @@
 					>
 				</button>
 			</div>
-			<div class="flex items-center space-x-2">
-				<p class="font-medium text-neutral-900 dark:text-neutral-100">{displayName}</p>
-				<button class="bg-primary flex items-center space-x-1 rounded-full px-3 py-1 text-black" on:click={authHandlers.logOutWithMicrosoft}>
-					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-						><path
-							fill="currentColor"
-							d="M5 5h6c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6c.55 0 1-.45 1-1s-.45-1-1-1H5z"
-						/><path
-							fill="currentColor"
-							d="m20.65 11.65l-2.79-2.79a.501.501 0 0 0-.86.35V11h-7c-.55 0-1 .45-1 1s.45 1 1 1h7v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.19.2-.51.01-.7"
-						/></svg
-					>
-					<span class="text-[0.825rem] font-semibold tracking-wide">Sair</span>
-				</button>
-			</div>
+		</div>
+		<div class="flex items-center space-x-4">
+			<p class="font-medium text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
+			<button
+				class="flex items-center space-x-1 rounded-full bg-primary px-3 py-1.5 text-black"
+				on:click={authHandlers.logOutWithMicrosoft}
+			>
+				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+					><path
+						fill="currentColor"
+						d="M5 5h6c.55 0 1-.45 1-1s-.45-1-1-1H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h6c.55 0 1-.45 1-1s-.45-1-1-1H5z"
+					/><path
+						fill="currentColor"
+						d="m20.65 11.65l-2.79-2.79a.501.501 0 0 0-.86.35V11h-7c-.55 0-1 .45-1 1s.45 1 1 1h7v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.19.2-.51.01-.7"
+					/></svg
+				>
+				<span class="text-[0.825rem] font-medium tracking-wide">Sair</span>
+			</button>
 		</div>
 	</div>
 </nav>
