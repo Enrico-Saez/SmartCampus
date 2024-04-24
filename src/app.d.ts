@@ -3,7 +3,11 @@
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			userID: string | null;
+			displayName: string | null;
+			darkModeState: boolean;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}

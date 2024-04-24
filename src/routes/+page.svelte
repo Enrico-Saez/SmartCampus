@@ -1,4 +1,6 @@
 <script lang="ts">
+	import { authHandlers } from "$lib/scripts/auth";
+
 </script>
 
 <svelte:head>
@@ -11,13 +13,13 @@
 		<h1 class="text-primary font-outfit mt-5 text-center text-6xl font-medium tracking-wider">
 			Eco<span class="text-tertiary">Vision</span>
 		</h1>
-		<div class="mt-20 flex justify-center">
-			<a
-				href="/reservatorios"
+		<div class="mt-20 flex justify-center" >
+			<button
 				class="mx-auto flex items-center space-x-5 rounded-full bg-neutral-200 px-7 py-4 transition duration-150 ease-in hover:bg-neutral-300"
+				on:click={authHandlers.loginWithMicrosoft}
 			>
 				<p class="text-center text-[0.825rem] uppercase tracking-wider">ENTRAR COM</p>
-				<img class="h-[1.3rem]" src="/images/Microsoft_365.svg" alt="" /></a
+				<img class="h-[1.3rem]" src="/images/Microsoft_365.svg" alt="" /></button
 			>
 		</div>
 	</div>
