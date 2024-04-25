@@ -88,7 +88,7 @@
 		</div>
 	</div>
 </nav>
-<div class="flex h-screen divide-x divide-neutral-300 dark:divide-neutral-700">
+<div class="mx-auto flex h-screen max-w-7xl divide-x divide-neutral-300 dark:divide-neutral-700">
 	<nav class="fixed top-14 h-full w-60 space-y-4 bg-neutral-50 px-5 py-8 dark:bg-[#121212]">
 		<p class="pl-3 dark:text-white">Água</p>
 		<div class="mt-4 flex flex-col space-y-3">

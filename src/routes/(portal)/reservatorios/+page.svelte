@@ -50,7 +50,7 @@
 		4: {
 			name: '4',
 			maxCapacity: 10000,
-			measurement: 4000
+			measurement: 10000
 		},
 		5: {
 			name: '5',
@@ -70,7 +70,7 @@
 		8: {
 			name: '8',
 			maxCapacity: 4000,
-			measurement: 4000
+			measurement: 250
 		},
 		9: {
 			name: '9',
@@ -80,10 +80,23 @@
 	};
 
 	let dangerValue = 300;
+
+	let sortedReservatories = Object.entries(reservatories).sort(([keyA, dataA], [keyB, dataB]) => {
+		let isADanger = dataA.measurement <= dangerValue;
+		let isBDanger = dataB.measurement <= dangerValue;
+
+		if (isADanger && !isBDanger) {
+			return -1; // A comes first
+		} else if (!isADanger && isBDanger) {
+			return 1; // B comes first
+		} else {
+			return 0; // A and B are equal
+		}
+	});
 </script>
 
 <div
-	class="sticky top-0 z-40 flex w-fit items-center space-x-14 rounded-full bg-white/70 px-7 py-2 backdrop-blur-sm dark:bg-neutral-900"
+	class="sticky top-0 z-40 flex w-fit items-center space-x-14 rounded-full bg-white/80 px-7 py-2 backdrop-blur-sm dark:bg-neutral-900/80"
 	style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 >
 	<div>
@@ -105,7 +118,7 @@
 		<div class="mt-1 flex justify-center space-x-1">
 			<input
 				bind:value={dangerValue}
-				class="w-[4.5rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 dark:border-neutral-600 dark:text-neutral-100"
+				class="w-[6rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100"
 				type="text"
 			/>
 			<p class="font-medium text-neutral-900 dark:text-neutral-100">{measureUnit}</p>

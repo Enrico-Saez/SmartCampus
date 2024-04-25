@@ -7,7 +7,7 @@
 }
 
 .water-button-unpressed {
-	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
+	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-800;
 }
 
 .light-button-pressed {
@@ -15,7 +15,7 @@
 }
 
 .light-button-unpressed {
-	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:bg-[#121212] dark:text-neutral-100 dark:hover:bg-neutral-700;
+	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-800;
 }
 
 .fill-red {
