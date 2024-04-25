@@ -2,7 +2,9 @@
 	import { authHandlers } from '$lib/scripts/auth';
 	import { writable } from 'svelte/store';
 
-	const loading = writable(false);
+	const loading = writable(false, () => {
+        console.log('Store de loading atualizado');
+    });
 
 	const handleMicrosoftLogin = async () => {
 		loading.set(false);
