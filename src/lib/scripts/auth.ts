@@ -6,8 +6,12 @@ import { goto } from "$app/navigation";
 export const authHandlers = {
     loginWithMicrosoft: async () => {
         const provider = new OAuthProvider('microsoft.com');
+        provider.setCustomParameters({
+          tenant: PUBLIC_AZURE_TENANT
+        });
+        
         const credential = await signInWithPopup(auth, provider);
-       
+        
         const idToken = await credential.user.getIdToken()
     
         await fetch("api/login", {
