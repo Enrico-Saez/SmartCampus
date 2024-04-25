@@ -4,7 +4,9 @@ import { auth } from "./firebase-portal";
 import { goto } from "$app/navigation";
 
 export const authHandlers = {
-    loginWithMicrosoft: async () => {
+    loginWithMicrosoft: async (setLoading: (value: boolean) => void) => {
+        setLoading(true);
+        try {
         const provider = new OAuthProvider('microsoft.com');
         provider.setCustomParameters({
           tenant: PUBLIC_AZURE_TENANT
@@ -14,7 +16,7 @@ export const authHandlers = {
         
         const idToken = await credential.user.getIdToken()
     
-        await fetch("api/login", {
+        await fetch("api/login", {  
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -23,6 +25,9 @@ export const authHandlers = {
           body: JSON.stringify({ idToken }),
         });
         goto("/reservatorios")
+        }catch(error){
+          setLoading(false);
+        };
     },
     
     logOutWithMicrosoft: async () => {

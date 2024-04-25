@@ -1,5 +1,13 @@
 <script lang="ts">
 	import { authHandlers } from '$lib/scripts/auth';
+	import { writable } from 'svelte/store';
+
+	const loading = writable(false);
+
+	const handleMicrosoftLogin = async () => {
+		loading.set(false);
+		await authHandlers.loginWithMicrosoft(loading.set);
+	}
 </script>
 
 <svelte:head>
@@ -9,14 +17,14 @@
 <div class="flex h-screen items-center justify-center bg-white">
 	<div>
 		<img class="mx-auto h-40" src="/images/logo.svg" alt="EcoVision" />
-		{#if true}
+		{#if !$loading}
 			<h1 class="mt-5 text-center font-outfit text-6xl font-medium tracking-wider text-primary">
 				Eco<span class="text-tertiary">Vision</span>
 			</h1>
 			<div class="mt-20 flex justify-center">
 				<button
 					class="mx-auto flex items-center space-x-5 rounded-full bg-neutral-200 px-7 py-4 transition duration-150 ease-in hover:bg-neutral-300"
-					on:click={authHandlers.loginWithMicrosoft}
+					on:click={handleMicrosoftLogin}
 				>
 					<span class="text-center text-[0.825rem] uppercase tracking-wider">ENTRAR COM</span>
 					<img class="h-[1.3rem]" src="/images/Microsoft_365.svg" alt="" /></button
