@@ -82,7 +82,10 @@
 	let dangerValue = 300;
 </script>
 
-<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-50 dark:bg-[#121212]">
+<div
+	class="sticky top-0 z-40 flex w-fit items-center space-x-14 rounded-full bg-white/70 px-7 py-2 backdrop-blur-sm dark:bg-neutral-900"
+	style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
+>
 	<div>
 		<div class="flex items-center space-x-1">
 			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
