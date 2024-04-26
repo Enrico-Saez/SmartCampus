@@ -89,58 +89,61 @@
 	}
 </script>
 
-<div
-	class="sticky top-0 z-40 flex w-fit items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
-	style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
->
-	<div>
-		<div class="flex items-center space-x-1">
-			<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-				Nível de Risco
-			</p>
-			<div class="group relative">
-				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
-				<div
-					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
-				>
-					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-						Defina o nível de risco de volume dos reservatórios.
-					</p>
+<div class="sticky top-0 z-40 w-full bg-neutral-50/50 p-8 backdrop-blur-sm dark:bg-[#121212]/50">
+	<div
+		class="flex w-fit items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
+		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
+	>
+		<div>
+			<div class="flex items-center space-x-1">
+				<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+					Nível de Risco
+				</p>
+				<div class="group relative">
+					<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+					<div
+						class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+					>
+						<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+							Defina o nível de risco de volume dos reservatórios.
+						</p>
+					</div>
 				</div>
 			</div>
+			<div class="mt-1 flex space-x-1">
+				<input
+					bind:value={dangerValueInput}
+					class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+					type="text"
+				/>
+				<p class="w-[1rem] font-medium text-neutral-900 dark:text-neutral-100">
+					{measureUnit}
+				</p>
+			</div>
 		</div>
-		<div class="mt-1 flex space-x-1">
-			<input
-				bind:value={dangerValueInput}
-				class="shadow-inner-light dark:shadow-inner-dark w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100"
-				type="text"
-			/>
-			<p class="w-[1rem] font-medium text-neutral-900 dark:text-neutral-100">
-				{measureUnit}
+		<div>
+			<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+				Unidade de Medida
 			</p>
-		</div>
-	</div>
-	<div>
-		<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-			Unidade de Medida
-		</p>
-		<div class="mt-1 flex space-x-2">
-			<button
-				class="w-12 py-0.5 text-sm font-medium"
-				on:click={convertToLiters}
-				class:water-button-pressed={measureUnit === 'L'}
-				class:water-button-unpressed={measureUnit === 'm³'}>L</button
-			>
-			<button
-				class="w-12 py-0.5 text-sm font-medium"
-				on:click={convertToCubicMeters}
-				class:water-button-pressed={measureUnit === 'm³'}
-				class:water-button-unpressed={measureUnit === 'L'}>m³</button
-			>
+			<div class="mt-1 flex space-x-2">
+				<button
+					class="w-12 py-0.5 text-sm font-medium"
+					on:click={convertToLiters}
+					class:water-button-pressed={measureUnit === 'L'}
+					class:water-button-unpressed={measureUnit === 'm³'}>L</button
+				>
+				<button
+					class="w-12 py-0.5 text-sm font-medium"
+					on:click={convertToCubicMeters}
+					class:water-button-pressed={measureUnit === 'm³'}
+					class:water-button-unpressed={measureUnit === 'L'}>m³</button
+				>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
+
+<div class="grid grid-cols-4 justify-items-center gap-y-10 p-8">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
 			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"

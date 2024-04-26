@@ -89,7 +89,7 @@
 	</div>
 </nav>
 <div class="mx-auto flex h-screen max-w-7xl divide-x divide-neutral-300 dark:divide-neutral-700">
-	<nav class="fixed top-14 h-full w-60 space-y-4 bg-neutral-50 px-5 py-8 dark:bg-[#121212]">
+	<nav class="fixed top-14 h-full w-60 space-y-4 px-5 py-8">
 		<p class="pl-3 dark:text-white">Água</p>
 		<div class="mt-4 flex flex-col space-y-3">
 			<a
@@ -162,10 +162,7 @@
 			>
 		</div>
 	</nav>
-	<div class="ml-60 w-full overflow-y-auto bg-neutral-50 p-8 pt-[5.5rem] dark:bg-[#121212]">
-		<div class="h-full">
-			<slot />
-			<div class="h-8"></div>
-		</div>
+	<div class="ml-60 size-full overflow-y-auto pt-14">
+		<slot />
 	</div>
 </div>
