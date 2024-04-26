@@ -25,7 +25,7 @@ export const authHandlers = {
             },
             body: JSON.stringify({ idToken }),
           });
-          await goto("/reservatorios")
+          await goto("/reservatorios");
         } catch(error) {
           // Lidar com o erro aqui, se necessário
           console.error('Erro durante o processo de login:', error);
