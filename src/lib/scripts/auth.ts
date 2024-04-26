@@ -5,30 +5,35 @@ import { goto } from "$app/navigation";
 
 export const authHandlers = {
     loginWithMicrosoft: async (setLoading: (value: boolean) => void) => {
+        try {
+          const provider = new OAuthProvider('microsoft.com');
+          provider.setCustomParameters({
+            tenant: PUBLIC_AZURE_TENANT
+          });
+          
+          const credential = await signInWithPopup(auth, provider);
+          
           setLoading(true);
-            const provider = new OAuthProvider('microsoft.com');
-            provider.setCustomParameters({
-              tenant: PUBLIC_AZURE_TENANT
-            });
-            
-            await signInWithPopup(auth, provider).then((credential) => {
-              console.log("Logged In", credential);
-              const idToken = credential.user.getIdToken()
-              fetch("api/login", {  
-                method: "POST",
-                headers: {
-                  "Content-Type": "application/json",
-                  // 'CSRF-Token': csrfToken  // HANDLED by sveltekit automatically
-                },
-                body: JSON.stringify({ idToken }),
-              });
-              goto("/reservatorios")
-            })
-            .catch((error) => {
-              console.log("Caught error Popup closed: " + error);
-              setLoading(false);
-            });;
-      },
+          
+          const idToken = await credential.user.getIdToken()
+      
+          await fetch("api/login", {  
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              // 'CSRF-Token': csrfToken  // HANDLED by sveltekit automatically
+            },
+            body: JSON.stringify({ idToken }),
+          });
+          goto("/reservatorios")
+         
+        } catch(error) {
+          // Lidar com o erro aqui, se necessário
+          console.error('Erro durante o processo de login:', error);
+        } finally {
+            setLoading(false); // Garante que loading seja definido como false, independentemente de sucesso ou falha
+        }
+    },
     
     logOutWithMicrosoft: async () => {
         await signOut(auth);
