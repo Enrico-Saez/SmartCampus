@@ -14,7 +14,7 @@ export const authHandlers = {
           const credential = await signInWithPopup(auth, provider);
           
           setLoading(true);
-          
+
           const idToken = await credential.user.getIdToken()
       
           await fetch("api/login", {  
@@ -25,8 +25,7 @@ export const authHandlers = {
             },
             body: JSON.stringify({ idToken }),
           });
-          goto("/reservatorios")
-         
+          await goto("/reservatorios")
         } catch(error) {
           // Lidar com o erro aqui, se necessário
           console.error('Erro durante o processo de login:', error);
