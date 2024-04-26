@@ -2,7 +2,7 @@
 	import { page } from '$app/stores';
 	import { authHandlers } from '$lib/scripts/auth.js';
 	export let data;
-	let displayName = data.displayName;
+	let displayName: String = data.displayName!;
 	function toggleLightMode() {
 		document.body.classList.remove('dark');
 	}
@@ -24,7 +24,7 @@
 >
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
 		<div class="flex space-x-8">
-			<div class="flex w-60 items-center space-x-2">
+			<div class="flex items-center space-x-2">
 				<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
 				<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
 				<p class="font-outfit text-2xl font-medium text-primary">
@@ -71,7 +71,7 @@
 		<div class="flex items-center space-x-4">
 			<p class="font-medium text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
 			<button
-				class="flex items-center space-x-1 rounded-full bg-primary px-3 py-1.5 text-black"
+				class="flex items-center space-x-1 rounded-full bg-neutral-200 px-3 py-1.5 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
 				on:click={authHandlers.logOutWithMicrosoft}
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
@@ -83,7 +83,7 @@
 						d="m20.65 11.65l-2.79-2.79a.501.501 0 0 0-.86.35V11h-7c-.55 0-1 .45-1 1s.45 1 1 1h7v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.19.2-.51.01-.7"
 					/></svg
 				>
-				<span class="text-[0.825rem] font-medium tracking-wide">Sair</span>
+				<span class="text-[0.825rem] tracking-wide">SAIR</span>
 			</button>
 		</div>
 	</div>
