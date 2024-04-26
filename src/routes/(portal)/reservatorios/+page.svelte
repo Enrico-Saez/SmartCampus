@@ -118,7 +118,7 @@
 		<div class="mt-1 flex justify-center space-x-1">
 			<input
 				bind:value={dangerValue}
-				class="w-[6rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100"
+				class="w-[5.5rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 focus:border-transparent focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100"
 				type="text"
 			/>
 			<p class="font-medium text-neutral-900 dark:text-neutral-100">{measureUnit}</p>
