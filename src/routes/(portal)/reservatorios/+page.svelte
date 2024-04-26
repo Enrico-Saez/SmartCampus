@@ -1,9 +1,6 @@
 <script lang="ts">
 	let measureUnit = 'L';
 
-	let measurement: number;
-	let maximumCapacity: number;
-
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
 			measureUnit = 'L';
@@ -165,9 +162,7 @@
 				class="w-full"
 				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
-			<div
-				class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-[#121212]/50 dark:block"
-			></div>
+			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div
 				class:text-red={data.measurement <= dangerValue}
 				class:text-cyan={data.measurement > dangerValue}
@@ -183,7 +178,7 @@
 			{#if data.measurement <= dangerValue}
 				<div class="absolute right-3 top-3">
 					<svg
-						class="mb-1 animate-pulse text-red-950 dark:text-red-100"
+						class="mb-1 animate-pulse text-red-950 dark:text-red-300"
 						xmlns="http://www.w3.org/2000/svg"
 						width="40"
 						height="40"

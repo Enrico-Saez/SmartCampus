@@ -35,7 +35,7 @@
 			</div>
 			<div class="flex space-x-3">
 				<button
-					class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-700"
+					class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-800"
 					on:click={toggleLightMode}
 				>
 					<svg
@@ -103,7 +103,7 @@
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 							><path
 								fill="currentColor"
-								d="M7 20q-.825 0-1.412-.587T5 18v-7.15L3 12.4q-.325.25-.737.2t-.663-.4q-.25-.325-.187-.725t.387-.65l8.975-6.9Q11.325 3.5 12 3.5t1.225.425L22.2 10.8q.325.25.388.65t-.188.75q-.25.35-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20zm5-4q.825 0 1.413-.587T14 14q0-.675-.375-1.437T12 10q-1.25 1.8-1.625 2.563T10 14q0 .825.588 1.413T12 16"
+								d="M20 13c.55 0 1-.45 1-1s-.45-1-1-1h-1V5h1c.55 0 1-.45 1-1s-.45-1-1-1H4c-.55 0-1 .45-1 1s.45 1 1 1h1v6H4c-.55 0-1 .45-1 1s.45 1 1 1h1v6H4c-.55 0-1 .45-1 1s.45 1 1 1h16c.55 0 1-.45 1-1s-.45-1-1-1h-1v-6zm-8 3c-1.66 0-3-1.32-3-2.95c0-1.16.41-1.58 2.24-3.68a.999.999 0 0 1 1.51 0c1.82 2.09 2.24 2.52 2.24 3.68C15 14.68 13.66 16 12 16"
 							/></svg
 						><span>RESERVATÓRIOS</span>
 						<svg
@@ -124,10 +124,10 @@
 						class:water-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
 						href="/saidas-de-agua"
 					>
-						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 512 512"
 							><path
 								fill="currentColor"
-								d="M3 13h4v-1H5q-.425 0-.712-.288T4 11q0-.425.288-.712T5 10h2q.825 0 1.413.588T9 12v1h2V6.1q0-1.725 1.2-2.912T15.125 2q1.15 0 2.125.6t1.5 1.65l.7 1.4q.2.375.063.763T19 7q-.375.2-.763.063t-.587-.513l-.7-1.4q-.275-.525-.775-.837T15.1 4q-.875 0-1.487.613T13 6.1V13h2v-1q0-.825.588-1.412T17 10h2q.425 0 .713.288T20 11q0 .425-.288.713T19 12h-2v1h4q.425 0 .713.288T22 14q0 .425-.288.713T21 15H3q-.425 0-.712-.288T2 14q0-.425.288-.712T3 13m3 8q-.825 0-1.412-.587T4 19v-3h16v3q0 .825-.587 1.413T18 21z"
+								d="M192 96v12L96 96c-17.7 0-32 14.3-32 32s14.3 32 32 32l96-12l31-3.9l1-.1l1 .1l31 3.9l96 12c17.7 0 32-14.3 32-32s-14.3-32-32-32l-96 12V96c0-17.7-14.3-32-32-32s-32 14.3-32 32M32 256c-17.7 0-32 14.3-32 32v64c0 17.7 14.3 32 32 32h100.1c20.2 29 53.9 48 91.9 48s71.7-19 91.9-48H352c17.7 0 32 14.3 32 32s14.3 32 32 32h64c17.7 0 32-14.3 32-32c0-88.4-71.6-160-160-160h-32l-22.6-22.6c-6-6-14.1-9.4-22.6-9.4H256v-43.8l-32-4l-32 4V224h-18.7c-8.5 0-16.6 3.4-22.6 9.4L128 256z"
 							/></svg
 						><span>SAÍDAS DE ÁGUA</span></a
 					>
