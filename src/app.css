@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .water-button-pressed {
-	@apply rounded-full bg-cyan-400 hover:cursor-default dark:bg-cyan-500 text-black;
+	@apply rounded-full bg-cyan-300 hover:cursor-default dark:bg-cyan-400 text-black;
 }
 
 .water-button-unpressed {
@@ -15,6 +15,14 @@
 }
 
 .light-button-unpressed {
+	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-800;
+}
+
+.button-pressed {
+	@apply rounded-full bg-neutral-800 hover:cursor-default dark:bg-neutral-200 text-white dark:text-black;
+}
+
+.button-unpressed {
 	@apply rounded-full bg-transparent text-neutral-900 duration-150 ease-in hover:bg-neutral-200 dark:text-neutral-100 dark:hover:bg-neutral-800;
 }
 

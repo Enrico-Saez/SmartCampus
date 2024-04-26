@@ -69,7 +69,7 @@
 			</div>
 		</div>
 		<div class="flex items-center space-x-4">
-			<p class="font-medium text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
+			<p class="text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
 			<button
 				class="flex items-center space-x-1 rounded-full bg-neutral-200 px-3 py-1.5 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
 				on:click={authHandlers.logOutWithMicrosoft}
@@ -89,80 +89,102 @@
 	</div>
 </nav>
 <div class="mx-auto flex h-screen max-w-7xl divide-x divide-neutral-300 dark:divide-neutral-700">
-	<nav class="fixed top-14 h-full w-60 space-y-4 px-5 py-8">
-		<p class="pl-3 dark:text-white">Água</p>
-		<div class="mt-4 flex flex-col space-y-3">
-			<a
-				class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:water-button-pressed={$page.route.id?.match(/reservatorios/g)}
-				class:water-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
-				href="/reservatorios"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M7 20q-.825 0-1.412-.587T5 18v-7.15L3 12.4q-.325.25-.737.2t-.663-.4q-.25-.325-.187-.725t.387-.65l8.975-6.9Q11.325 3.5 12 3.5t1.225.425L22.2 10.8q.325.25.388.65t-.188.75q-.25.35-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20zm5-4q.825 0 1.413-.587T14 14q0-.675-.375-1.437T12 10q-1.25 1.8-1.625 2.563T10 14q0 .825.588 1.413T12 16"
-					/></svg
-				><span>RESERVATÓRIOS</span>
-				<svg
-					class="animate-pulse"
-					xmlns="http://www.w3.org/2000/svg"
-					width="20"
-					height="20"
-					viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15"
-					/></svg
-				></a
-			>
-			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:water-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
-				class:water-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
-				href="/saidas-de-agua"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M3 13h4v-1H5q-.425 0-.712-.288T4 11q0-.425.288-.712T5 10h2q.825 0 1.413.588T9 12v1h2V6.1q0-1.725 1.2-2.912T15.125 2q1.15 0 2.125.6t1.5 1.65l.7 1.4q.2.375.063.763T19 7q-.375.2-.763.063t-.587-.513l-.7-1.4q-.275-.525-.775-.837T15.1 4q-.875 0-1.487.613T13 6.1V13h2v-1q0-.825.588-1.412T17 10h2q.425 0 .713.288T20 11q0 .425-.288.713T19 12h-2v1h4q.425 0 .713.288T22 14q0 .425-.288.713T21 15H3q-.425 0-.712-.288T2 14q0-.425.288-.712T3 13m3 8q-.825 0-1.412-.587T4 19v-3h16v3q0 .825-.587 1.413T18 21z"
-					/></svg
-				><span>SAÍDAS DE ÁGUA</span></a
-			>
-			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:water-button-pressed={$page.route.id?.match(/poco/g)}
-				class:water-button-unpressed={!$page.route.id?.match(/poco/g)}
-				href="/poco"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M11 5H8q-.425 0-.712-.288T7 4q0-.425.288-.712T8 3h8q.425 0 .713.288T17 4q0 .425-.288.713T16 5h-3v2q0 .425-.288.713T12 8q-.425 0-.712-.288T11 7zM4 20.025v-6.05q0-.425.288-.712T5 12.975q.425 0 .713.288t.287.712V14h3v-3h-.025q-.425 0-.712-.288T7.974 10q0-.425.288-.712T8.975 9h6.05q.425 0 .713.288t.287.712q0 .425-.287.713t-.713.287H15v3h3v-.025q0-.425.288-.712t.712-.288q.425 0 .713.288t.287.712v6.05q0 .425-.288.713t-.712.287q-.425 0-.712-.287T18 20.025V20H6v.025q0 .425-.288.713T5 21.024q-.425 0-.712-.287T4 20.025"
-					/></svg
+	<nav class="fixed top-14 w-60 overflow-y-auto px-5 py-8" style="height: calc(100vh - 56px);">
+		<div class="flex h-full flex-col justify-between space-y-16">
+			<div class="space-y-4">
+				<p class="pl-3 font-medium dark:text-white">Água</p>
+				<div class="mt-4 flex flex-col space-y-3">
+					<a
+						class="a flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+						class:water-button-pressed={$page.route.id?.match(/reservatorios/g)}
+						class:water-button-unpressed={!$page.route.id?.match(/reservatorios/g)}
+						href="/reservatorios"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M7 20q-.825 0-1.412-.587T5 18v-7.15L3 12.4q-.325.25-.737.2t-.663-.4q-.25-.325-.187-.725t.387-.65l8.975-6.9Q11.325 3.5 12 3.5t1.225.425L22.2 10.8q.325.25.388.65t-.188.75q-.25.35-.65.388t-.75-.213l-2-1.525V18q0 .825-.587 1.413T17 20zm5-4q.825 0 1.413-.587T14 14q0-.675-.375-1.437T12 10q-1.25 1.8-1.625 2.563T10 14q0 .825.588 1.413T12 16"
+							/></svg
+						><span>RESERVATÓRIOS</span>
+						<svg
+							class="animate-pulse"
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M2.725 21q-.275 0-.5-.137t-.35-.363q-.125-.225-.137-.488t.137-.512l9.25-16q.15-.25.388-.375T12 3q.25 0 .488.125t.387.375l9.25 16q.15.25.138.513t-.138.487q-.125.225-.35.363t-.5.137zM12 18q.425 0 .713-.288T13 17q0-.425-.288-.712T12 16q-.425 0-.712.288T11 17q0 .425.288.713T12 18m0-3q.425 0 .713-.288T13 14v-3q0-.425-.288-.712T12 10q-.425 0-.712.288T11 11v3q0 .425.288.713T12 15"
+							/></svg
+						></a
+					>
+					<a
+						class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+						class:water-button-pressed={$page.route.id?.match(/saidas-de-agua/g)}
+						class:water-button-unpressed={!$page.route.id?.match(/saidas-de-agua/g)}
+						href="/saidas-de-agua"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M3 13h4v-1H5q-.425 0-.712-.288T4 11q0-.425.288-.712T5 10h2q.825 0 1.413.588T9 12v1h2V6.1q0-1.725 1.2-2.912T15.125 2q1.15 0 2.125.6t1.5 1.65l.7 1.4q.2.375.063.763T19 7q-.375.2-.763.063t-.587-.513l-.7-1.4q-.275-.525-.775-.837T15.1 4q-.875 0-1.487.613T13 6.1V13h2v-1q0-.825.588-1.412T17 10h2q.425 0 .713.288T20 11q0 .425-.288.713T19 12h-2v1h4q.425 0 .713.288T22 14q0 .425-.288.713T21 15H3q-.425 0-.712-.288T2 14q0-.425.288-.712T3 13m3 8q-.825 0-1.412-.587T4 19v-3h16v3q0 .825-.587 1.413T18 21z"
+							/></svg
+						><span>SAÍDAS DE ÁGUA</span></a
+					>
+					<a
+						class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+						class:water-button-pressed={$page.route.id?.match(/poco/g)}
+						class:water-button-unpressed={!$page.route.id?.match(/poco/g)}
+						href="/poco"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M11 5H8q-.425 0-.712-.288T7 4q0-.425.288-.712T8 3h8q.425 0 .713.288T17 4q0 .425-.288.713T16 5h-3v2q0 .425-.288.713T12 8q-.425 0-.712-.288T11 7zM4 20.025v-6.05q0-.425.288-.712T5 12.975q.425 0 .713.288t.287.712V14h3v-3h-.025q-.425 0-.712-.288T7.974 10q0-.425.288-.712T8.975 9h6.05q.425 0 .713.288t.287.712q0 .425-.287.713t-.713.287H15v3h3v-.025q0-.425.288-.712t.712-.288q.425 0 .713.288t.287.712v6.05q0 .425-.288.713t-.712.287q-.425 0-.712-.287T18 20.025V20H6v.025q0 .425-.288.713T5 21.024q-.425 0-.712-.287T4 20.025"
+							/></svg
+						>
+						<span>POÇO</span></a
+					>
+				</div>
+				<p class="pl-3 font-medium dark:text-white">
+					Luz <span class="text-sm">(demonstração)</span>
+				</p>
+				<div class="mt-4 flex flex-col space-y-3">
+					<a
+						class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+						class:light-button-pressed={$page.route.id?.match(/lampadas/g)}
+						class:light-button-unpressed={!$page.route.id?.match(/lampadas/g)}
+						href="/lampadas"
+					>
+						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m-3-3h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1m3-17C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2"
+							/></svg
+						>
+						<span>LÂMPADAS</span></a
+					>
+				</div>
+			</div>
+			<div>
+				<a
+					class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
+					class:button-pressed={$page.route.id?.match(/configuracoes/g)}
+					class:button-unpressed={!$page.route.id?.match(/configuracoes/g)}
+					href="/configuracoes"
 				>
-				<span>POÇO</span></a
-			>
-		</div>
-		<p class="pl-3 dark:text-white">Luz <span class="text-sm">(demonstração)</span></p>
-		<div class="mt-4 flex flex-col space-y-3">
-			<a
-				class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
-				class:light-button-pressed={$page.route.id?.match(/lampadas/g)}
-				class:light-button-unpressed={!$page.route.id?.match(/lampadas/g)}
-				href="/lampadas"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-					><path
-						fill="currentColor"
-						d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m-3-3h6c.55 0 1-.45 1-1s-.45-1-1-1H9c-.55 0-1 .45-1 1s.45 1 1 1m3-17C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2"
-					/></svg
+					<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+						><path
+							fill="currentColor"
+							d="M19.5 12c0-.23-.01-.45-.03-.68l1.86-1.41c.4-.3.51-.86.26-1.3l-1.87-3.23a.987.987 0 0 0-1.25-.42l-2.15.91c-.37-.26-.76-.49-1.17-.68l-.29-2.31c-.06-.5-.49-.88-.99-.88h-3.73c-.51 0-.94.38-1 .88l-.29 2.31c-.41.19-.8.42-1.17.68l-2.15-.91c-.46-.2-1-.02-1.25.42L2.41 8.62c-.25.44-.14.99.26 1.3l1.86 1.41a7.343 7.343 0 0 0 0 1.35l-1.86 1.41c-.4.3-.51.86-.26 1.3l1.87 3.23c.25.44.79.62 1.25.42l2.15-.91c.37.26.76.49 1.17.68l.29 2.31c.06.5.49.88.99.88h3.73c.5 0 .93-.38.99-.88l.29-2.31c.41-.19.8-.42 1.17-.68l2.15.91c.46.2 1 .02 1.25-.42l1.87-3.23c.25-.44.14-.99-.26-1.3l-1.86-1.41c.03-.23.04-.45.04-.68m-7.46 3.5c-1.93 0-3.5-1.57-3.5-3.5s1.57-3.5 3.5-3.5s3.5 1.57 3.5 3.5s-1.57 3.5-3.5 3.5"
+						/></svg
+					>
+					<span>CONFIGURAÇÕES</span></a
 				>
-				<span>LÂMPADAS</span></a
-			>
+			</div>
 		</div>
 	</nav>
-	<div class="ml-60 size-full overflow-y-auto pt-14">
+	<div class="ml-60 size-full overflow-y-auto pb-8 pt-14">
 		<slot />
 	</div>
 </div>

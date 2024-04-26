@@ -89,9 +89,9 @@
 	}
 </script>
 
-<div class="sticky top-0 z-40 w-full bg-neutral-50/50 p-8 backdrop-blur-sm dark:bg-[#121212]/50">
+<div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
 	<div
-		class="flex w-fit items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
+		class="flex w-fit min-w-52 items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div>
@@ -116,7 +116,7 @@
 					class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 					type="text"
 				/>
-				<p class="w-[1rem] font-medium text-neutral-900 dark:text-neutral-100">
+				<p class="w-[1rem] text-nowrap font-medium text-neutral-900 dark:text-neutral-100">
 					{measureUnit}
 				</p>
 			</div>
@@ -143,7 +143,7 @@
 	</div>
 </div>
 
-<div class="grid grid-cols-4 justify-items-center gap-y-10 p-8">
+<div class="mt-6 grid grid-cols-4 justify-items-center gap-y-10">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
 			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
@@ -165,7 +165,9 @@
 				class="w-full"
 				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
-			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
+			<div
+				class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-[#121212]/50 dark:block"
+			></div>
 			<div
 				class:text-red={data.measurement <= dangerValue}
 				class:text-cyan={data.measurement > dangerValue}

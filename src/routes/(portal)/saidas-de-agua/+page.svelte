@@ -1,5 +1,5 @@
 <script lang="ts">
-	let animation: number;
+	let animation: NodeJS.Timeout;
 	let width = 0;
 	let height = 0;
 
@@ -17,7 +17,51 @@
 	setTimeout(() => {
 		animation = setInterval(frame, 10);
 	}, 600);
+
+	let dangerValue: number = 300;
+	let dangerValueInput: String = String(dangerValue);
+
+	$: {
+		// Replace any non-digit characters
+		dangerValueInput = dangerValueInput.replace(/\D/g, '');
+		dangerValue = Number(dangerValueInput);
+	}
 </script>
+
+<div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
+	<div
+		class="flex w-fit min-w-52 items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
+		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
+	>
+		<div>
+			<div class="flex items-center space-x-1">
+				<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+					Nível de Risco
+				</p>
+				<div class="group relative">
+					<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+					<div
+						class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+					>
+						<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+							Defina o nível de risco de vazão de água.
+						</p>
+					</div>
+				</div>
+			</div>
+			<div class="mt-1 flex space-x-1">
+				<input
+					bind:value={dangerValueInput}
+					class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+					type="text"
+				/>
+				<p class="w-[1rem] text-nowrap font-medium text-neutral-900 dark:text-neutral-100">
+					ml/min
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
 
 <div class="grid grid-cols-4 justify-items-center gap-y-10">
 	<div
