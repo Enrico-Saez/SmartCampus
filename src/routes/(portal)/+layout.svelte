@@ -1,8 +1,11 @@
 <script lang="ts">
 	import { page } from '$app/stores';
 	import { authHandlers } from '$lib/scripts/auth.js';
+	import { onMount } from 'svelte';
+
+	let logoutModal: HTMLDialogElement;
 	export let data;
-	let displayName: String = data.displayName!;
+	const displayName: String = data.displayName!;
 	function toggleLightMode() {
 		document.body.classList.remove('dark');
 	}
@@ -17,6 +20,21 @@
 		}
 		return splitStr.join(' ');
 	}
+
+	onMount(() => {
+		const handleClickOutside = (event) => {
+			if (logoutModal.open && event.target === logoutModal) {
+				logoutModal.close();
+			}
+		};
+
+		window.addEventListener('click', handleClickOutside);
+
+		// Return a function to clean up the event listener
+		return () => {
+			window.removeEventListener('click', handleClickOutside);
+		};
+	});
 </script>
 
 <nav
@@ -70,11 +88,11 @@
 				</button>
 			</div>
 		</div>
-		<div class="flex items-center space-x-4">
+		<div class="flex items-center space-x-3">
 			<p class="text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
 			<button
-				class="flex items-center space-x-1 rounded-full bg-neutral-200 px-3 py-1.5 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
-				on:click={authHandlers.logOutWithMicrosoft}
+				class="rounded-full bg-neutral-200 p-1.5 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+				on:click={() => logoutModal.showModal()}
 			>
 				<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 					><path
@@ -85,7 +103,6 @@
 						d="m20.65 11.65l-2.79-2.79a.501.501 0 0 0-.86.35V11h-7c-.55 0-1 .45-1 1s.45 1 1 1h7v1.79c0 .45.54.67.85.35l2.79-2.79c.2-.19.2-.51.01-.7"
 					/></svg
 				>
-				<span class="text-[0.825rem] tracking-wide">SAIR</span>
 			</button>
 		</div>
 	</div>
@@ -190,3 +207,15 @@
 		<slot />
 	</div>
 </div>
+<dialog
+	bind:this={logoutModal}
+	class="rounded-xl p-8 backdrop:backdrop-blur-sm dark:bg-neutral-900"
+>
+	<p class="dark:text-white">Tem certeza que deseja sair?</p>
+	<div class="mt-4 flex justify-center">
+		<button
+			class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+			on:click={authHandlers.logOutWithMicrosoft}>SAIR</button
+		>
+	</div>
+</dialog>
