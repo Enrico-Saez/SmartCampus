@@ -22,7 +22,7 @@
 	}
 
 	onMount(() => {
-		const handleClickOutside = (event) => {
+		const handleClickOutside = (event: Event) => {
 			if (logoutModal.open && event.target === logoutModal) {
 				logoutModal.close();
 			}
@@ -207,15 +207,14 @@
 		<slot />
 	</div>
 </div>
-<dialog
-	bind:this={logoutModal}
-	class="rounded-xl p-8 backdrop:backdrop-blur-sm dark:bg-neutral-900"
->
-	<p class="dark:text-white">Tem certeza que deseja sair?</p>
-	<div class="mt-4 flex justify-center">
-		<button
-			class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
-			on:click={authHandlers.logOutWithMicrosoft}>SAIR</button
-		>
+<dialog bind:this={logoutModal} class="rounded-xl backdrop:backdrop-blur-sm dark:bg-neutral-900">
+	<div class="p-8">
+		<p class="dark:text-white">Tem certeza que deseja sair?</p>
+		<div class="mt-4 flex justify-center">
+			<button
+				class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+				on:click={authHandlers.logOutWithMicrosoft}>SAIR</button
+			>
+		</div>
 	</div>
 </dialog>
