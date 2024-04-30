@@ -1,9 +1,6 @@
 <script lang="ts">
 	let measureUnit = 'L';
 
-	let measurement: number;
-	let maximumCapacity: number;
-
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
 			measureUnit = 'L';
@@ -50,7 +47,7 @@
 		4: {
 			name: '4',
 			maxCapacity: 10000,
-			measurement: 4000
+			measurement: 10000
 		},
 		5: {
 			name: '5',
@@ -70,7 +67,7 @@
 		8: {
 			name: '8',
 			maxCapacity: 4000,
-			measurement: 4000
+			measurement: 250
 		},
 		9: {
 			name: '9',
@@ -79,56 +76,71 @@
 		}
 	};
 
-	let dangerValue = 300;
+	let dangerValue: number = 300;
+	let dangerValueInput: String = String(dangerValue);
+
+	$: {
+		// Replace any non-digit characters
+		dangerValueInput = dangerValueInput.replace(/\D/g, '');
+		dangerValue = Number(dangerValueInput);
+	}
 </script>
 
-<div class="sticky top-0 z-40 flex w-fit items-center space-x-14 bg-neutral-50 dark:bg-[#121212]">
-	<div>
-		<div class="flex items-center space-x-1">
-			<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-				NÍVEL DE RISCO
-			</p>
-			<div class="group relative">
-				<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
-				<div
-					class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max rounded-lg border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
-				>
-					<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-						Defina o nível de risco de volume dos reservatórios.
-					</p>
+<div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
+	<div
+		class="flex w-fit min-w-52 items-center space-x-14 rounded-full bg-white px-7 py-2 dark:bg-neutral-900"
+		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
+	>
+		<div>
+			<div class="flex items-center space-x-1">
+				<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+					Nível de Risco
+				</p>
+				<div class="group relative">
+					<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+					<div
+						class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+					>
+						<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+							Defina o nível de risco de volume dos reservatórios.
+						</p>
+					</div>
 				</div>
 			</div>
+			<div class="mt-1 flex space-x-1">
+				<input
+					bind:value={dangerValueInput}
+					class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+					type="text"
+				/>
+				<p class="w-[1rem] text-nowrap font-medium text-neutral-900 dark:text-neutral-100">
+					{measureUnit}
+				</p>
+			</div>
 		</div>
-		<div class="mt-1 flex justify-center space-x-1">
-			<input
-				bind:value={dangerValue}
-				class="w-[4.5rem] rounded-full border border-neutral-400 bg-transparent px-2.5 text-neutral-900 dark:border-neutral-600 dark:text-neutral-100"
-				type="text"
-			/>
-			<p class="font-medium text-neutral-900 dark:text-neutral-100">{measureUnit}</p>
-		</div>
-	</div>
-	<div>
-		<p class="text-xs font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
-			UNIDADE DE MEDIDA
-		</p>
-		<div class="mt-1 flex justify-center space-x-2">
-			<button
-				class="w-12 py-0.5 text-sm font-medium"
-				on:click={convertToLiters}
-				class:water-button-pressed={measureUnit === 'L'}
-				class:water-button-unpressed={measureUnit === 'm³'}>L</button
-			>
-			<button
-				class="w-12 py-0.5 text-sm font-medium"
-				on:click={convertToCubicMeters}
-				class:water-button-pressed={measureUnit === 'm³'}
-				class:water-button-unpressed={measureUnit === 'L'}>m³</button
-			>
+		<div>
+			<p class="text-[0.8rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+				Unidade de Medida
+			</p>
+			<div class="mt-1 flex space-x-2">
+				<button
+					class="w-12 py-0.5 text-sm font-medium"
+					on:click={convertToLiters}
+					class:water-button-pressed={measureUnit === 'L'}
+					class:water-button-unpressed={measureUnit === 'm³'}>L</button
+				>
+				<button
+					class="w-12 py-0.5 text-sm font-medium"
+					on:click={convertToCubicMeters}
+					class:water-button-pressed={measureUnit === 'm³'}
+					class:water-button-unpressed={measureUnit === 'L'}>m³</button
+				>
+			</div>
 		</div>
 	</div>
 </div>
-<div class="mt-8 grid grid-cols-4 justify-items-center gap-y-10">
+
+<div class="mt-6 grid grid-cols-4 justify-items-center gap-y-10">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
 			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
@@ -150,7 +162,7 @@
 				class="w-full"
 				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
 			></div>
-			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60"></div>
+			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div
 				class:text-red={data.measurement <= dangerValue}
 				class:text-cyan={data.measurement > dangerValue}
@@ -166,7 +178,7 @@
 			{#if data.measurement <= dangerValue}
 				<div class="absolute right-3 top-3">
 					<svg
-						class="mb-1 animate-pulse text-red-950 dark:text-red-100"
+						class="mb-1 animate-pulse text-red-950 dark:text-red-300"
 						xmlns="http://www.w3.org/2000/svg"
 						width="40"
 						height="40"
@@ -182,7 +194,7 @@
 				class="absolute bottom-0 left-0 flex h-[11rem] flex-col justify-between *:border-black *:dark:border-white dark:*:border-white"
 			>
 				<div class="relative w-3 border">
-					<div class=" absolute -top-2 left-3.5 text-xs font-medium">Máx</div>
+					<div class="absolute -top-2 left-3.5 text-xs font-medium dark:text-white">Máx</div>
 				</div>
 				<div class="w-2 border"></div>
 				<div class="w-2 border"></div>
