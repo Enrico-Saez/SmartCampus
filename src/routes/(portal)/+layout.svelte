@@ -25,8 +25,10 @@
 	<div class="mx-auto flex h-14 max-w-7xl items-center justify-between px-6">
 		<div class="flex space-x-8">
 			<div class="flex items-center space-x-2">
-				<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
-				<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
+				<div>
+					<img class="h-8 dark:hidden" src="/images/logo.svg" alt="EcoVision" />
+					<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
+				</div>
 				<p class="font-outfit text-2xl font-medium text-primary">
 					Eco<span class="text-tertiary dark:text-white">Vision </span><span
 						class="font-outfit text-xl font-normal text-tertiary dark:text-white">| admin</span

@@ -1,8 +1,3 @@
-<script>
-	const handleRedirect = async () => {
-		window.location.href = "/"
-	};
-</script>
 <svelte:head>
 	<title>Erro 404 | EcoVision</title>
 </svelte:head>
@@ -16,13 +11,13 @@
 		</div>
 		<div class="mt-20 flex justify-center">
 			<button
-				class="mx-auto flex items-center space-x-5 rounded-full bg-neutral-200 px-7 py-4 transition duration-150 ease-in hover:bg-neutral-300"
-				on:click={handleRedirect}
+				class="rounded-full bg-neutral-200 px-7 py-4 text-center text-[0.825rem] uppercase tracking-wider transition duration-150 ease-in hover:bg-neutral-300"
+				on:click={() => {
+					window.location.href = '/';
+				}}
 			>
-				<span class="text-center text-[0.825rem] uppercase tracking-wider"
-					>Voltar à página inicial</span
-				>
-		</button>
+				Voltar à página inicial
+			</button>
 		</div>
 	</div>
 </div>
