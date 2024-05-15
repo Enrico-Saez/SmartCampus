@@ -207,7 +207,7 @@
 		<slot />
 	</div>
 </div>
-<dialog bind:this={logoutModal} class="rounded-xl backdrop:backdrop-blur-sm dark:bg-neutral-900">
+<dialog bind:this={logoutModal} class="rounded-xl backdrop:backdrop-blur-[2px] dark:bg-neutral-900">
 	<div class="p-8">
 		<p class="dark:text-white">Tem certeza que deseja sair?</p>
 		<div class="mt-4 flex justify-center">
