@@ -55,3 +55,11 @@
 .border-cyan {
 	@apply border-cyan-950 dark:border-cyan-50;
 }
+
+.h-menor {
+	@apply h-7;
+}
+
+.h-maior {
+	@apply h-9;
+}
