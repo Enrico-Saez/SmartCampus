@@ -1,5 +1,5 @@
 <script lang="ts">
-	let dangerValue: number = 300;
+	let dangerValue: number = 100;
 	let dangerValueInput: String = String(dangerValue);
 
 	$: {
@@ -7,8 +7,6 @@
 		dangerValueInput = dangerValueInput.replace(/\D/g, '');
 		dangerValue = Number(dangerValueInput);
 	}
-
-	let ratio: number = 0.5;
 </script>
 
 <div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
@@ -49,10 +47,33 @@
 		class="animate-fade-in relative h-48 w-full overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
+		<div class="absolute bottom-2 left-3 z-30 text-left text-cyan-950 dark:text-cyan-100">
+			<h1 class="text-3xl font-semibold">
+				80<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">N/m²</span>
+			</h1>
+			<p class="text-sm font-medium">Pressão de entrada</p>
+		</div>
 		<div class="relative flex">
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black"></div>
-			<div class="my-3 h-16 w-40 grow border-y-8 border-black"></div>
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black"></div>
+			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
+			<div class="my-3 h-16 w-40 grow border-y-8 border-black dark:border-white">
+				<div class="relative z-10">
+					<div
+						class="animate-current absolute -bottom-12 h-7 w-full bg-cyan-300 dark:bg-cyan-400"
+						style="animation-fill-mode: backwards;"
+					>
+						<div
+							class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+						<div
+							class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+						<div
+							class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
 			<div class="relative h-48 w-48 overflow-hidden rounded-lg bg-neutral-600">
 				<svg
 					class="ml-1 mt-[6px]"
@@ -72,20 +93,46 @@
 						fill="black"
 					/>
 					<g clip-path="url(#dropMask)">
-						<rect class="w-full h-full" fill="#4DD0E1" transform="translate(0, 98)"></rect>
+						<rect
+							class="h-full w-full fill-cyan-300 dark:fill-cyan-400"
+							transform="translate(0, 98.4)"
+						></rect>
 
 						<g class="transition-transform duration-500" transform="translate(0, 80)">
 							<path
-								class="water"
+								class="water fill-cyan-300 dark:fill-cyan-400"
 								d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
 							/>
 						</g>
 					</g>
 				</svg>
 			</div>
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black"></div>
-			<div class="my-3 h-16 w-40 grow border-y-8 border-black"></div>
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black"></div>
+			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
+			<div class="my-3 h-16 w-40 grow border-y-8 border-black dark:border-white">
+				<div class="relative z-10">
+					<div
+						class="animate-current absolute -bottom-12 h-7 w-full bg-cyan-300 dark:bg-cyan-400"
+						style="animation-fill-mode: backwards;"
+					>
+						<div
+							class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+						<div
+							class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+						<div
+							class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+						></div>
+					</div>
+				</div>
+			</div>
+			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
+		</div>
+		<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
+			<h1 class="text-3xl font-semibold">
+				200<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">N/m²</span>
+			</h1>
+			<p class="text-sm font-medium">Pressão de saída</p>
 		</div>
 	</div>
 	<div
@@ -110,15 +157,14 @@
 
 <style>
 	.water {
-		animation: ripple 1.5s infinite linear;
-		fill: #4dd0e1;
+		animation: ripple 1.8s infinite linear;
 	}
 
 	@keyframes ripple {
-		0% {	
+		100% {
 			transform: translate3d(0, 0, 0);
 		}
-		100% {
+		0% {
 			transform: translate3d(-105%, 0, 0);
 		}
 	}
@@ -134,7 +180,42 @@
 		}
 	}
 
+	@keyframes water-current {
+		0% {
+			width: 0;
+		}
+		100% {
+			width: 100%;
+		}
+	}
+
+	@keyframes water-current-particle {
+		to {
+			left: 16rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		30% {
+			opacity: 1;
+		}
+	}
+
 	.animate-fade-in {
 		animation: fade-in 0.4s ease-in-out;
+	}
+
+	.animate-current {
+		animation: water-current 1.3s 0.6s;
+	}
+
+	.animate-current-particle-1 {
+		animation: water-current-particle 1.3s 1s infinite;
+	}
+	.animate-current-particle-2 {
+		animation: water-current-particle 1.3s 1.5s infinite;
+	}
+	.animate-current-particle-3 {
+		animation: water-current-particle 1.3s 2s infinite;
 	}
 </style>
