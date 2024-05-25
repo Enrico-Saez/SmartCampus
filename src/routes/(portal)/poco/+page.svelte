@@ -1,4 +1,13 @@
 <script lang="ts">
+	let pressoes = {
+		entrada: {
+			valor: 80
+		},
+		saida: {
+			valor: 200
+		}
+	};
+
 	let dangerValue: number = 100;
 	let dangerValueInput: String = String(dangerValue);
 
@@ -47,9 +56,15 @@
 		class="animate-fade-in relative h-48 w-full overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
-		<div class="absolute bottom-2 left-3 z-30 text-left text-cyan-950 dark:text-cyan-100">
+		<div 
+			class="absolute bottom-2 left-3 z-30 text-left text-cyan-950"
+			class:text-red={pressoes.entrada.valor > dangerValue}
+			class:text-cyan={pressoes.entrada.valor <= dangerValue}
+		>
 			<h1 class="text-3xl font-semibold">
-				80<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">N/m²</span>
+				{pressoes.entrada.valor}<span
+					class="text-base font-medium">N/m²</span
+				>
 			</h1>
 			<p class="text-sm font-medium">Pressão de entrada</p>
 		</div>
@@ -58,18 +73,38 @@
 			<div class="my-3 h-16 w-40 grow border-y-8 border-black dark:border-white">
 				<div class="relative z-10">
 					<div
-						class="animate-current absolute -bottom-12 h-7 w-full bg-cyan-300 dark:bg-cyan-400"
+						class="animate-current absolute -bottom-12 w-full"
+						class:h-menor={pressoes.entrada.valor <= dangerValue}
+						class:h-maior={pressoes.entrada.valor > dangerValue}
+						class:bg-cyan={pressoes.entrada.valor <= dangerValue}
+						class:bg-red={pressoes.entrada.valor > dangerValue}
 						style="animation-fill-mode: backwards;"
 					>
-						<div
-							class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
-						<div
-							class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
-						<div
-							class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
+						{#if pressoes.entrada.valor <= dangerValue}
+							<div
+								class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+						{/if}
+						{#if pressoes.entrada.valor > dangerValue}
+							<div
+								class="animate-waterfall-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-4 absolute left-0 top-7 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+						{/if}
 					</div>
 				</div>
 			</div>
@@ -111,26 +146,52 @@
 			<div class="my-3 h-16 w-40 grow border-y-8 border-black dark:border-white">
 				<div class="relative z-10">
 					<div
-						class="animate-current absolute -bottom-12 h-7 w-full bg-cyan-300 dark:bg-cyan-400"
+						class="animate-current absolute -bottom-12 w-full"
+						class:h-menor={pressoes.saida.valor <= dangerValue}
+						class:h-maior={pressoes.saida.valor > dangerValue}
+						class:bg-cyan={pressoes.saida.valor <= dangerValue}
+						class:bg-red={pressoes.saida.valor > dangerValue}
 						style="animation-fill-mode: backwards;"
 					>
-						<div
-							class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
-						<div
-							class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
-						<div
-							class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-						></div>
+						{#if pressoes.saida.valor <= dangerValue}
+							<div
+								class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+						{/if}
+						{#if pressoes.saida.valor > dangerValue}
+							<div
+								class="animate-waterfall-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+							<div
+								class="animate-waterfall-particle-4 absolute left-0 top-7 h-[2px] w-5 rounded-full bg-white opacity-0"
+							></div>
+						{/if}
 					</div>
 				</div>
 			</div>
 			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
 		</div>
-		<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-cyan-100">
+		<div 
+			class="absolute bottom-2 right-3 z-30 text-right text-cyan-950"
+			class:text-red={pressoes.saida.valor > dangerValue}
+			class:text-cyan={pressoes.saida.valor <= dangerValue}
+		>
 			<h1 class="text-3xl font-semibold">
-				200<span class="text-base font-medium text-cyan-950/70 dark:text-cyan-300">N/m²</span>
+				{pressoes.saida.valor}<span
+					class="text-base font-medium">N/m²</span
+				>
 			</h1>
 			<p class="text-sm font-medium">Pressão de saída</p>
 		</div>
@@ -201,6 +262,18 @@
 		}
 	}
 
+	@keyframes waterfall-particle {
+		to {
+			left: 16rem;
+		}
+		0% {
+			opacity: 0;
+		}
+		40% {
+			opacity: 1;
+		}
+	}
+
 	.animate-fade-in {
 		animation: fade-in 0.4s ease-in-out;
 	}
@@ -217,5 +290,18 @@
 	}
 	.animate-current-particle-3 {
 		animation: water-current-particle 1.3s 2s infinite;
+	}
+
+	.animate-waterfall-particle-1 {
+		animation: waterfall-particle 0.4s 1s infinite linear;
+	}
+	.animate-waterfall-particle-2 {
+		animation: waterfall-particle 0.4s 1.2s infinite linear;
+	}
+	.animate-waterfall-particle-3 {
+		animation: waterfall-particle 0.4s 1.1s infinite linear;
+	}
+	.animate-waterfall-particle-4 {
+		animation: waterfall-particle 0.4s 1.3s infinite linear;
 	}
 </style>
