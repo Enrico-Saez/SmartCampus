@@ -56,15 +56,13 @@
 		class="animate-fade-in relative h-48 w-full overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
-		<div 
+		<div
 			class="absolute bottom-2 left-3 z-30 text-left text-cyan-950"
 			class:text-red={pressoes.entrada.valor > dangerValue}
 			class:text-cyan={pressoes.entrada.valor <= dangerValue}
 		>
 			<h1 class="text-3xl font-semibold">
-				{pressoes.entrada.valor}<span
-					class="text-base font-medium">N/m²</span
-				>
+				{pressoes.entrada.valor}<span class="text-base font-medium">N/m²</span>
 			</h1>
 			<p class="text-sm font-medium">Pressão de entrada</p>
 		</div>
@@ -183,26 +181,24 @@
 			</div>
 			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
 		</div>
-		<div 
+		<div
 			class="absolute bottom-2 right-3 z-30 text-right text-cyan-950"
 			class:text-red={pressoes.saida.valor > dangerValue}
 			class:text-cyan={pressoes.saida.valor <= dangerValue}
 		>
 			<h1 class="text-3xl font-semibold">
-				{pressoes.saida.valor}<span
-					class="text-base font-medium">N/m²</span
-				>
+				{pressoes.saida.valor}<span class="text-base font-medium">N/m²</span>
 			</h1>
 			<p class="text-sm font-medium">Pressão de saída</p>
 		</div>
 	</div>
 	<div
-		class="animate-fade-in relative col-span-1 h-48 w-96 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
+		class="animate-fade-in relative col-span-1 h-48 w-96 rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
 			<svg
-				class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-white"
+				class="relative ml-6 mt-4 text-neutral-900 dark:text-white"
 				xmlns="http://www.w3.org/2000/svg"
 				width="60"
 				height="60"
@@ -212,6 +208,26 @@
 					d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM13 12H17V14H11V7H13V12Z"
 				/></svg
 			>
+		</div>
+		<div class="absolute bottom-2 right-3 z-30 text-right text-cyan-950 dark:text-white">
+			<h1 class="text-4xl font-semibold">
+				50<span class="text-xl font-medium text-cyan-950/70 dark:text-slate-100">min</span>
+			</h1>
+			<div class="flex items-center space-x-1">
+				<p class="text-[0.9rem] font-medium tracking-wide text-neutral-900 dark:text-neutral-100">
+					Horário de funcionamento
+				</p>
+				<div class="group relative">
+					<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">🛈</p>
+					<div
+						class="animate-fade-in absolute right-2 top-4 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+					>
+						<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+							Hora relativa à bomba de água do poço.
+						</p>
+					</div>
+				</div>
+			</div>
 		</div>
 	</div>
 </div>
