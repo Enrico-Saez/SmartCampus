@@ -165,9 +165,7 @@
 						<span>POÇO</span></a
 					>
 				</div>
-				<p class="pl-3 font-medium dark:text-white">
-					Luz <span class="text-sm">(demonstração)</span>
-				</p>
+				<p class="pl-3 font-medium dark:text-white">Energia</p>
 				<div class="mt-4 flex flex-col space-y-3">
 					<a
 						class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
