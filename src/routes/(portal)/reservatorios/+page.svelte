@@ -1,4 +1,7 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+
+	let editModal: HTMLDialogElement;
 	let measureUnit = 'L';
 
 	function convertToLiters() {
@@ -84,6 +87,21 @@
 		dangerValueInput = dangerValueInput.replace(/\D/g, '');
 		dangerValue = Number(dangerValueInput);
 	}
+
+	onMount(() => {
+		const handleClickOutside = (event: Event) => {
+			if (editModal.open && event.target === editModal) {
+				editModal.close();
+			}
+		};
+
+		window.addEventListener('click', handleClickOutside);
+
+		// Return a function to clean up the event listener
+		return () => {
+			window.removeEventListener('click', handleClickOutside);
+		};
+	});
 </script>
 
 <div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
@@ -143,7 +161,7 @@
 <div class="mt-6 grid grid-cols-4 justify-items-center gap-y-10">
 	{#each Object.entries(reservatories) as [key, data]}
 		<div
-			class="animate-fade-in relative flex h-48 w-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
+			class="animate-fade-in relative flex size-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 		>
 			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
@@ -176,12 +194,12 @@
 				<p class="text-sm font-medium">Reservatório {data.name}</p>
 			</div>
 			{#if data.measurement <= dangerValue}
-				<div class="absolute right-3 top-3">
+				<div class="absolute right-12 top-2.5 p-1">
 					<svg
 						class="mb-1 animate-pulse text-red-950 dark:text-red-300"
 						xmlns="http://www.w3.org/2000/svg"
-						width="40"
-						height="40"
+						width="28"
+						height="28"
 						viewBox="0 0 24 24"
 						><path
 							fill="currentColor"
@@ -207,9 +225,47 @@
 				<div class="w-2 border"></div>
 				<div class="w-0 border"></div>
 			</div>
+			<div class="group">
+				<div
+					class="absolute left-0 top-0 -z-10 flex size-48 items-center justify-center bg-neutral-900/70 opacity-0 transition-opacity duration-200 ease-in hover:invisible group-hover:z-30 group-hover:opacity-100"
+				>
+					<p class="tracking-wide text-white">Editar</p>
+				</div>
+				<button
+					on:click={() => editModal.showModal()}
+					class="absolute right-3 top-3 z-30 rounded-full bg-neutral-100/50 p-1"
+				>
+					<svg
+						xmlns="http://www.w3.org/2000/svg"
+						fill="none"
+						viewBox="0 0 24 24"
+						stroke-width="1.5"
+						stroke="currentColor"
+						class="size-6"
+					>
+						<path
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							d="m16.862 4.487 1.687-1.688a1.875 1.875 0 1 1 2.652 2.652L10.582 16.07a4.5 4.5 0 0 1-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 0 1 1.13-1.897l8.932-8.931Zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0 1 15.75 21H5.25A2.25 2.25 0 0 1 3 18.75V8.25A2.25 2.25 0 0 1 5.25 6H10"
+						/>
+					</svg>
+				</button>
+			</div>
 		</div>
 	{/each}
 </div>
+
+<dialog bind:this={editModal} class="rounded-xl backdrop:backdrop-blur-[1px] dark:bg-neutral-900">
+	<div class="p-8">
+		<p class="dark:text-white">Tem certeza que deseja sair?</p>
+		<div class="mt-4 flex justify-center">
+			<button
+				class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+				>SAIR</button
+			>
+		</div>
+	</div>
+</dialog>
 
 <style>
 	.water {

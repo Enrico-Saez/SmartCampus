@@ -21,7 +21,9 @@ const config = {
 		}
 	},
 
-	plugins: []
+	plugins: [
+		require('tailwindcss-3d'),
+	]
 };
 
 module.exports = config;
