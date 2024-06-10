@@ -5,9 +5,9 @@
 	let editModal: HTMLDialogElement;
 	let measureUnit = 'L';
 
-	export let data
-	console.log(data.waterTankLevel)
-
+	export let data;
+	let reservatories = Object.values(data.waterTankInfo)
+	
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
 			measureUnit = 'L';
@@ -29,59 +29,6 @@
 			}
 		}
 	}
-
-	let reservatories = {
-		0: {
-			name: '0',
-			maxCapacity: 10000,
-			measurement: 300
-		},
-		1: {
-			name: '1',
-			maxCapacity: 9000,
-			measurement: 7000
-		},
-		2: {
-			name: '2',
-			maxCapacity: 15000,
-			measurement: 5000
-		},
-		3: {
-			name: '3',
-			maxCapacity: 6000,
-			measurement: 5500
-		},
-		4: {
-			name: '4',
-			maxCapacity: 10000,
-			measurement: 10000
-		},
-		5: {
-			name: '5',
-			maxCapacity: 8500,
-			measurement: 4000
-		},
-		6: {
-			name: '6',
-			maxCapacity: 12000,
-			measurement: 4000
-		},
-		7: {
-			name: '7',
-			maxCapacity: 10000,
-			measurement: 4000
-		},
-		8: {
-			name: '8',
-			maxCapacity: 4000,
-			measurement: 250
-		},
-		9: {
-			name: '9',
-			maxCapacity: 9000,
-			measurement: 4000
-		}
-	};
 
 	let dangerValue: number = 300;
 	let dangerValueInput: String = String(dangerValue);
@@ -164,7 +111,7 @@
 </div>
 
 <div class="mt-6 grid grid-cols-4 justify-items-center gap-y-10">
-	{#each Object.entries(reservatories) as [key, data]}
+	{#each Object.values(reservatories) as reservatory}
 		<div
 			class="animate-fade-in relative flex size-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 			style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
@@ -172,33 +119,33 @@
 			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
 				<g class="transition-transform duration-500">
 					<path
-						class:fill-red={data.measurement <= dangerValue}
-						class:fill-cyan={data.measurement > dangerValue}
+						class:fill-red={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) <= dangerValue}
+						class:fill-cyan={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) > dangerValue}
 						class="water"
 						d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
 					/>
 				</g>
 			</svg>
 			<div
-				class:bg-red={data.measurement <= dangerValue}
-				class:bg-cyan={data.measurement > dangerValue}
+				class:bg-red={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) <= dangerValue}
+				class:bg-cyan={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) > dangerValue}
 				class="w-full"
-				style="height: {Math.floor((11 * data.measurement) / data.maxCapacity)}rem"
+				style="height: {Math.floor((11 * (reservatory["height"] - reservatory["data_distance"]/1000)) / reservatory["volume"])}rem"
 			></div>
 			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div
-				class:text-red={data.measurement <= dangerValue}
-				class:text-cyan={data.measurement > dangerValue}
+				class:text-red={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) <= dangerValue}
+				class:text-cyan={(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) > dangerValue}
 				class="text-cyan absolute bottom-2 right-3 text-right dark:shadow-black dark:drop-shadow-2xl"
 			>
 				<h1 class="text-3xl font-semibold">
-					{data.measurement}<span class="text-base font-medium opacity-75"
-						>/{data.maxCapacity}{measureUnit}</span
+					{(((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"])}<span class="text-base font-medium opacity-75"
+						>/{reservatory["volume"]}{measureUnit}</span
 					>
 				</h1>
-				<p class="text-sm font-medium">Reservatório {data.name}</p>
+				<p class="text-sm font-medium">{reservatory["name"]}</p>
 			</div>
-			{#if data.measurement <= dangerValue}
+			{#if (((reservatory["height"] - (reservatory["data_distance"]/1000))*reservatory["volume"])/reservatory["height"]) <= dangerValue}
 				<div class="absolute right-12 top-2.5 p-1">
 					<svg
 						class="mb-1 animate-pulse text-red-950 dark:text-red-300"
@@ -238,7 +185,7 @@
 				</div>
 				<button
 					on:click={() => {
-						reservatoryToBeEdited = 'NOME DO RESERVATÓRIO';
+						reservatoryToBeEdited = reservatory["name"];
 						editModal.showModal();
 					}}
 					class="absolute right-3 top-3 z-30 rounded-full bg-white/60 p-1 dark:bg-neutral-900/60"
@@ -268,7 +215,7 @@
 		<p class="text-center dark:text-white">
 			Insira os parâmetros para o <span class="font-medium">{reservatoryToBeEdited}</span>
 		</p>
-		<form method="POST" action="/saveReservatoryData" use:enhance>
+		<form method="POST" action="?/saveReservatoryData" use:enhance>
 			<div class="mx-auto mt-5 w-52 space-y-2">
 				<div class="flex justify-between">
 					<p class="dark:text-white">Altura <span class="text-sm">(m)</span></p>
@@ -288,13 +235,13 @@
 				</div>
 				<input type="hidden" value={reservatoryToBeEdited} name="name" />
 			</div>
+			<div class="mt-6 flex justify-center">
+				<button
+					class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
+					on:click={()=>editModal.close()}
+					>SALVAR</button>
+			</div>
 		</form>
-		<div class="mt-6 flex justify-center">
-			<button
-				class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
-				>SALVAR</button
-			>
-		</div>
 	</div>
 </dialog>
 
