@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
+	import { enhance } from '$app/forms';
 
 	let editModal: HTMLDialogElement;
 	let measureUnit = 'L';
+
+	export let data
+	console.log(data.waterTankLevel)
 
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
@@ -81,6 +85,7 @@
 
 	let dangerValue: number = 300;
 	let dangerValueInput: String = String(dangerValue);
+	let reservatoryToBeEdited: String;
 
 	$: {
 		// Replace any non-digit characters
@@ -232,7 +237,10 @@
 					<p class="tracking-wide text-white dark:text-black">Editar</p>
 				</div>
 				<button
-					on:click={() => editModal.showModal()}
+					on:click={() => {
+						reservatoryToBeEdited = 'NOME DO RESERVATÓRIO';
+						editModal.showModal();
+					}}
 					class="absolute right-3 top-3 z-30 rounded-full bg-white/60 p-1 dark:bg-neutral-900/60"
 				>
 					<svg
@@ -258,24 +266,27 @@
 <dialog bind:this={editModal} class="rounded-xl dark:bg-neutral-900">
 	<div class="p-8">
 		<p class="text-center dark:text-white">
-			Insira os parâmetros para o <span class="font-medium">Reservatório 1</span>
+			Insira os parâmetros para o <span class="font-medium">{reservatoryToBeEdited}</span>
 		</p>
-		<form>
+		<form method="POST" action="/saveReservatoryData" use:enhance>
 			<div class="mx-auto mt-5 w-52 space-y-2">
 				<div class="flex justify-between">
-					<p>Altura <span class="text-sm">(m)</span></p>
+					<p class="dark:text-white">Altura <span class="text-sm">(m)</span></p>
 					<input
 						class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 						type="text"
+						name="height"
 					/>
 				</div>
 				<div class="flex justify-between">
-					<p>Volume <span class="text-sm">(m³)</span></p>
+					<p class="dark:text-white">Volume <span class="text-sm">(m³)</span></p>
 					<input
 						class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 						type="text"
+						name="volume"
 					/>
 				</div>
+				<input type="hidden" value={reservatoryToBeEdited} name="name" />
 			</div>
 		</form>
 		<div class="mt-6 flex justify-center">
