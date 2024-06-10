@@ -17,7 +17,7 @@ export const authHandlers = {
 
 			const idToken = await credential.user.getIdToken();
 
-			var loginStatus = await (await fetch('api/login', {
+			let loginStatus = await (await fetch('api/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'

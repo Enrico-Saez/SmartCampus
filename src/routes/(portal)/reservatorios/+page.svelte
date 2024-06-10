@@ -5,6 +5,9 @@
 	let editModal: HTMLDialogElement;
 	let measureUnit = 'L';
 
+	export let data
+	console.log(data.waterTankLevel)
+
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
 			measureUnit = 'L';

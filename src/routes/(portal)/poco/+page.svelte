@@ -10,6 +10,9 @@
 
 	let dangerValue: number = 100;
 	let dangerValueInput: String = String(dangerValue);
+	
+	export let data
+	console.log(data.artesianWell)
 
 	$: {
 		// Replace any non-digit characters
