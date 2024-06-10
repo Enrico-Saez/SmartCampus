@@ -10,9 +10,9 @@
 
 	let dangerValue: number = 100;
 	let dangerValueInput: String = String(dangerValue);
-	
-	export let data
-	console.log(data.artesianWell)
+
+	export let data;
+	console.log(data.artesianWell);
 
 	$: {
 		// Replace any non-digit characters
@@ -45,7 +45,7 @@
 			<div class="mt-1 flex space-x-1">
 				<input
 					bind:value={dangerValueInput}
-					class="shadow-inner-light focus:ring-primary dark:shadow-inner-dark w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 focus:outline-none focus:ring-2 dark:border-neutral-600 dark:text-neutral-100"
+					class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 					type="text"
 				/>
 				<p class="w-[1rem] text-nowrap font-medium text-neutral-900 dark:text-neutral-100">N/m²</p>
@@ -101,120 +101,8 @@
 						></div>
 					{/if}
 				</div>
-				<div class="h-20 w-3 rounded-l-3xl bg-cyan-200"></div>
+				<div class="relative z-20 h-20 w-3 rounded-l-3xl bg-cyan-200"></div>
 			</div>
-		</div>
-		<!-- MEU CÓDIGO -->
-		<div class="relative hidden">
-			<div class="my-3 h-16 w-40 grow border-y-4 border-cyan-100 dark:border-white">
-				<div class="relative z-10">
-					<div
-						class="animate-current absolute -bottom-12 w-full"
-						class:h-menor={pressoes.entrada.valor <= dangerValue}
-						class:h-maior={pressoes.entrada.valor > dangerValue}
-						class:bg-cyan={pressoes.entrada.valor <= dangerValue}
-						class:bg-red={pressoes.entrada.valor > dangerValue}
-						style="animation-fill-mode: backwards;"
-					>
-						{#if pressoes.entrada.valor <= dangerValue}
-							<div
-								class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-						{/if}
-						{#if pressoes.entrada.valor > dangerValue}
-							<div
-								class="animate-waterfall-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-4 absolute left-0 top-7 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-						{/if}
-					</div>
-				</div>
-			</div>
-			<div class="mt-1 h-20 w-4 rounded-l-lg bg-cyan-100 dark:border-white"></div>
-			<!-- TIRAR DPS PRA CIMA -->
-			<div
-				class="relative flex h-48 w-48 items-center justify-center overflow-hidden rounded-lg bg-neutral-600/50"
-			>
-				<svg xmlns="http://www.w3.org/2000/svg" width="150" height="150" viewBox="0 0 264 264">
-					<clipPath id="dropMask">
-						<path
-							d="M132.281 264.564c51.24 0 92.931-41.681 92.931-92.918 0-50.18-87.094-164.069-90.803-168.891L132.281 0l-2.128 2.773c-3.704 4.813-90.802 118.71-90.802 168.882.001 51.228 41.691 92.909 92.93 92.909z"
-							fill="black"
-						/>
-					</clipPath>
-					<path
-						d="M132.281 264.564c51.24 0 92.931-41.681 92.931-92.918 0-50.18-87.094-164.069-90.803-168.891L132.281 0l-2.128 2.773c-3.704 4.813-90.802 118.71-90.802 168.882.001 51.228 41.691 92.909 92.93 92.909z"
-						fill="black"
-					/>
-					<g clip-path="url(#dropMask)">
-						<rect
-							class="h-full w-full fill-cyan-300 dark:fill-cyan-400"
-							transform="translate(0, 98.4)"
-						></rect>
-
-						<g class="transition-transform duration-500" transform="translate(0, 80)">
-							<path
-								class="water fill-cyan-300 dark:fill-cyan-400"
-								d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
-							/>
-						</g>
-					</g>
-				</svg>
-			</div>
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
-			<div class="my-3 h-16 w-40 grow border-y-8 border-black dark:border-white">
-				<div class="relative z-10">
-					<div
-						class="animate-current absolute -bottom-12 w-full"
-						class:h-menor={pressoes.saida.valor <= dangerValue}
-						class:h-maior={pressoes.saida.valor > dangerValue}
-						class:bg-cyan={pressoes.saida.valor <= dangerValue}
-						class:bg-red={pressoes.saida.valor > dangerValue}
-						style="animation-fill-mode: backwards;"
-					>
-						{#if pressoes.saida.valor <= dangerValue}
-							<div
-								class="animate-current-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-current-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-current-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-						{/if}
-						{#if pressoes.saida.valor > dangerValue}
-							<div
-								class="animate-waterfall-particle-1 absolute left-0 top-1 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-2 absolute left-0 top-3 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-3 absolute left-0 top-5 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-							<div
-								class="animate-waterfall-particle-4 absolute left-0 top-7 h-[2px] w-5 rounded-full bg-white opacity-0"
-							></div>
-						{/if}
-					</div>
-				</div>
-			</div>
-			<div class="mt-1 h-20 w-8 rounded-lg border-[7px] border-black dark:border-white"></div>
 		</div>
 		<div
 			class="relative flex h-52 w-96 items-end overflow-hidden rounded-xl dark:bg-neutral-900"
@@ -280,7 +168,7 @@
 						<rect
 							width="200"
 							height="250"
-							class="translate-x-10 translate-y-11 fill-cyan-300 dark:fill-cyan-400"
+							class="fill-cyan-300 translate-x-10 translate-y-11 dark:fill-cyan-400"
 						/>
 
 						<!-- position the ripple at the top of the bar -->
@@ -306,9 +194,9 @@
 				<p class="text-sm font-medium">Pressão de saída</p>
 			</div>
 			<div class="flex items-center">
-				<div class="h-20 w-3 rounded-r-3xl bg-cyan-200"></div>
+				<div class="relative z-20 h-20 w-3 rounded-r-3xl bg-cyan-200"></div>
 				<div
-					class="h-14 w-full border-y-4 overflow-x-hidden"
+					class="h-14 w-full overflow-x-hidden border-y-4"
 					class:bg-cyan={pressoes.saida.valor <= dangerValue}
 					class:bg-red={pressoes.saida.valor > dangerValue}
 					class:pipe-red={pressoes.saida.valor > dangerValue}
@@ -344,7 +232,7 @@
 		</div>
 	</div>
 	<div
-		class="animate-fade-in relative col-span-1 h-48 w-96 rounded-xl ml-4 bg-white dark:bg-neutral-900 dark:shadow-black"
+		class="animate-fade-in relative col-span-1 ml-4 h-48 w-96 rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
@@ -432,7 +320,7 @@
 
 	@keyframes water-current-particle {
 		to {
-			left: 18rem;
+			left: 21rem;
 		}
 		0% {
 			opacity: 0;
@@ -458,18 +346,14 @@
 		animation: fade-in 0.4s ease-in-out;
 	}
 
-	.animate-current {
-		animation: water-current 1.3s 0.6s;
-	}
-
 	.animate-current-particle-1 {
-		animation: water-current-particle 1.3s 1s infinite;
+		animation: water-current-particle 1.7s 1s infinite;
 	}
 	.animate-current-particle-2 {
-		animation: water-current-particle 1.3s 1.5s infinite;
+		animation: water-current-particle 1.7s 1.5s infinite;
 	}
 	.animate-current-particle-3 {
-		animation: water-current-particle 1.3s 2s infinite;
+		animation: water-current-particle 1.7s 2s infinite;
 	}
 
 	.animate-waterfall-particle-1 {
