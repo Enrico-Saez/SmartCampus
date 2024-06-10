@@ -308,7 +308,7 @@
 			<div class="flex items-center">
 				<div class="h-20 w-3 rounded-r-3xl bg-cyan-200"></div>
 				<div
-					class="h-14 w-full border-y-4"
+					class="h-14 w-full border-y-4 overflow-x-hidden"
 					class:bg-cyan={pressoes.saida.valor <= dangerValue}
 					class:bg-red={pressoes.saida.valor > dangerValue}
 					class:pipe-red={pressoes.saida.valor > dangerValue}
@@ -344,7 +344,7 @@
 		</div>
 	</div>
 	<div
-		class="animate-fade-in relative col-span-1 h-48 w-96 rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
+		class="animate-fade-in relative col-span-1 h-48 w-96 rounded-xl ml-4 bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
