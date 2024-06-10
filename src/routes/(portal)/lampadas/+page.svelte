@@ -16,20 +16,18 @@
 		>
 			<div class="relative">
 				<svg
-					class="relative z-20 ml-6 mt-4 text-neutral-900 dark:text-white"
+					class="relative z-20 ml-2 mt-3 text-neutral-900 dark:text-slate-200 fill-none"
 					xmlns="http://www.w3.org/2000/svg"
-					width="60"
-					height="60"
+					width="90"
+					height="90"
 					viewBox="0 0 24 24"
-					fill="currentColor"
 					><path
-						fill="currentColor"
-						d="M9.97308 18H11V13H13V18H14.0269C14.1589 16.7984 14.7721 15.8065 15.7676 14.7226C15.8797 14.6006 16.5988 13.8564 16.6841 13.7501C17.5318 12.6931 18 11.385 18 10C18 6.68629 15.3137 4 12 4C8.68629 4 6 6.68629 6 10C6 11.3843 6.46774 12.6917 7.31462 13.7484C7.40004 13.855 8.12081 14.6012 8.23154 14.7218C9.22766 15.8064 9.84103 16.7984 9.97308 18ZM10 20V21H14V20H10ZM5.75395 14.9992C4.65645 13.6297 4 11.8915 4 10C4 5.58172 7.58172 2 12 2C16.4183 2 20 5.58172 20 10C20 11.8925 19.3428 13.6315 18.2443 15.0014C17.624 15.7748 16 17 16 18.5V21C16 22.1046 15.1046 23 14 23H10C8.89543 23 8 22.1046 8 21V18.5C8 17 6.37458 15.7736 5.75395 14.9992Z"
+						d="M12 4a5.51 5.51 0 0 0-5.5 5.5c0 2.47 1.49 3.89 2.35 4.5h6.3c.86-.61 2.35-2.03 2.35-4.5C17.5 6.47 15.03 4 12 4" opacity=".3"/><path fill="currentColor" d="M12 22c1.1 0 2-.9 2-2h-4c0 1.1.9 2 2 2m-4-5h8v2H8zm4-15C7.86 2 4.5 5.36 4.5 9.5c0 3.82 2.66 5.86 3.77 6.5h7.46c1.11-.64 3.77-2.68 3.77-6.5C19.5 5.36 16.14 2 12 2m3.15 12h-6.3c-.86-.61-2.35-2.03-2.35-4.5C6.5 6.47 8.97 4 12 4s5.5 2.47 5.5 5.5c0 2.47-1.49 3.89-2.35 4.5"
 					/></svg
 				>
 
 				<div
-					class="lampada absolute left-[24%] top-[30%] h-[18px] w-4 rounded-3xl bg-[#ffe770]"
+					class="lampada absolute left-[21%] top-[26%] h-6 w-7 rounded-3xl bg-[#ffe770]"
 				></div>
 			</div>
 			<div
@@ -37,7 +35,7 @@
 			></div>
 			<div class="absolute bottom-2 right-3 z-30 text-right text-yellow-950 dark:text-yellow-100">
 				<h1 class="text-xl font-semibold">
-					<span class="mr-2 text-base font-medium text-yellow-950/70 dark:text-yellow-300"
+					<span class="mr-2 text-base font-medium text-yellow-600 dark:text-yellow-300"
 						>Luz acesa</span
 					>50h
 				</h1>
@@ -65,5 +63,20 @@
 		100% {
 			opacity: 0.3;
 		}
+	}
+
+	@keyframes fade-in {
+		0% {
+			opacity: 0;
+			transform: translate(0px, 10px);
+		}
+		100% {
+			opacity: 1;
+			transform: translate(0px, 0px);
+		}
+	}
+
+	.animate-fade-in {
+		animation: fade-in 0.4s ease-in-out;
 	}
 </style>
