@@ -17,15 +17,17 @@ export const authHandlers = {
 
 			const idToken = await credential.user.getIdToken();
 
-			await fetch('api/login', {
+			var loginStatus = await (await fetch('api/login', {
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json'
 					// 'CSRF-Token': csrfToken  // HANDLED by sveltekit automatically
 				},
 				body: JSON.stringify({ idToken })
-			});
-			await goto('/reservatorios');
+			})).json();
+			if (loginStatus["result"] == 'signedIn') {
+				await goto('/reservatorios');
+			}
 		} catch (error) {
 			// Lidar com o erro aqui, se necessário
 			console.error('Erro durante o processo de login:', error);

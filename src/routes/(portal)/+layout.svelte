@@ -6,11 +6,17 @@
 	let logoutModal: HTMLDialogElement;
 	export let data;
 	const displayName: String = data.displayName!;
+	const userAdmin: Boolean = data.userAdmin!;
+	const darkModeState: Boolean = data.darkModeState!;
 	function toggleLightMode() {
 		document.body.classList.remove('dark');
 	}
 	function toggleDarkMode() {
 		document.body.classList.add('dark');
+	}
+
+	if (darkModeState) {
+		toggleDarkMode();
 	}
 
 	function titleCase(str: String) {
@@ -48,9 +54,7 @@
 					<img class="hidden h-8 dark:block" src="/images/logo_negative.svg" alt="EcoVision" />
 				</div>
 				<p class="font-outfit text-2xl font-medium text-primary">
-					Eco<span class="text-tertiary dark:text-white">Vision </span><span
-						class="font-outfit text-xl font-normal text-tertiary dark:text-white">| admin</span
-					>
+					Eco<span class="text-tertiary dark:text-white">Vision</span>{#if userAdmin}<span class="font-outfit text-xl font-normal text-tertiary dark:text-white"> | admin</span>{/if}
 				</p>
 			</div>
 			<div class="flex space-x-3">
@@ -183,6 +187,7 @@
 					>
 				</div>
 			</div>
+			{#if userAdmin}
 			<div>
 				<a
 					class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
@@ -199,6 +204,7 @@
 					<span>CONFIGURAÇÕES</span></a
 				>
 			</div>
+			{/if}
 		</div>
 	</nav>
 	<div class="ml-60 size-full overflow-y-auto pb-8 pt-14">

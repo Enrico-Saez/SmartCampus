@@ -7,6 +7,7 @@ declare global {
 			userID: string | null;
 			displayName: string | null;
 			darkModeState: boolean;
+			userAdmin: boolean;
 		}
 		// interface PageData {}
 		// interface PageState {}
