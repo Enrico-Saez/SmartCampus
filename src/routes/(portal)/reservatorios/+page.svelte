@@ -227,13 +227,13 @@
 			</div>
 			<div class="group">
 				<div
-					class="absolute left-0 top-0 -z-10 flex size-48 items-center justify-center bg-neutral-900/70 opacity-0 transition-opacity duration-200 ease-in hover:invisible group-hover:z-30 group-hover:opacity-100"
+					class="absolute left-0 top-0 -z-10 flex size-48 items-center justify-center bg-neutral-900/70 opacity-0 transition-opacity duration-200 ease-in hover:invisible group-hover:z-30 group-hover:opacity-100 dark:bg-white/70"
 				>
-					<p class="tracking-wide text-white">Editar</p>
+					<p class="tracking-wide text-white dark:text-black">Editar</p>
 				</div>
 				<button
 					on:click={() => editModal.showModal()}
-					class="absolute right-3 top-3 z-30 rounded-full bg-neutral-100/50 p-1"
+					class="absolute right-3 top-3 z-30 rounded-full bg-white/60 p-1 dark:bg-neutral-900/60"
 				>
 					<svg
 						xmlns="http://www.w3.org/2000/svg"
@@ -241,7 +241,7 @@
 						viewBox="0 0 24 24"
 						stroke-width="1.5"
 						stroke="currentColor"
-						class="size-6"
+						class="size-6 dark:text-white"
 					>
 						<path
 							stroke-linecap="round"
@@ -255,13 +255,33 @@
 	{/each}
 </div>
 
-<dialog bind:this={editModal} class="rounded-xl backdrop:backdrop-blur-[1px] dark:bg-neutral-900">
+<dialog bind:this={editModal} class="rounded-xl dark:bg-neutral-900">
 	<div class="p-8">
-		<p class="dark:text-white">Tem certeza que deseja sair?</p>
-		<div class="mt-4 flex justify-center">
+		<p class="text-center dark:text-white">
+			Insira os parâmetros para o <span class="font-medium">Reservatório 1</span>
+		</p>
+		<form>
+			<div class="mx-auto mt-5 w-52 space-y-2">
+				<div class="flex justify-between">
+					<p>Altura <span class="text-sm">(m)</span></p>
+					<input
+						class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+						type="text"
+					/>
+				</div>
+				<div class="flex justify-between">
+					<p>Volume <span class="text-sm">(m³)</span></p>
+					<input
+						class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+						type="text"
+					/>
+				</div>
+			</div>
+		</form>
+		<div class="mt-6 flex justify-center">
 			<button
 				class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
-				>SAIR</button
+				>SALVAR</button
 			>
 		</div>
 	</div>

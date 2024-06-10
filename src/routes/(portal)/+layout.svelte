@@ -89,7 +89,7 @@
 			</div>
 		</div>
 		<div class="flex items-center space-x-3">
-			<p class="text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
+			<p class="font-medium text-neutral-900 dark:text-neutral-100">{titleCase(displayName)}</p>
 			<button
 				class="rounded-full bg-neutral-200 p-1.5 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
 				on:click={() => logoutModal.showModal()}
