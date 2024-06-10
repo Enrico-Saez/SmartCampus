@@ -55,3 +55,9 @@
 .border-cyan {
 	@apply border-cyan-950 dark:border-cyan-50;
 }
+.pipe-cyan {
+	@apply border-cyan-200 dark:border-cyan-300;
+}
+.pipe-red {
+	@apply border-red-200 dark:border-red-300;
+}
