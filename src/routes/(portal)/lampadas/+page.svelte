@@ -38,7 +38,7 @@
 						>Luz acesa há</span
 					>50h
 				</h1>
-				<p class="text-sm font-medium">Lâmpada {i + 1}</p>
+				<p class="text-sm font-medium">Sala {i + 1}</p>
 			</div>
 		</div>
 	{/each}
@@ -66,7 +66,7 @@
 			<h1 class="text-xl font-semibold">
 				<span class="text-base font-medium text-yellow-600 dark:text-yellow-300">Luz apagada</span>
 			</h1>
-			<p class="text-sm font-medium">Lâmpada 11</p>
+			<p class="text-sm font-medium">Sala 11</p>
 		</div>
 	</div>
 </div>
