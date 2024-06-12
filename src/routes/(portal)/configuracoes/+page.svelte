@@ -209,8 +209,8 @@
 					<p class="mt-2 font-medium">Limite 2 <span class="text-sm">(OS GMS)</span></p>
 					<div class="space-y-2">
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+							<div class="flex w-60 space-x-1">
+								<p>Reservatórios<span class="text-sm">(L)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -219,19 +219,21 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de volume dos reservatórios.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form method="POST">
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										name="reservatories"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -252,8 +254,8 @@
 							</form>
 						</div>
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+							<div class="flex w-60 space-x-1">
+								<p>Saídas de água <span class="text-sm">(ml/min)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -262,19 +264,21 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de vazão das saídas de água.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form>
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										name="water-exits"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -295,8 +299,8 @@
 							</form>
 						</div>
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+							<div class="flex w-60 space-x-1">
+								<p>Poço <span class="text-sm">(N/m²)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -305,19 +309,21 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de pressão do poço.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form>
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										name="well"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -343,8 +349,8 @@
 					<p class="mt-2 font-medium">Limite 3 <span class="text-sm">(Telegram)</span></p>
 					<div class="space-y-2">
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+							<div class="flex w-60 space-x-1">
+								<p>Reservatórios<span class="text-sm">(L)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -389,8 +395,8 @@
 							</form>
 						</div>
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Saídas de água</p>
+							<div class="flex w-60 space-x-1">
+								<p>Saídas de água <span class="text-sm">(ml/min)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -435,8 +441,8 @@
 							</form>
 						</div>
 						<div class="flex">
-							<div class="flex w-40 space-x-1">
-								<p>Poço</p>
+							<div class="flex w-60 space-x-1">
+								<p>Poço <span class="text-sm">(N/m²)</span></p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
