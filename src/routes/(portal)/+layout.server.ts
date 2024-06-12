@@ -1,5 +1,4 @@
 import type { LayoutServerLoad } from './$types';
-import { adminDBPortal } from '$lib/server/firebase-admin-portal';
 
 export const load = (async ({ locals }) => {
 	const displayName = locals.displayName;

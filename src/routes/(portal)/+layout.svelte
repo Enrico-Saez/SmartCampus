@@ -10,17 +10,36 @@
 	const displayName: String = data.displayName!;
 	const userAdmin: Boolean = data.userAdmin!;
 	let darkModeState: Boolean = data.darkModeState!;
+	
 	function toggleLightMode() {
+		fetch('../api/darkMode', {	
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				darkModeState: false
+			})
+		})
 		document.body.classList.remove('dark');
 	}
 	function toggleDarkMode() {
+		fetch('../api/darkMode', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify({
+				darkModeState: true
+			})
+		})
 		document.body.classList.add('dark');
 	}
 
 	if (darkModeState) {
 		toggleDarkMode();
 	}
-
+	
 	function titleCase(str: String) {
 		let splitStr = str.toLowerCase().split(' ');
 		for (let i = 0; i < splitStr.length; i++) {
