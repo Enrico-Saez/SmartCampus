@@ -6,6 +6,9 @@
 	export let form;
 	export let data;
 
+	$: chatID = data.telegramConfig.chatID;
+	$: message = data.telegramConfig.message;
+
 	let option1 = true;
 
 	$: async () => {
@@ -138,7 +141,7 @@
 								type="text"
 								maxlength="10"
 								name="chatID"
-								value={data.telegramConfig.chatID}
+								value={chatID}
 							/>
 							<button
 								class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -171,7 +174,7 @@
 							class="resize-none rounded-xl bg-transparent px-1.5 py-0.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 							rows="5"
 							cols="50"
-							name="message">{data.telegramConfig.message}</textarea
+							name="message">{message}</textarea
 						>
 						<button
 							class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -186,6 +189,279 @@
 						</button>
 					</div>
 				</form>
+			</div>
+		</div>
+		<div>
+			<p class="text-lg font-medium">Alertas</p>
+			<div class="flex space-x-14 *:space-y-3">
+				<div>
+					<p class="mt-2 text-sm font-medium">Nível 2 (OS GMS)</p>
+					<div class="space-y-2">
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
+				<div>
+					<p class="mt-2 text-sm font-medium">Nível 3 (Telegram)</p>
+					<div class="space-y-2">
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+						<div class="flex">
+							<div class="flex w-40 space-x-1">
+								<p>Reservatórios</p>
+								<div class="group relative">
+									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
+										🛈
+									</p>
+									<div
+										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
+									>
+										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
+											Insira o ChatID do destinatário a receber a mensagem de alerta.
+										</p>
+									</div>
+								</div>
+							</div>
+							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+								<div class="flex space-x-2.5">
+									<input
+										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										type="text"
+										maxlength="10"
+										name="chatID"
+										value={chatID}
+									/>
+									<button
+										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
+										type="submit"
+									>
+										<svg
+											xmlns="http://www.w3.org/2000/svg"
+											width="16"
+											height="16"
+											viewBox="0 0 24 24"
+											><path
+												fill="currentColor"
+												d="M5 21q-.825 0-1.412-.587T3 19V5q0-.825.588-1.412T5 3h11.175q.4 0 .763.15t.637.425l2.85 2.85q.275.275.425.638t.15.762V19q0 .825-.587 1.413T19 21zm7-3q1.25 0 2.125-.875T15 15t-.875-2.125T12 12t-2.125.875T9 15t.875 2.125T12 18m-5-8h7q.425 0 .713-.288T15 9V7q0-.425-.288-.712T14 6H7q-.425 0-.712.288T6 7v2q0 .425.288.713T7 10"
+											/></svg
+										>
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>

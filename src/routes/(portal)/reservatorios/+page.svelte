@@ -9,20 +9,22 @@
 	let reservatoryToBeEdited: String;
 
 	export let data;
-	$: reservatories = data.waterTankInfo
-	
-	function getReservatoryData(){
+	$: reservatories = data.waterTankInfo;
+
+	function getReservatoryData() {
 		setInterval(async () => {
 			await fetch('../api/getDynamicDataReservatorios', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			}).then(response => response.json())
-            .then(data => reservatories = data)
-            .catch(error => console.error('Error:', error));
+			})
+				.then((response) => response.json())
+				.then((data) => (reservatories = data))
+				.catch((error) => console.error('Error:', error));
 		}, 15000);
-	}	
+	}
+	let reservatories = data.waterTankInfo;
 
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
@@ -52,7 +54,7 @@
 		dangerValue = Number(dangerValueInput);
 	}
 
-	getReservatoryData()
+	getReservatoryData();
 
 	onMount(() => {
 		const handleClickOutside = (event: Event) => {
@@ -123,7 +125,9 @@
 	</div>
 </div>
 
-<div class="mt-6 grid grid-cols-4 justify-items-center gap-y-10">
+<div
+	class="3xl:grid-cols-6 grid grid-cols-3 justify-items-center gap-y-10 xl:grid-cols-4 2xl:grid-cols-5"
+>
 	{#each Object.values(reservatories) as reservatory}
 		<div
 			class="animate-fade-in relative flex size-48 flex-col justify-end overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
@@ -132,33 +136,34 @@
 			<svg xmlns="http://www.w3.org/2000/svg" class="w-full" height="20">
 				<g class="transition-transform duration-500">
 					<path
-						class:fill-red={reservatory["data_counter"] <= dangerValue}
-						class:fill-cyan={reservatory["data_counter"] > dangerValue}
+						class:fill-red={reservatory['data_counter'] <= dangerValue}
+						class:fill-cyan={reservatory['data_counter'] > dangerValue}
 						class="water"
 						d="M420 20.0047C441.5 19.6047 458.8 17.5047 471.1 15.5047C484.5 13.3047 497.6 10.3047 498.4 10.1047C514 6.50474 518 4.70474 528.5 2.70474C535.6 1.40474 546.4 -0.0952561 560 0.00474393V20.0047H420ZM420 20.0047C398.5 19.6047 381.2 17.5047 368.9 15.5047C355.5 13.3047 342.4 10.3047 341.6 10.1047C326 6.50474 322 4.70474 311.5 2.70474C304.3 1.40474 293.6 -0.0952561 280 0.00474393V20.0047H420ZM140 20.0047C118.5 19.6047 101.2 17.5047 88.9 15.5047C75.5 13.3047 62.4 10.3047 61.6 10.1047C46 6.50474 42 4.70474 31.5 2.70474C24.3 1.40474 13.6 -0.0952561 0 0.00474393V20.0047H140ZM140 20.0047C161.5 19.6047 178.8 17.5047 191.1 15.5047C204.5 13.3047 217.6 10.3047 218.4 10.1047C234 6.50474 238 4.70474 248.5 2.70474C255.6 1.40474 266.4 -0.0952561 280 0.00474393V20.0047H140Z"
 					/>
 				</g>
 			</svg>
 			<div
-				class:bg-red={reservatory["data_counter"] <= dangerValue}
-				class:bg-cyan={reservatory["data_counter"] > dangerValue}
+				class:bg-red={reservatory['data_counter'] <= dangerValue}
+				class:bg-cyan={reservatory['data_counter'] > dangerValue}
 				class="w-full"
-				style="height: {Math.floor((11 * reservatory["data_counter"]) / reservatory["volume"])}rem"
+				style="height: {Math.floor((11 * reservatory['data_counter']) / reservatory['volume'])}rem"
 			></div>
 			<div class="absolute bottom-0 right-0 hidden h-[4.15rem] w-full bg-black/60 dark:block"></div>
 			<div
-				class:text-red={reservatory["data_counter"] <= dangerValue}
-				class:text-cyan={reservatory["data_counter"] > dangerValue}
+				class:text-red={reservatory['data_counter'] <= dangerValue}
+				class:text-cyan={reservatory['data_counter'] > dangerValue}
 				class="text-cyan absolute bottom-2 right-3 text-right dark:shadow-black dark:drop-shadow-2xl"
 			>
 				<h1 class="text-3xl font-semibold">
-					{reservatory["data_counter"]}<span class="text-base font-medium opacity-75"
-						>/{reservatory["volume"]}{measureUnit}</span
+					{+Number(reservatory['data_counter']).toFixed(2)}<span
+						class="text-base font-medium opacity-75"
+						>/{+Number(reservatory['volume']).toFixed(2)}{measureUnit}</span
 					>
 				</h1>
-				<p class="text-sm font-medium">{reservatory["name"]}</p>
+				<p class="text-sm font-medium">{reservatory['name']}</p>
 			</div>
-			{#if reservatory["data_counter"] <= dangerValue}
+			{#if reservatory['data_counter'] <= dangerValue}
 				<div class="absolute right-12 top-2.5 p-1">
 					<svg
 						class="mb-1 animate-pulse text-red-950 dark:text-red-300"
@@ -198,7 +203,7 @@
 				</div>
 				<button
 					on:click={() => {
-						reservatoryToBeEdited = reservatory["name"];
+						reservatoryToBeEdited = reservatory['name'];
 						editModal.showModal();
 					}}
 					class="absolute right-3 top-3 z-30 rounded-full bg-white/60 p-1 dark:bg-neutral-900/60"
@@ -239,7 +244,7 @@
 					/>
 				</div>
 				<div class="flex justify-between">
-					<p class="dark:text-white">Volume <span class="text-sm">(m³)</span></p>
+					<p class="dark:text-white">Volume <span class="text-sm">(L)</span></p>
 					<input
 						class="w-[5.5rem] rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 						type="text"
@@ -252,8 +257,8 @@
 				<button
 					class="rounded-full bg-neutral-200 px-3 py-1.5 text-[0.825rem] tracking-wider transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:text-white dark:hover:bg-neutral-700"
 					type="submit"
-					on:click={()=>editModal.close()}
-					>SALVAR</button>
+					on:click={() => editModal.close()}>SALVAR</button
+				>
 			</div>
 		</form>
 	</div>
