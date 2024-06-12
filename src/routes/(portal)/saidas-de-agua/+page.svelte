@@ -3,9 +3,6 @@
 	let width = 0;
 	let height = 0;
 
-	export let data;
-	console.log(data.hydrometer);
-
 	function frame() {
 		if (height == 150 && width == 15) {
 			clearInterval(animation);

@@ -8,7 +8,9 @@
 	></div>
 </div>
 
-<div class="grid grid-cols-4 justify-items-center gap-y-10">
+<div
+	class="3xl:grid-cols-6 grid grid-cols-3 justify-items-center gap-y-10 xl:grid-cols-4 2xl:grid-cols-5"
+>
 	{#each Array(10) as _, i}
 		<div
 			class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
