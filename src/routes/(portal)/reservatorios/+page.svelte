@@ -25,7 +25,7 @@
 				.catch((error) => console.error('Error:', error));
 		}, 15000);
 	}
-	let reservatories = data.waterTankInfo;
+	
 	$: reservatories = data.waterTankInfo;
 
 	function convertToLiters() {
