@@ -1,6 +1,22 @@
 <script lang="ts">
 	import { enhance } from '$app/forms';
+	import { toast } from 'svelte-sonner';
+	import { tick } from 'svelte';
+
+	export let form;
+	export let data;
+
 	let option1 = true;
+
+	$: async () => {
+		await tick();
+
+		if (form && form.success) {
+			toast.success(form.message);
+		} else if (form) {
+			toast.error(form.message);
+		}
+	};
 </script>
 
 <div class="px-10 py-14 text-neutral-900 dark:text-neutral-100">
@@ -122,6 +138,7 @@
 								type="text"
 								maxlength="10"
 								name="chatID"
+								value={data.telegramConfig.chatID}
 							/>
 							<button
 								class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -154,8 +171,8 @@
 							class="resize-none rounded-xl bg-transparent px-1.5 py-0.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 							rows="5"
 							cols="50"
-							name="message"
-						></textarea>
+							name="message">{data.telegramConfig.message}</textarea
+						>
 						<button
 							class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
 							type="submit"

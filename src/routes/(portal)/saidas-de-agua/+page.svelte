@@ -3,8 +3,8 @@
 	let width = 0;
 	let height = 0;
 
-	export let data
-	console.log(data.hydrometer)
+	export let data;
+	console.log(data.hydrometer);
 
 	function frame() {
 		if (height == 150 && width == 15) {
@@ -66,7 +66,9 @@
 	</div>
 </div>
 
-<div class="grid grid-cols-4 justify-items-center gap-y-10">
+<div
+	class="3xl:grid-cols-6 grid grid-cols-3 justify-items-center gap-y-10 xl:grid-cols-4 2xl:grid-cols-5"
+>
 	<div
 		class="animate-fade-in relative h-48 w-48 overflow-hidden rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
@@ -126,19 +128,19 @@
 			<div class="absolute left-[4.75rem] top-12 bg-amber-500">
 				<div class="relative bg-amber-500">
 					<div
-						class="animate-waterfall-particle-1 absolute right-1 top-1 h-5 w-0.5 rotate-[11deg] rounded-full bg-white opacity-0"
+						class="animate-waterfall-particle-1 absolute right-1 top-1 h-5 w-0.5 rounded-full bg-white opacity-0 rotate-[11deg]"
 					></div>
 					<div
-						class="animate-waterfall-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rotate-[5deg] rounded-full bg-white opacity-0"
+						class="animate-waterfall-particle-2 absolute right-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0 rotate-[5deg]"
 					></div>
 					<div
 						class="animate-waterfall-particle-3 absolute top-1 h-5 w-0.5 rounded-full bg-white opacity-0"
 					></div>
 					<div
-						class="animate-waterfall-particle-4 absolute left-0.5 top-1 h-5 w-0.5 rotate-[-5deg] rounded-full bg-white opacity-0"
+						class="animate-waterfall-particle-4 absolute left-0.5 top-1 h-5 w-0.5 rounded-full bg-white opacity-0 rotate-[-5deg]"
 					></div>
 					<div
-						class="animate-waterfall-particle-5 absolute left-1 top-1 h-5 w-0.5 rotate-[-11deg] rounded-full bg-white opacity-0"
+						class="animate-waterfall-particle-5 absolute left-1 top-1 h-5 w-0.5 rounded-full bg-white opacity-0 rotate-[-11deg]"
 					></div>
 				</div>
 			</div>

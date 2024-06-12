@@ -115,7 +115,9 @@
 		</div>
 	</div>
 </nav>
-<div class="mx-auto flex h-screen max-w-7xl divide-x divide-neutral-300 dark:divide-neutral-700">
+<div
+	class="mx-auto flex h-screen max-w-7xl divide-x divide-neutral-300 2xl:max-w-[120rem] dark:divide-neutral-700"
+>
 	<nav class="fixed top-14 w-60 overflow-y-auto px-5 py-8" style="height: calc(100vh - 56px);">
 		<div class="flex h-full flex-col justify-between space-y-16">
 			<div class="space-y-4">
