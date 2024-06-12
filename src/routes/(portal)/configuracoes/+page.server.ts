@@ -2,10 +2,15 @@ import { adminDBPortal } from '$lib/server/firebase-admin-portal';
 import type { PageServerLoad } from './$types';
 
 export const load: PageServerLoad = async () => {
-	const ref = await adminDBPortal.collection('config').doc('telegram').get();
-	const telegramConfig = ref.data();
+	const [refTelegram, refAlerts] = await Promise.all([
+		adminDBPortal.collection('config').doc('telegram').get(),
+		adminDBPortal.collection('config').doc('alerts').get()
+	]);
 
-	return { telegramConfig };
+	const telegramConfig = refTelegram.data();
+	const alertsConfig = refAlerts.data();
+
+	return { telegramConfig, alertsConfig };
 };
 
 export const actions = {
@@ -24,5 +29,29 @@ export const actions = {
 		await adminDBPortal.collection('config').doc('telegram').update({ message: message });
 
 		return { success: true, message: 'Mensagem alterada com sucesso.' };
+	},
+	updateReservatoriesLimit3: async ({ request }) => {
+		const formData = await request.formData();
+		const limit = Number(formData.get('reservatories'));
+
+		await adminDBPortal.collection('config').doc('alerts').update({ reservatories: limit });
+
+		return { success: true, message: 'Limite 3 dos reservatórios alterado com sucesso.' };
+	},
+	updateWaterExitsLimit3: async ({ request }) => {
+		const formData = await request.formData();
+		const limit = Number(formData.get('water-exits'));
+
+		await adminDBPortal.collection('config').doc('alerts').update({ water_exits: limit });
+
+		return { success: true, message: 'Limite 3 das saídas de água alterado com sucesso.' };
+	},
+	updateWellLimit3: async ({ request }) => {
+		const formData = await request.formData();
+		const limit = Number(formData.get('well'));
+
+		await adminDBPortal.collection('config').doc('alerts').update({ artesian_well: limit });
+
+		return { success: true, message: 'Limite 3 da pressão do poço alterado com sucesso.' };
 	}
 };

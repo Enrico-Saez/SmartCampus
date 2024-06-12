@@ -1,7 +1,7 @@
 <script lang="ts">
 	let dangerValue: number = 1000;
-	let dangerValueInput: String = String(dangerValue);						
-	
+	let dangerValueInput: String = String(dangerValue);
+
 	export let data;
 	$: artesianWellInfo = data.ArtesianWellInfo;
 
@@ -11,20 +11,21 @@
 		dangerValue = Number(dangerValueInput);
 	}
 
-	function getartesianWellData(){
+	function getartesianWellData() {
 		setInterval(async () => {
 			await fetch('../api/getDynamicDataArtesianWell', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			}).then(response => response.json())
-            .then(data => artesianWellInfo = data)
-            .catch(error => console.error('Error:', error));
+			})
+				.then((response) => response.json())
+				.then((data) => (artesianWellInfo = data))
+				.catch((error) => console.error('Error:', error));
 		}, 15000);
-	}	
+	}
 
-	getartesianWellData()
+	getartesianWellData();
 </script>
 
 <div class="sticky top-0 z-40 w-full bg-neutral-50/30 p-8 backdrop-blur-sm dark:bg-[#121212]/30">
@@ -65,23 +66,25 @@
 		<div class="mb-4 grow">
 			<div
 				class="pl-8 text-left text-cyan-950"
-				class:text-red={artesianWellInfo["ArtesianWell_1"].data_pressure_0 > dangerValue}
-				class:text-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_0 <= dangerValue}
+				class:text-red={artesianWellInfo['ArtesianWell_1'].data_pressure_0 > dangerValue}
+				class:text-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_0 <= dangerValue}
 			>
 				<h1 class="text-3xl font-semibold">
-					{artesianWellInfo["ArtesianWell_1"].data_pressure_0}<span class="text-base font-medium">N/m²</span>
+					{artesianWellInfo['ArtesianWell_1'].data_pressure_0}<span class="text-base font-medium"
+						>N/m²</span
+					>
 				</h1>
 				<p class="text-sm font-medium">Pressão de entrada</p>
 			</div>
 			<div class="flex items-center">
 				<div
 					class=" h-14 w-full border-y-4 border-cyan-200"
-					class:bg-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_0 <= dangerValue}
-					class:bg-red={artesianWellInfo["ArtesianWell_1"].data_pressure_0 > dangerValue}
-					class:pipe-red={artesianWellInfo["ArtesianWell_1"].data_pressure_0 > dangerValue}
-					class:pipe-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_0 <= dangerValue}
+					class:bg-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_0 <= dangerValue}
+					class:bg-red={artesianWellInfo['ArtesianWell_1'].data_pressure_0 > dangerValue}
+					class:pipe-red={artesianWellInfo['ArtesianWell_1'].data_pressure_0 > dangerValue}
+					class:pipe-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_0 <= dangerValue}
 				>
-					{#if artesianWellInfo["ArtesianWell_1"].data_pressure_0 <= dangerValue}
+					{#if artesianWellInfo['ArtesianWell_1'].data_pressure_0 <= dangerValue}
 						<div
 							class="animate-current-particle-1 relative left-0 top-2 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
@@ -92,7 +95,7 @@
 							class="animate-current-particle-3 relative left-0 top-9 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
 					{/if}
-					{#if artesianWellInfo["ArtesianWell_1"].data_pressure_0 > dangerValue}
+					{#if artesianWellInfo['ArtesianWell_1'].data_pressure_0 > dangerValue}
 						<div
 							class="animate-waterfall-particle-1 relative left-0 top-2 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
@@ -191,11 +194,13 @@
 		<div class="mb-4 grow">
 			<div
 				class="pr-8 text-right text-cyan-950"
-				class:text-red={artesianWellInfo["ArtesianWell_1"].data_pressure_1 > dangerValue}
-				class:text-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_1 <= dangerValue}
+				class:text-red={artesianWellInfo['ArtesianWell_1'].data_pressure_1 > dangerValue}
+				class:text-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_1 <= dangerValue}
 			>
 				<h1 class="text-3xl font-semibold">
-					{artesianWellInfo["ArtesianWell_1"].data_pressure_1}<span class="text-base font-medium">N/m²</span>
+					{artesianWellInfo['ArtesianWell_1'].data_pressure_1}<span class="text-base font-medium"
+						>N/m²</span
+					>
 				</h1>
 				<p class="text-sm font-medium">Pressão de saída</p>
 			</div>
@@ -203,12 +208,12 @@
 				<div class="relative z-20 h-20 w-3 rounded-r-3xl bg-cyan-200"></div>
 				<div
 					class="h-14 w-full overflow-x-hidden border-y-4"
-					class:bg-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_1 <= dangerValue}
-					class:bg-red={artesianWellInfo["ArtesianWell_1"].data_pressure_1 > dangerValue}
-					class:pipe-red={artesianWellInfo["ArtesianWell_1"].data_pressure_1 > dangerValue}
-					class:pipe-cyan={artesianWellInfo["ArtesianWell_1"].data_pressure_1 <= dangerValue}
+					class:bg-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_1 <= dangerValue}
+					class:bg-red={artesianWellInfo['ArtesianWell_1'].data_pressure_1 > dangerValue}
+					class:pipe-red={artesianWellInfo['ArtesianWell_1'].data_pressure_1 > dangerValue}
+					class:pipe-cyan={artesianWellInfo['ArtesianWell_1'].data_pressure_1 <= dangerValue}
 				>
-					{#if artesianWellInfo["ArtesianWell_1"].data_pressure_1 <= dangerValue}
+					{#if artesianWellInfo['ArtesianWell_1'].data_pressure_1 <= dangerValue}
 						<div
 							class="animate-current-particle-1 relative left-0 top-2 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
@@ -219,7 +224,7 @@
 							class="animate-current-particle-3 relative left-0 top-9 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
 					{/if}
-					{#if artesianWellInfo["ArtesianWell_1"].data_pressure_1 > dangerValue}
+					{#if artesianWellInfo['ArtesianWell_1'].data_pressure_1 > dangerValue}
 						<div
 							class="animate-waterfall-particle-1 relative left-0 top-2 h-[2px] w-5 rounded-full bg-white opacity-0"
 						></div>
@@ -238,7 +243,7 @@
 		</div>
 	</div>
 	<div
-		class="animate-fade-in relative col-span-1 ml-4 h-48 w-96 rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
+		class="animate-fade-in relative col-span-1 ml-4 hidden h-48 w-96 rounded-xl bg-white dark:bg-neutral-900 dark:shadow-black"
 		style="box-shadow: 8px 8px 25px rgba(0,0,0,.2)"
 	>
 		<div class="relative">
@@ -274,6 +279,11 @@
 				</div>
 			</div>
 		</div>
+	</div>
+	<div class="mt-16">
+		<h1 class="text-center text-2xl text-neutral-900 dark:text-neutral-100">
+			Horas de funcionamento...
+		</h1>
 	</div>
 </div>
 

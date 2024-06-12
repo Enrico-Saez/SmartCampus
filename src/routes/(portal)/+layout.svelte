@@ -181,7 +181,7 @@
 						class="flex items-center space-x-2 text-nowrap rounded-full px-3 py-2.5 text-[0.825rem] tracking-wide transition"
 						class:light-button-pressed={$page.route.id?.match(/lampadas/g)}
 						class:light-button-unpressed={!$page.route.id?.match(/lampadas/g)}
-						href="/lampadas"
+						href="/luzes"
 					>
 						<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
 							><path

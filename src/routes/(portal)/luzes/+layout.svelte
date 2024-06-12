@@ -1,5 +1,5 @@
 <svelte:head>
-	<title>Lâmpadas | EcoVision</title>
+	<title>Luzes | EcoVision</title>
 </svelte:head>
 
 <slot />

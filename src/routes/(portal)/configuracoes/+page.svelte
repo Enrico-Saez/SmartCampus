@@ -8,6 +8,9 @@
 
 	$: chatID = data.telegramConfig.chatID;
 	$: message = data.telegramConfig.message;
+	$: artesian_well = data.alertsConfig.artesian_well;
+	$: reservatories = data.alertsConfig.reservatories;
+	$: water_exits = data.alertsConfig.water_exits;
 
 	let option1 = true;
 
@@ -118,7 +121,9 @@
 			</div>
 		</div>
 		<div>
-			<p class="text-lg font-medium">Bot Telegram</p>
+			<p class="text-xl font-medium underline decoration-primary decoration-2 underline-offset-4">
+				Bot Telegram
+			</p>
 			<div>
 				<div class="flex space-x-5">
 					<div class="flex w-24 space-x-1">
@@ -157,7 +162,7 @@
 						</div>
 					</form>
 				</div>
-				<p class="mt-2 text-sm text-neutral-500">
+				<p class="mt-1.5 text-sm text-neutral-500">
 					Lembre-se de iniciar manualmente uma conversa com o <span class="italic">bot</span> (<a
 						href="https://t.me/EcoVisionBot"
 						target="_blank"
@@ -192,10 +197,17 @@
 			</div>
 		</div>
 		<div>
-			<p class="text-lg font-medium">Alertas</p>
-			<div class="flex space-x-14 *:space-y-3">
+			<div>
+				<p class="text-xl font-medium underline decoration-primary decoration-2 underline-offset-4">
+					Alertas
+				</p>
+				<p class="mt-1.5 text-sm text-neutral-500">
+					Defina os limites para acionamento dos alertas.
+				</p>
+			</div>
+			<div class="flex space-x-20 *:space-y-3">
 				<div>
-					<p class="mt-2 text-sm font-medium">Nível 2 (OS GMS)</p>
+					<p class="mt-2 font-medium">Limite 2 <span class="text-sm">(OS GMS)</span></p>
 					<div class="space-y-2">
 						<div class="flex">
 							<div class="flex w-40 space-x-1">
@@ -329,7 +341,7 @@
 					</div>
 				</div>
 				<div>
-					<p class="mt-2 text-sm font-medium">Nível 3 (Telegram)</p>
+					<p class="mt-2 font-medium">Limite 3 <span class="text-sm">(Telegram)</span></p>
 					<div class="space-y-2">
 						<div class="flex">
 							<div class="flex w-40 space-x-1">
@@ -342,19 +354,22 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de volume dos reservatórios.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form method="POST" action="?/updateReservatoriesLimit3" use:enhance>
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										value={reservatories}
+										name="reservatories"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -376,7 +391,7 @@
 						</div>
 						<div class="flex">
 							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+								<p>Saídas de água</p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -385,19 +400,22 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de vazão das saídas de água.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form method="POST" action="?/updateWaterExitsLimit3" use:enhance>
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										value={water_exits}
+										name="water-exits"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
@@ -419,7 +437,7 @@
 						</div>
 						<div class="flex">
 							<div class="flex w-40 space-x-1">
-								<p>Reservatórios</p>
+								<p>Poço</p>
 								<div class="group relative">
 									<p class="cursor-default leading-none text-neutral-900 dark:text-neutral-100">
 										🛈
@@ -428,19 +446,22 @@
 										class="animate-fade-in absolute left-4 top-4 z-40 hidden w-max border border-neutral-300 bg-white px-2 py-1 group-hover:block dark:border-neutral-700 dark:bg-neutral-800"
 									>
 										<p class="text-nowrap text-sm text-neutral-900 dark:text-neutral-100">
-											Insira o ChatID do destinatário a receber a mensagem de alerta.
+											Limite de pressão do poço.
 										</p>
 									</div>
 								</div>
 							</div>
-							<form method="POST" action="?/updateTelegramChatID" use:enhance>
+							<form method="POST" action="?/updateWellLimit3" use:enhance>
 								<div class="flex space-x-2.5">
 									<input
-										class="w-32 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
+										class="w-16 rounded-full bg-transparent px-2.5 text-neutral-900 shadow-inner-light focus:outline-none focus:ring-2 focus:ring-primary dark:border-neutral-600 dark:text-neutral-100 dark:shadow-inner-dark"
 										type="text"
 										maxlength="10"
-										name="chatID"
-										value={chatID}
+										value={artesian_well}
+										name="well"
+										pattern="\d*"
+										title="Por favor, use apenas dígitos"
+										required
 									/>
 									<button
 										class="flex size-6 items-center justify-center rounded-full bg-neutral-200 transition duration-150 ease-in hover:bg-neutral-300 dark:bg-neutral-800 dark:hover:bg-neutral-700"
