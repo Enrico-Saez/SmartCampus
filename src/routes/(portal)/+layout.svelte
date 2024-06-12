@@ -1,13 +1,15 @@
 <script lang="ts">
+	import { enhance } from '$app/forms';
 	import { page } from '$app/stores';
 	import { authHandlers } from '$lib/scripts/auth.js';
 	import { onMount } from 'svelte';
+	import { Toaster } from 'svelte-sonner';
 
 	let logoutModal: HTMLDialogElement;
 	export let data;
 	const displayName: String = data.displayName!;
 	const userAdmin: Boolean = data.userAdmin!;
-	const darkModeState: Boolean = data.darkModeState!;
+	let darkModeState: Boolean = data.darkModeState!;
 	function toggleLightMode() {
 		document.body.classList.remove('dark');
 	}
@@ -62,38 +64,44 @@
 				</p>
 			</div>
 			<div class="flex space-x-3">
-				<button
-					class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-800"
-					on:click={toggleLightMode}
-				>
-					<svg
-						class="text-neutral-900 dark:text-neutral-600"
-						xmlns="http://www.w3.org/2000/svg"
-						width="28"
-						height="28"
-						viewBox="0 0 24 24"
-						><path
-							fill="currentColor"
-							d="M12 17q-2.075 0-3.537-1.463T7 12q0-2.075 1.463-3.537T12 7q2.075 0 3.538 1.463T17 12q0 2.075-1.463 3.538T12 17M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm18 0q-.425 0-.712-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8-8q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m0 18q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05L4.575 6q-.3-.275-.288-.7t.288-.725q.3-.3.725-.3t.7.3L7.05 5.65q.275.3.275.7t-.275.7q-.275.3-.687.288T5.65 7.05M18 19.425l-1.05-1.075q-.275-.3-.275-.712t.275-.688q.275-.3.688-.287t.712.287L19.425 18q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M16.95 7.05q-.3-.275-.288-.687t.288-.713L18 4.575q.275-.3.7-.288t.725.288q.3.3.3.725t-.3.7L18.35 7.05q-.3.275-.7.275t-.7-.275M4.575 19.425q-.3-.3-.3-.725t.3-.7l1.075-1.05q.3-.275.712-.275t.688.275q.3.275.288.688t-.288.712L6 19.425q-.275.3-.7.288t-.725-.288"
-						/></svg
+				<form method="POST" action="?/toggleLightMode" use:enhance>
+					<input type="hidden" name="userID" value={data.userID} />
+					<button
+						class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-800"
+						on:click={toggleLightMode}
 					>
-				</button>
-				<button
-					class="rounded-full p-1 transition duration-150 ease-in hover:bg-neutral-200 dark:cursor-default dark:hover:cursor-default dark:hover:bg-transparent"
-					on:click={toggleDarkMode}
-				>
-					<svg
-						class="text-neutral-400 dark:text-white"
-						xmlns="http://www.w3.org/2000/svg"
-						width="28"
-						height="28"
-						viewBox="0 0 24 24"
-						><path
-							fill="currentColor"
-							d="M9.5 22q-.875 0-1.75-.175T6.075 21.3q-.275-.125-.45-.375t-.175-.55q0-.225.1-.425t.3-.35q1.75-1.375 2.7-3.375T9.5 12q0-2.225-.962-4.213T5.825 4.4q-.175-.15-.275-.35t-.1-.425q0-.3.163-.55T6.05 2.7q.825-.35 1.7-.525T9.5 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T19.5 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T9.5 22"
-						/></svg
+						<svg
+							class="text-neutral-900 dark:text-neutral-600"
+							xmlns="http://www.w3.org/2000/svg"
+							width="28"
+							height="28"
+							viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M12 17q-2.075 0-3.537-1.463T7 12q0-2.075 1.463-3.537T12 7q2.075 0 3.538 1.463T17 12q0 2.075-1.463 3.538T12 17M2 13q-.425 0-.712-.288T1 12q0-.425.288-.712T2 11h2q.425 0 .713.288T5 12q0 .425-.288.713T4 13zm18 0q-.425 0-.712-.288T19 12q0-.425.288-.712T20 11h2q.425 0 .713.288T23 12q0 .425-.288.713T22 13zm-8-8q-.425 0-.712-.288T11 4V2q0-.425.288-.712T12 1q.425 0 .713.288T13 2v2q0 .425-.288.713T12 5m0 18q-.425 0-.712-.288T11 22v-2q0-.425.288-.712T12 19q.425 0 .713.288T13 20v2q0 .425-.288.713T12 23M5.65 7.05L4.575 6q-.3-.275-.288-.7t.288-.725q.3-.3.725-.3t.7.3L7.05 5.65q.275.3.275.7t-.275.7q-.275.3-.687.288T5.65 7.05M18 19.425l-1.05-1.075q-.275-.3-.275-.712t.275-.688q.275-.3.688-.287t.712.287L19.425 18q.3.275.288.7t-.288.725q-.3.3-.725.3t-.7-.3M16.95 7.05q-.3-.275-.288-.687t.288-.713L18 4.575q.275-.3.7-.288t.725.288q.3.3.3.725t-.3.7L18.35 7.05q-.3.275-.7.275t-.7-.275M4.575 19.425q-.3-.3-.3-.725t.3-.7l1.075-1.05q.3-.275.712-.275t.688.275q.3.275.288.688t-.288.712L6 19.425q-.275.3-.7.288t-.725-.288"
+							/></svg
+						>
+					</button>
+				</form>
+				<form method="POST" action="?/toggleDarkMode" use:enhance>
+					<input type="hidden" name="userID" value={data.userID} />
+					<button
+						class="rounded-full p-1 transition duration-150 ease-in hover:bg-neutral-200 dark:cursor-default dark:hover:cursor-default dark:hover:bg-transparent"
+						on:click={toggleDarkMode}
 					>
-				</button>
+						<svg
+							class="text-neutral-400 dark:text-white"
+							xmlns="http://www.w3.org/2000/svg"
+							width="28"
+							height="28"
+							viewBox="0 0 24 24"
+							><path
+								fill="currentColor"
+								d="M9.5 22q-.875 0-1.75-.175T6.075 21.3q-.275-.125-.45-.375t-.175-.55q0-.225.1-.425t.3-.35q1.75-1.375 2.7-3.375T9.5 12q0-2.225-.962-4.213T5.825 4.4q-.175-.15-.275-.35t-.1-.425q0-.3.163-.55T6.05 2.7q.825-.35 1.7-.525T9.5 2q2.075 0 3.9.788t3.175 2.137q1.35 1.35 2.138 3.175T19.5 12q0 2.075-.788 3.9t-2.137 3.175q-1.35 1.35-3.175 2.138T9.5 22"
+							/></svg
+						>
+					</button>
+				</form>
 			</div>
 		</div>
 		<div class="flex items-center space-x-3">
@@ -228,3 +236,13 @@
 		</div>
 	</div>
 </dialog>
+<Toaster
+	position="top-right"
+	expand={true}
+	toastOptions={{
+		classes: {
+			error: 'text-red-600 bg-white dark:text-red-300 dark:bg-neutral-900',
+			success: 'text-secondary bg-white dark:text-primary dark:bg-neutral-900'
+		}
+	}}
+/>
