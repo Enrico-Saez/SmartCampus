@@ -13,7 +13,7 @@
 
 	function getReservatoryData() {
 		setInterval(async () => {
-			await fetch('../api/getDynamicDataReservatorios', {
+			await fetch('../api/getDynamicDataReservatory', {
 				method: 'GET',
 				headers: {
 					'Content-Type': 'application/json'
