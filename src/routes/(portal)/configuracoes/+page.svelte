@@ -14,15 +14,15 @@
 
 	let option1 = true;
 
-	$: async () => {
-		await tick();
-
-		if (form && form.success) {
-			toast.success(form.message);
-		} else if (form) {
-			toast.error(form.message);
+	$: {
+		if (form) {
+			if (form.success) {
+				toast.success(form.message);
+			} else {
+				toast.error('Erro!');
+			}
 		}
-	};
+	}
 </script>
 
 <div class="px-10 py-14 text-neutral-900 dark:text-neutral-100">
