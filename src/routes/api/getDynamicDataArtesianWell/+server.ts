@@ -1,4 +1,5 @@
-import type { PageServerLoad } from './$types';
+import { json } from '@sveltejs/kit';
+import type { RequestHandler } from './$types';
 
 async function getArtesianWellDataDistance() {
     let resul = await fetch('http://srv538573.hstgr.cloud:8888/api/timeseries/v0.1/smartcampusmaua/GetArtesianWell', {
@@ -33,7 +34,7 @@ async function getArtesianWellInfo() {
     return combinedData;
 }
 
-export const load = (async () => {
+export const GET: RequestHandler = async () => {
     let ArtesianWellInfo = await getArtesianWellInfo()
-    return {ArtesianWellInfo};
-}) satisfies PageServerLoad;
+    return json(ArtesianWellInfo);
+};

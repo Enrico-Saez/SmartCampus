@@ -9,9 +9,21 @@
 	let reservatoryToBeEdited: String;
 
 	export let data;
-	let reservatories = data.waterTankInfo
+	$: reservatories = data.waterTankInfo
 	
-	
+	function getReservatoryData(){
+		setInterval(async () => {
+			await fetch('../api/getDynamicDataReservatorios', {
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			}).then(response => response.json())
+            .then(data => reservatories = data)
+            .catch(error => console.error('Error:', error));
+		}, 15000);
+	}	
+
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
 			measureUnit = 'L';
@@ -40,6 +52,8 @@
 		dangerValue = Number(dangerValueInput);
 	}
 
+	getReservatoryData()
+
 	onMount(() => {
 		const handleClickOutside = (event: Event) => {
 			if (editModal.open && event.target === editModal) {
@@ -49,7 +63,6 @@
 
 		window.addEventListener('click', handleClickOutside);
 
-		// Return a function to clean up the event listener
 		return () => {
 			window.removeEventListener('click', handleClickOutside);
 		};
