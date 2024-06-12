@@ -33,6 +33,7 @@
   "dependencies": {
     "firebase": "^10.11.0",
     "firebase-admin": "^12.1.0",
+    "svelte-sonner": "^0.3.24",
     "tailwindcss-3d": "^1.0.6"
   }
 }
