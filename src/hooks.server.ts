@@ -30,15 +30,19 @@ export const handle = (async ({ event, resolve }) => {
 	}
 
 	if (event.locals.userID) {
-		if (event.url.pathname.endsWith("/")){			
+		if (event.url.pathname.endsWith("/") ){			
 			throw redirect(303, '/reservatorios');
+		} else {
+			if (event.request.headers.get("X-Sveltekit-Action") == "true") {
+				throw redirect(303, '/');
+			}
 		}
 		if ((!event.locals.userAdmin) && event.url.pathname.startsWith('/configuracoes')) {
 			throw redirect(303, '/reservatorios');
 		}
 	}
 	if (!event.locals.userID) {
-		if (!event.url.pathname.endsWith("/") && !event.url.pathname.startsWith("/api/login")){
+		if (!event.url.pathname.endsWith("/") && !event.url.pathname.startsWith("/api/login") && event.request.headers.get("X-Sveltekit-Action") == "true"){
 			throw redirect(303, '/');
 		}
 	}
