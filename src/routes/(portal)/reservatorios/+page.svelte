@@ -9,7 +9,6 @@
 	let reservatoryToBeEdited: String;
 
 	export let data;
-	$: reservatories = data.waterTankInfo;
 
 	function getReservatoryData() {
 		setInterval(async () => {
@@ -25,6 +24,7 @@
 		}, 15000);
 	}
 	let reservatories = data.waterTankInfo;
+	$: reservatories = data.waterTankInfo;
 
 	function convertToLiters() {
 		if (measureUnit === 'm³') {
