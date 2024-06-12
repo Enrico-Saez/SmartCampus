@@ -1,14 +1,19 @@
 import { adminDBPortal } from '$lib/server/firebase-admin-portal';
 import type { PageServerLoad } from './$types';
 
-export const load: PageServerLoad = async () => {
+async function getConfigData() {
 	const [refTelegram, refAlerts] = await Promise.all([
 		adminDBPortal.collection('config').doc('telegram').get(),
 		adminDBPortal.collection('config').doc('alerts').get()
 	]);
 
-	const telegramConfig = refTelegram.data();
-	const alertsConfig = refAlerts.data();
+	return {refTelegram, refAlerts}
+}
+
+export const load: PageServerLoad = async () => {
+	const resul = await getConfigData()
+	const telegramConfig = resul.refTelegram.data();
+	const alertsConfig = resul.refAlerts.data();
 
 	return { telegramConfig, alertsConfig };
 };

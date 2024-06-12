@@ -11,6 +11,8 @@
 	let heightToBeEdited: Number;
 
 	export let data;
+	
+	$: reservatories = data.waterTankInfo;
 
 	function getReservatoryData() {
 		setInterval(async () => {
@@ -25,8 +27,6 @@
 				.catch((error) => console.error('Error:', error));
 		}, 15000);
 	}
-	
-	$: reservatories = data.waterTankInfo;
 
 	function convertToLiters() {
 		if (measureUnit === 'm³') {

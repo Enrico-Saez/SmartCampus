@@ -1,4 +1,5 @@
 import { adminAuthPortal, adminDBPortal } from '$lib/server/firebase-admin-portal';
+import { startProcess } from '$lib/server/telegram';
 import { type Handle, redirect } from '@sveltejs/kit';
 
 
@@ -10,6 +11,10 @@ async function getUserData(uid: string | null) {
   }
   return data;
 }
+ 
+if (import.meta.env.SSR) {
+	setInterval(startProcess, 15 * 60 * 1000);
+  }
 
 
 export const handle = (async ({ event, resolve }) => {
@@ -34,7 +39,7 @@ export const handle = (async ({ event, resolve }) => {
 			throw redirect(303, '/reservatorios');
 		} else {
 			if (event.request.headers.get("X-Sveltekit-Action") == "true") {
-				throw redirect(303, '/');
+				throw redirect(303, "/reservatorios");
 			}
 		}
 		if ((!event.locals.userAdmin) && event.url.pathname.startsWith('/configuracoes')) {
