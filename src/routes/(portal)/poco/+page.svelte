@@ -1,14 +1,5 @@
 <script lang="ts">
-	let pressoes = {
-		entrada: {
-			valor: 80
-		},
-		saida: {
-			valor: 200
-		}
-	};
-
-	let dangerValue: number = 100;
+	let dangerValue: number = 1000;
 	let dangerValueInput: String = String(dangerValue);						
 	
 	export let data;
