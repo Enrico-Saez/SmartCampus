@@ -16,7 +16,7 @@ export const POST: RequestHandler = async ({request, cookies}) => {
         
         cookies.set('__session', cookie, options);
 
-        return json({ status: 'signedIn' });
+        return json({ result: 'signedIn' });
     } else {
         throw error(401, 'Recent sign in required!');
     }
