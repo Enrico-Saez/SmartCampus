@@ -34,7 +34,7 @@ headerPoco = {
 }
 
 while True:
-    telegramInfo = requests.get("http://localhost:5173/api/telegramAlert", headers=headerReservatorio).json()
+    telegramInfo = requests.get("https://smart-campus-delta.vercel.app:8080/api/telegramAlert", headers=headerReservatorio).json()
     hydrometerRawData = requests.get("http://srv538573.hstgr.cloud:8888/api/timeseries/v0.1/smartcampusmaua/GetHydrometer", headers=headerReservatorio).json()
     for data in hydrometerRawData:        
         nodeName = f'WaterTankLavel_{str(data["tags"]["nodeName"])[-1]}'

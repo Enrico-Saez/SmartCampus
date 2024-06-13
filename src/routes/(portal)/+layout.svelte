@@ -10,9 +10,9 @@
 	const displayName: String = data.displayName!;
 	const userAdmin: Boolean = data.userAdmin!;
 	let darkModeState: Boolean = data.darkModeState!;
-	
+
 	function toggleLightMode() {
-		fetch('../api/darkMode', {	
+		fetch('../api/darkMode', {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json'
@@ -20,7 +20,7 @@
 			body: JSON.stringify({
 				darkModeState: false
 			})
-		})
+		});
 		document.body.classList.remove('dark');
 	}
 	function toggleDarkMode() {
@@ -32,14 +32,14 @@
 			body: JSON.stringify({
 				darkModeState: true
 			})
-		})
+		});
 		document.body.classList.add('dark');
 	}
 
 	if (darkModeState) {
 		toggleDarkMode();
 	}
-	
+
 	function titleCase(str: String) {
 		let splitStr = str.toLowerCase().split(' ');
 		for (let i = 0; i < splitStr.length; i++) {
@@ -83,7 +83,7 @@
 				</p>
 			</div>
 			<div class="flex space-x-3">
-				<form method="POST" action="?/toggleLightMode" use:enhance>
+				<form method="POST" use:enhance>
 					<input type="hidden" name="userID" value={data.userID} />
 					<button
 						class="cursor-default rounded-full p-1 transition duration-150 ease-in dark:hover:cursor-pointer dark:hover:bg-neutral-800"
@@ -102,7 +102,7 @@
 						>
 					</button>
 				</form>
-				<form method="POST" action="?/toggleDarkMode" use:enhance>
+				<form method="POST" use:enhance>
 					<input type="hidden" name="userID" value={data.userID} />
 					<button
 						class="rounded-full p-1 transition duration-150 ease-in hover:bg-neutral-200 dark:cursor-default dark:hover:cursor-default dark:hover:bg-transparent"
